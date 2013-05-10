@@ -1,0 +1,468 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		540F9239173D4924009054B3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9238173D4924009054B3 /* Cocoa.framework */; };
+		540F9243173D4924009054B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 540F9241173D4924009054B3 /* InfoPlist.strings */; };
+		540F9245173D4924009054B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9244173D4924009054B3 /* main.m */; };
+		540F9249173D4924009054B3 /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 540F9247173D4924009054B3 /* Credits.rtf */; };
+		540F924C173D4924009054B3 /* BSMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F924B173D4924009054B3 /* BSMAppDelegate.m */; };
+		540F924F173D4924009054B3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540F924D173D4924009054B3 /* MainMenu.xib */; };
+		540F9257173D4925009054B3 /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9256173D4925009054B3 /* SenTestingKit.framework */; };
+		540F9258173D4925009054B3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9238173D4924009054B3 /* Cocoa.framework */; };
+		540F9260173D4925009054B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 540F925E173D4925009054B3 /* InfoPlist.strings */; };
+		540F9263173D4925009054B3 /* BSMInputMethodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9262173D4925009054B3 /* BSMInputMethodTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		540F9259173D4925009054B3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 540F922D173D4924009054B3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 540F9234173D4924009054B3;
+			remoteInfo = BSMInputMethod;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		540F9235173D4924009054B3 /* BSMInputMethod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSMInputMethod.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		540F9238173D4924009054B3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		540F923B173D4924009054B3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		540F923C173D4924009054B3 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		540F923D173D4924009054B3 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		540F9240173D4924009054B3 /* BSMInputMethod-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BSMInputMethod-Info.plist"; sourceTree = "<group>"; };
+		540F9242173D4924009054B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		540F9244173D4924009054B3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		540F9246173D4924009054B3 /* BSMInputMethod-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BSMInputMethod-Prefix.pch"; sourceTree = "<group>"; };
+		540F9248173D4924009054B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		540F924A173D4924009054B3 /* BSMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSMAppDelegate.h; sourceTree = "<group>"; };
+		540F924B173D4924009054B3 /* BSMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSMAppDelegate.m; sourceTree = "<group>"; };
+		540F924E173D4924009054B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		540F9255173D4925009054B3 /* BSMInputMethodTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BSMInputMethodTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		540F9256173D4925009054B3 /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		540F925D173D4925009054B3 /* BSMInputMethodTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BSMInputMethodTests-Info.plist"; sourceTree = "<group>"; };
+		540F925F173D4925009054B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		540F9261173D4925009054B3 /* BSMInputMethodTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSMInputMethodTests.h; sourceTree = "<group>"; };
+		540F9262173D4925009054B3 /* BSMInputMethodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSMInputMethodTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		540F9232173D4924009054B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540F9239173D4924009054B3 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		540F9251173D4925009054B3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540F9257173D4925009054B3 /* SenTestingKit.framework in Frameworks */,
+				540F9258173D4925009054B3 /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		540F922C173D4924009054B3 = {
+			isa = PBXGroup;
+			children = (
+				540F923E173D4924009054B3 /* BSMInputMethod */,
+				540F925B173D4925009054B3 /* BSMInputMethodTests */,
+				540F9237173D4924009054B3 /* Frameworks */,
+				540F9236173D4924009054B3 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		540F9236173D4924009054B3 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				540F9235173D4924009054B3 /* BSMInputMethod.app */,
+				540F9255173D4925009054B3 /* BSMInputMethodTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		540F9237173D4924009054B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				540F9238173D4924009054B3 /* Cocoa.framework */,
+				540F9256173D4925009054B3 /* SenTestingKit.framework */,
+				540F923A173D4924009054B3 /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		540F923A173D4924009054B3 /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				540F923B173D4924009054B3 /* AppKit.framework */,
+				540F923C173D4924009054B3 /* CoreData.framework */,
+				540F923D173D4924009054B3 /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		540F923E173D4924009054B3 /* BSMInputMethod */ = {
+			isa = PBXGroup;
+			children = (
+				540F924A173D4924009054B3 /* BSMAppDelegate.h */,
+				540F924B173D4924009054B3 /* BSMAppDelegate.m */,
+				540F924D173D4924009054B3 /* MainMenu.xib */,
+				540F923F173D4924009054B3 /* Supporting Files */,
+			);
+			path = BSMInputMethod;
+			sourceTree = "<group>";
+		};
+		540F923F173D4924009054B3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				540F9240173D4924009054B3 /* BSMInputMethod-Info.plist */,
+				540F9241173D4924009054B3 /* InfoPlist.strings */,
+				540F9244173D4924009054B3 /* main.m */,
+				540F9246173D4924009054B3 /* BSMInputMethod-Prefix.pch */,
+				540F9247173D4924009054B3 /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		540F925B173D4925009054B3 /* BSMInputMethodTests */ = {
+			isa = PBXGroup;
+			children = (
+				540F9261173D4925009054B3 /* BSMInputMethodTests.h */,
+				540F9262173D4925009054B3 /* BSMInputMethodTests.m */,
+				540F925C173D4925009054B3 /* Supporting Files */,
+			);
+			path = BSMInputMethodTests;
+			sourceTree = "<group>";
+		};
+		540F925C173D4925009054B3 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				540F925D173D4925009054B3 /* BSMInputMethodTests-Info.plist */,
+				540F925E173D4925009054B3 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		540F9234173D4924009054B3 /* BSMInputMethod */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 540F9266173D4925009054B3 /* Build configuration list for PBXNativeTarget "BSMInputMethod" */;
+			buildPhases = (
+				540F9231173D4924009054B3 /* Sources */,
+				540F9232173D4924009054B3 /* Frameworks */,
+				540F9233173D4924009054B3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BSMInputMethod;
+			productName = BSMInputMethod;
+			productReference = 540F9235173D4924009054B3 /* BSMInputMethod.app */;
+			productType = "com.apple.product-type.application";
+		};
+		540F9254173D4925009054B3 /* BSMInputMethodTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 540F9269173D4925009054B3 /* Build configuration list for PBXNativeTarget "BSMInputMethodTests" */;
+			buildPhases = (
+				540F9250173D4925009054B3 /* Sources */,
+				540F9251173D4925009054B3 /* Frameworks */,
+				540F9252173D4925009054B3 /* Resources */,
+				540F9253173D4925009054B3 /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				540F925A173D4925009054B3 /* PBXTargetDependency */,
+			);
+			name = BSMInputMethodTests;
+			productName = BSMInputMethodTests;
+			productReference = 540F9255173D4925009054B3 /* BSMInputMethodTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		540F922D173D4924009054B3 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = BSM;
+				LastUpgradeCheck = 0460;
+				ORGANIZATIONNAME = "Ignition Soft";
+			};
+			buildConfigurationList = 540F9230173D4924009054B3 /* Build configuration list for PBXProject "BSMInputMethod" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 540F922C173D4924009054B3;
+			productRefGroup = 540F9236173D4924009054B3 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				540F9234173D4924009054B3 /* BSMInputMethod */,
+				540F9254173D4925009054B3 /* BSMInputMethodTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		540F9233173D4924009054B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540F9243173D4924009054B3 /* InfoPlist.strings in Resources */,
+				540F9249173D4924009054B3 /* Credits.rtf in Resources */,
+				540F924F173D4924009054B3 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		540F9252173D4925009054B3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540F9260173D4925009054B3 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		540F9253173D4925009054B3 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		540F9231173D4924009054B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540F9245173D4924009054B3 /* main.m in Sources */,
+				540F924C173D4924009054B3 /* BSMAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		540F9250173D4925009054B3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				540F9263173D4925009054B3 /* BSMInputMethodTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		540F925A173D4925009054B3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 540F9234173D4924009054B3 /* BSMInputMethod */;
+			targetProxy = 540F9259173D4925009054B3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		540F9241173D4924009054B3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540F9242173D4924009054B3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		540F9247173D4924009054B3 /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540F9248173D4924009054B3 /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		540F924D173D4924009054B3 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540F924E173D4924009054B3 /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		540F925E173D4925009054B3 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				540F925F173D4925009054B3 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		540F9264173D4925009054B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		540F9265173D4925009054B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		540F9267173D4925009054B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BSMInputMethod/BSMInputMethod-Prefix.pch";
+				INFOPLIST_FILE = "BSMInputMethod/BSMInputMethod-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		540F9268173D4925009054B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BSMInputMethod/BSMInputMethod-Prefix.pch";
+				INFOPLIST_FILE = "BSMInputMethod/BSMInputMethod-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		540F926A173D4925009054B3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BSMInputMethod.app/Contents/MacOS/BSMInputMethod";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BSMInputMethod/BSMInputMethod-Prefix.pch";
+				INFOPLIST_FILE = "BSMInputMethodTests/BSMInputMethodTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		540F926B173D4925009054B3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BSMInputMethod.app/Contents/MacOS/BSMInputMethod";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"";
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BSMInputMethod/BSMInputMethod-Prefix.pch";
+				INFOPLIST_FILE = "BSMInputMethodTests/BSMInputMethodTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		540F9230173D4924009054B3 /* Build configuration list for PBXProject "BSMInputMethod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				540F9264173D4925009054B3 /* Debug */,
+				540F9265173D4925009054B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		540F9266173D4925009054B3 /* Build configuration list for PBXNativeTarget "BSMInputMethod" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				540F9267173D4925009054B3 /* Debug */,
+				540F9268173D4925009054B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		540F9269173D4925009054B3 /* Build configuration list for PBXNativeTarget "BSMInputMethodTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				540F926A173D4925009054B3 /* Debug */,
+				540F926B173D4925009054B3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 540F922D173D4924009054B3 /* Project object */;
+}
