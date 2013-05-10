@@ -8,6 +8,12 @@
 
 #import <InputMethodKit/InputMethodKit.h>
 
-@interface BSMInputMethodController : IMKInputController
+@interface BSMInputMethodController : IMKInputController {
+    NSInteger _insertionIndex;
+    NSMutableString* _inputBuffer;
+    BOOL _selectionMode;
+}
+
+-(BOOL) appendBuffer:(NSString*)string client:(id)sender;
 
 @end

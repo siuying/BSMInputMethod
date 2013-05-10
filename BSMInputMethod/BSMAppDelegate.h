@@ -8,8 +8,12 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "BSMEngine.h"
+
 @interface BSMAppDelegate : NSObject <NSApplicationDelegate>
 
 @property (assign) IBOutlet NSWindow *window;
+
++(BSMEngine*) sharedEngine;
 
 @end
