@@ -17,6 +17,9 @@
 		540F9258173D4925009054B3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9238173D4924009054B3 /* Cocoa.framework */; };
 		540F9260173D4925009054B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 540F925E173D4925009054B3 /* InfoPlist.strings */; };
 		540F9263173D4925009054B3 /* BSMInputMethodTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9262173D4925009054B3 /* BSMInputMethodTests.m */; };
+		540F926E173D49BA009054B3 /* BSMInputMethodController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F926D173D49BA009054B3 /* BSMInputMethodController.m */; };
+		540F9271173D4A93009054B3 /* nine.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 540F9270173D4A93009054B3 /* nine.tiff */; };
+		540F9273173D4AA9009054B3 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9272173D4AA9009054B3 /* InputMethodKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +52,10 @@
 		540F925F173D4925009054B3 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		540F9261173D4925009054B3 /* BSMInputMethodTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BSMInputMethodTests.h; sourceTree = "<group>"; };
 		540F9262173D4925009054B3 /* BSMInputMethodTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BSMInputMethodTests.m; sourceTree = "<group>"; };
+		540F926C173D49BA009054B3 /* BSMInputMethodController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMInputMethodController.h; sourceTree = "<group>"; };
+		540F926D173D49BA009054B3 /* BSMInputMethodController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMInputMethodController.m; sourceTree = "<group>"; };
+		540F9270173D4A93009054B3 /* nine.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = nine.tiff; sourceTree = "<group>"; };
+		540F9272173D4AA9009054B3 /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = System/Library/Frameworks/InputMethodKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				540F9273173D4AA9009054B3 /* InputMethodKit.framework in Frameworks */,
 				540F9239173D4924009054B3 /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -94,6 +102,7 @@
 		540F9237173D4924009054B3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				540F9272173D4AA9009054B3 /* InputMethodKit.framework */,
 				540F9238173D4924009054B3 /* Cocoa.framework */,
 				540F9256173D4925009054B3 /* SenTestingKit.framework */,
 				540F923A173D4924009054B3 /* Other Frameworks */,
@@ -116,7 +125,10 @@
 			children = (
 				540F924A173D4924009054B3 /* BSMAppDelegate.h */,
 				540F924B173D4924009054B3 /* BSMAppDelegate.m */,
+				540F926C173D49BA009054B3 /* BSMInputMethodController.h */,
+				540F926D173D49BA009054B3 /* BSMInputMethodController.m */,
 				540F924D173D4924009054B3 /* MainMenu.xib */,
+				540F926F173D4A93009054B3 /* Resources */,
 				540F923F173D4924009054B3 /* Supporting Files */,
 			);
 			path = BSMInputMethod;
@@ -151,6 +163,14 @@
 				540F925E173D4925009054B3 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		540F926F173D4A93009054B3 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				540F9270173D4A93009054B3 /* nine.tiff */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -228,6 +248,7 @@
 				540F9243173D4924009054B3 /* InfoPlist.strings in Resources */,
 				540F9249173D4924009054B3 /* Credits.rtf in Resources */,
 				540F924F173D4924009054B3 /* MainMenu.xib in Resources */,
+				540F9271173D4A93009054B3 /* nine.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -264,6 +285,7 @@
 			files = (
 				540F9245173D4924009054B3 /* main.m in Sources */,
 				540F924C173D4924009054B3 /* BSMAppDelegate.m in Sources */,
+				540F926E173D49BA009054B3 /* BSMInputMethodController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
