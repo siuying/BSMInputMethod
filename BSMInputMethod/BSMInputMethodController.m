@@ -59,7 +59,7 @@
 	if ( _insertionIndex > 0 && _insertionIndex <= [_inputBuffer length] ) {
 		--_insertionIndex;
         [_inputBuffer deleteCharactersInRange:NSMakeRange(_insertionIndex,1)];
-		[sender setMarkedText:_inputBuffer
+        [sender setMarkedText:_inputBuffer
                selectionRange:NSMakeRange(_insertionIndex, 0)
              replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
 	}
