@@ -42,5 +42,9 @@
 	<string>BSMInputMethodController</string>
 	<key>LSBackgroundOnly</key>
 	<true/>
+	<key>TISInputSourceID</key>
+	<string>hk.ignition.inputmethod.BSMInputMethod</string>
+	<key>TISIntendedLanguage</key>
+	<string>zh-Hant</string>
 </dict>
 </plist>

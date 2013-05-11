@@ -86,6 +86,7 @@
 		540F9290173E5CC7009054B3 /* BSMCandidateViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSMCandidateViewItem.m; path = Views/BSMCandidateViewItem.m; sourceTree = "<group>"; };
 		540F9295173E92EB009054B3 /* BSMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSMView.h; path = Views/BSMView.h; sourceTree = "<group>"; };
 		540F9296173E92EB009054B3 /* BSMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSMView.m; path = Views/BSMView.m; sourceTree = "<group>"; };
+		54E08468173EB46300D9E5A6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		85F9EA81874245F69A3FFBB6 /* libPods-BSMInputMethodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSMInputMethodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D0C6273F9B5424CAFD7C98C /* Pods-BSMInputMethodTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSMInputMethodTests.xcconfig"; path = "Pods/Pods-BSMInputMethodTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		EC3CC1A565AE49A5852CFC17 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -295,6 +296,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				"zh-Hant",
 			);
 			mainGroup = 540F922C173D4924009054B3;
 			productRefGroup = 540F9236173D4924009054B3 /* Products */;
@@ -446,6 +448,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				540F9242173D4924009054B3 /* en */,
+				54E08468173EB46300D9E5A6 /* zh-Hant */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

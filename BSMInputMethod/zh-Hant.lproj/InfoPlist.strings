@@ -1,0 +1,4 @@
+/* Localized versions of Info.plist keys */
+
+CFBundleName = "BSM 筆順碼";
+CFBundleDisplayName = "BSM 筆順碼";
