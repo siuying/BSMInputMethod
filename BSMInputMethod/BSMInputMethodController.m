@@ -107,21 +107,12 @@
     [client insertText:self.buffer.composedString
       replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
     [self.buffer reset];
+    [self hideCandidateWindow];
 }
 
-- (void)candidateSelectionChanged:(NSAttributedString*)candidateString {
-    NSString* _candidateString = [candidateString string];
-    DDLogInfo(@" selection: %@", _candidateString);
-
-    [self.client setMarkedText:_candidateString
-                selectionRange:NSMakeRange(0, [_candidateString length])
-              replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
-}
-
-- (void)candidateSelected:(NSAttributedString*)candidateString {
-//    DDLogInfo(@" selected: %@", [candidateString string]);
-//	[self commitComposition:[self client]];
-//    [self resetBuffer];
+-(void) cancelComposition {
+    [super cancelComposition];
+    [self hideCandidateWindow];
 }
 
 -(void) showCandidates {
