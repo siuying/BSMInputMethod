@@ -1,0 +1,6 @@
+[
+  "-workspace", "BSMInputMethod.xcworkspace",
+  "-scheme", "BSMInputMethod",
+  "-configuration", "Debug",
+  "-arch", "x86_64"
+]

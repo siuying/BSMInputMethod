@@ -5,11 +5,9 @@ require 'fileutils'
 
 require './tools/bsm_converter'
 
-PROJECT_NAME = "BSMInputMethod"
-
 namespace "build" do
   task :compile do
-    puts `xcodebuild -project '#{PROJECT_NAME}.xcodeproj' -scheme '#{PROJECT_NAME}'`
+    puts `xctool build`
   end
 
   task :install => ["build:compile"] do
@@ -17,7 +15,7 @@ namespace "build" do
     `ps ax | grep BSMInputMethod.app | awk '{print $1}' | head -1 | xargs kill`
 
     # find build folder
-    output = `xcodebuild -showBuildSettings`
+    output = `xctool -showBuildSettings`
     config = output.split("\n")
       .collect{|cmd| cmd.strip.split("=") }
       .select {|cmd| cmd.size == 2 }
@@ -32,7 +30,7 @@ namespace "build" do
   end
 
   task :clean do
-    puts `xcodebuild -project '#{PROJECT_NAME}.xcodeproj' -scheme '#{PROJECT_NAME}' clean`
+    puts `xctool clean`
   end
 end
 
