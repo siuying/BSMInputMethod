@@ -59,42 +59,48 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(BOOL) nextPage {
-    DDLogVerbose(@"nextPage: (%lu/%lu)", _currentPage, _numberOfPage);
-    if (_currentPage + 1 < _numberOfPage) {
-        _currentPage++;
-        _needsUpdateCandidates = YES;
-        DDLogVerbose(@" current page is now: %lu", _currentPage);
-        return NO;
-    } else {
-        _currentPage = 0;
-        _needsUpdateCandidates = YES;
-        DDLogVerbose(@" current page is now: %lu", _currentPage);
-        return YES;
+    @synchronized(self) {
+        DDLogVerbose(@"nextPage: (%lu/%lu)", _currentPage, _numberOfPage);
+        if (_currentPage + 1 < _numberOfPage) {
+            _currentPage++;
+            _needsUpdateCandidates = YES;
+            DDLogVerbose(@" current page is now: %lu", _currentPage);
+            return NO;
+        } else {
+            _currentPage = 0;
+            _needsUpdateCandidates = YES;
+            DDLogVerbose(@" current page is now: %lu", _currentPage);
+            return YES;
+        }
     }
 }
 
 - (void) appendBuffer:(NSString*)string {
-    NSString* marker = [_markerMapping objectForKey:string];
-    [_markerBuffer appendString:marker];
+    @synchronized(self) {
+        NSString* marker = [_markerMapping objectForKey:string];
+        [_markerBuffer appendString:marker];
 
-    if ([string isEqualToString:@"."]) {
-        self.selectionMode = YES;
-    } else {
-        [_inputBuffer appendString:string];
-        _needsUpdateCandidates = YES;
+        if ([string isEqualToString:@"."]) {
+            _selectionMode = YES;
+        } else {
+            [_inputBuffer appendString:string];
+            _needsUpdateCandidates = YES;
+        }
     }
 }
 
 -(void) deleteBackward {
-    if ([_markerBuffer length] > 0) {
-        NSString* lastInput = [_markerBuffer substringFromIndex:[_markerBuffer length]-1];
-        [_markerBuffer deleteCharactersInRange:NSMakeRange([_markerBuffer length]-1, 1)];
+    @synchronized(self) {
+        if ([_markerBuffer length] > 0) {
+            NSString* lastInput = [_markerBuffer substringFromIndex:[_markerBuffer length]-1];
+            [_markerBuffer deleteCharactersInRange:NSMakeRange([_markerBuffer length]-1, 1)];
 
-        if ([lastInput isEqualToString:@"."]) {
-            self.selectionMode = NO;
-        } else {
-            [_inputBuffer deleteCharactersInRange:NSMakeRange([_inputBuffer length]-1, 1)];
-            _needsUpdateCandidates = YES;
+            if ([lastInput isEqualToString:@"."]) {
+                _selectionMode = NO;
+            } else {
+                [_inputBuffer deleteCharactersInRange:NSMakeRange([_inputBuffer length]-1, 1)];
+                _needsUpdateCandidates = YES;
+            }
         }
     }
 }
@@ -108,27 +114,29 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(NSArray*) candidates {
-    if (_needsUpdateCandidates) {
-        if ([_inputBuffer length] > 0) {
-            NSUInteger numberOfMatches = [self.engine numberOfMatchWithCode:_inputBuffer];
-            _numberOfPage = ceil(numberOfMatches / 9.0);
-            _candidates = [self.engine match:_inputBuffer page:self.currentPage];
+    @synchronized(self) {
+        if (_needsUpdateCandidates) {
+            if ([_inputBuffer length] > 0) {
+                NSUInteger numberOfMatches = [self.engine numberOfMatchWithCode:_inputBuffer];
+                _numberOfPage = ceil(numberOfMatches / 9.0);
+                _candidates = [self.engine match:_inputBuffer page:self.currentPage];
 
-            DDLogVerbose(@"(%@): matches: %lu, pages: %lu", _inputBuffer, numberOfMatches, _numberOfPage);
-            if ([_candidates count] > 0) {
-                BSMMatch* match = [_candidates objectAtIndex:0];
-                _composedString = match.word;
+                DDLogVerbose(@"(%@): matches: %lu, pages: %lu", _inputBuffer, numberOfMatches, _numberOfPage);
+                if ([_candidates count] > 0) {
+                    BSMMatch* match = [_candidates objectAtIndex:0];
+                    _composedString = match.word;
+                } else {
+                    _composedString = @"";
+                }
             } else {
+                _numberOfPage = 1;
+                _candidates = @[];
                 _composedString = @"";
             }
-        } else {
-            _numberOfPage = 1;
-            _candidates = @[];
-            _composedString = @"";
+            _needsUpdateCandidates = NO;
         }
-        _needsUpdateCandidates = NO;
+        return _candidates;
     }
-    return _candidates;
 }
 
 -(NSString*) composedString {
