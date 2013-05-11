@@ -10,4 +10,8 @@
 
 @implementation BSMEngine
 
+-(NSArray*) match:(NSString*)code {
+    return nil;
+}
+
 @end

@@ -9,10 +9,18 @@
 #import <Cocoa/Cocoa.h>
 
 #import "BSMEngine.h"
+#import "DDFileLogger.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 @interface BSMAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign) IBOutlet NSWindow *window;
+@property (assign, nonatomic) IBOutlet NSWindow *window;
+@property (strong, nonatomic) DDFileLogger *fileLogger;
 
 +(BSMEngine*) sharedEngine;
 

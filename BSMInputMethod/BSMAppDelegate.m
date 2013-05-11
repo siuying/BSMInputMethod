@@ -7,15 +7,13 @@
 //
 
 #import "BSMAppDelegate.h"
+#import "DDLog.h"
+#import "DDASLLogger.h"
+#import "DDTTYLogger.h"
 
 static BSMEngine* _sharedEngine;
 
 @implementation BSMAppDelegate
-
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
-{
-    // Insert code here to initialize your application
-}
 
 +(BSMEngine*) sharedEngine {
     static dispatch_once_t onceToken;
@@ -23,6 +21,19 @@ static BSMEngine* _sharedEngine;
         _sharedEngine = [[BSMEngine alloc] init];
     });
     return _sharedEngine;
+}
+
+- (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+    [self setupLogger];
+}
+
+-(void) setupLogger {
+    [DDLog addLogger:[DDASLLogger sharedInstance]];
+    [DDLog addLogger:[DDTTYLogger sharedInstance]];
+    self.fileLogger = [[DDFileLogger alloc] init];
+    self.fileLogger.rollingFrequency = 60 * 60 * 24;
+    self.fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
+    [DDLog addLogger:self.fileLogger];
 }
 
 @end

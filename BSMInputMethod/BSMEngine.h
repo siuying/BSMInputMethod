@@ -10,4 +10,6 @@
 
 @interface BSMEngine : NSObject
 
+-(NSArray*) match:(NSString*)code;
+
 @end

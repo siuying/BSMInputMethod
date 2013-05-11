@@ -1,0 +1,17 @@
+PODS:
+  - CocoaLumberjack (1.6.2)
+  - FMDB (2.0):
+    - FMDB/standard
+  - FMDB/common (2.0)
+  - FMDB/standard (2.0):
+    - FMDB/common
+
+DEPENDENCIES:
+  - CocoaLumberjack
+  - FMDB
+
+SPEC CHECKSUMS:
+  CocoaLumberjack: d73e1e317ced14ab930797dda6c17156ff17aaa1
+  FMDB: 30a7cbcdbd354f5ee1ba081a8773fd9130c43b48
+
+COCOAPODS: 0.19.1
