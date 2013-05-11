@@ -48,9 +48,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(NSArray*) match:(NSString*)code page:(NSUInteger) page{
     NSMutableArray* result = [NSMutableArray array];
-    FMResultSet *rs = [self.db executeQuery:@"select word, code from ime where code LIKE ? LIMIT 10 OFFSET ?",
+    FMResultSet *rs = [self.db executeQuery:@"select word, code from ime where code LIKE ? LIMIT 9 OFFSET ?",
                        [NSString stringWithFormat:@"%@%%", code],
-                       [NSNumber numberWithUnsignedInteger:(page)*10]];
+                       [NSNumber numberWithUnsignedInteger:(page)*9]];
     while ([rs next]) {
         NSString* word = [rs stringForColumn:@"word"];
         NSString* code = [rs stringForColumn:@"code"];

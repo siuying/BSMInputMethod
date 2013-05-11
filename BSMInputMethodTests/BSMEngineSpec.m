@@ -48,10 +48,10 @@ describe(@"BSMEngine", ^{
             expect(result).to.contain(expectMatch);
         });
 
-        it(@"should not return more than 10 matches", ^{
+        it(@"should not return more than 9 matches", ^{
             NSArray* result = [engine match:@"1"];
             expect(result).notTo.beNil();
-            expect([result count]).to.beLessThanOrEqualTo(10);
+            expect([result count]).to.beLessThanOrEqualTo(9);
         });
     });
     
@@ -81,12 +81,12 @@ describe(@"BSMEngine", ^{
         it(@"should be able to paginate", ^{
             NSArray* result = [engine match:@"1" page:0];
             expect(result).notTo.beNil();
-            expect([result count]).to.beLessThanOrEqualTo(10);
+            expect([result count]).to.beLessThanOrEqualTo(9);
             
             result = [engine match:@"1" page:1];
             expect(result).notTo.beNil();
             expect([result count]).to.beGreaterThan(0);
-            expect([result count]).to.beLessThanOrEqualTo(10);
+            expect([result count]).to.beLessThanOrEqualTo(9);
         });
     });
 });
