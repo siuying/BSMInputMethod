@@ -89,6 +89,20 @@ describe(@"BSMEngine", ^{
             expect([result count]).to.beLessThanOrEqualTo(9);
         });
     });
+    
+    
+    describe(@"-numberOfMatchWithCode:", ^{
+        it(@"should return number of matches", ^{
+            NSUInteger matches = [engine numberOfMatchWithCode:@"99991"];
+            expect(matches).to.equal(2U);
+            
+            matches = [engine numberOfMatchWithCode:@"11119"];
+            expect(matches).to.equal(1U);
+            
+            matches = [engine numberOfMatchWithCode:@"11119111"];
+            expect(matches).to.equal(0U);
+        });
+    });
 });
 
 SpecEnd

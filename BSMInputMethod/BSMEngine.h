@@ -24,4 +24,8 @@
 // @return array of BSMMatch
 -(NSArray*) match:(NSString*)code page:(NSUInteger) page;
 
+// Number of match by given code
+// @return number of matches
+-(NSUInteger) numberOfMatchWithCode:(NSString*)code;
+
 @end
