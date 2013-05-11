@@ -79,11 +79,11 @@ describe(@"BSMEngine", ^{
         });
         
         it(@"should be able to paginate", ^{
-            NSArray* result = [engine match:@"1" page:1];
+            NSArray* result = [engine match:@"1" page:0];
             expect(result).notTo.beNil();
             expect([result count]).to.beLessThanOrEqualTo(10);
             
-            result = [engine match:@"1" page:2];
+            result = [engine match:@"1" page:1];
             expect(result).notTo.beNil();
             expect([result count]).to.beGreaterThan(0);
             expect([result count]).to.beLessThanOrEqualTo(10);

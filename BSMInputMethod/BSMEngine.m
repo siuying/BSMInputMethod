@@ -35,16 +35,14 @@
 }
 
 -(NSArray*) match:(NSString*)code {
-    return [self match:code page:1];
+    return [self match:code page:0];
 }
 
 -(NSArray*) match:(NSString*)code page:(NSUInteger) page{
-    NSAssert(page >= 1, @"page must be 1 or above");
-
     NSMutableArray* result = [NSMutableArray array];
     FMResultSet *rs = [self.db executeQuery:@"select word, code from ime where code LIKE ? LIMIT 10 OFFSET ?",
                        [NSString stringWithFormat:@"%@%%", code],
-                       [NSNumber numberWithUnsignedInteger:(page-1)*10]];
+                       [NSNumber numberWithUnsignedInteger:(page)*10]];
     while ([rs next]) {
         NSString* word = [rs stringForColumn:@"word"];
         NSString* code = [rs stringForColumn:@"code"];

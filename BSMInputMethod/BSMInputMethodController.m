@@ -7,7 +7,11 @@
 //
 
 #import <Carbon/Carbon.h>
+
 #import "BSMInputMethodController.h"
+#import "BSMEngine.h"
+#import "BSMMatch.h"
+#import "BSMAppDelegate.h"
 
 @implementation BSMInputMethodController
 
