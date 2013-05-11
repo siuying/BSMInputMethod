@@ -93,7 +93,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [sender setMarkedText:marker
                selectionRange:NSMakeRange(0, [marker length])
              replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-        [self showCandidateWindowWithClient:sender];
+
+        BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
+        if ([candidateWindow isVisible]) {
+            [self updateCandidateWindow];
+        } else {
+            [self showCandidateWindowWithClient:sender];
+        }
+
         return YES;
     }
 }
@@ -104,13 +111,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [self.buffer deleteBackward];
             NSString* marker = self.buffer.marker;
             DDLogVerbose(@"%@", marker);
-
+            
             [sender setMarkedText:marker
                    selectionRange:NSMakeRange(0, [marker length])
                  replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
             
             if ([marker length]) {
-                [self showCandidateWindowWithClient:sender];
+                [self updateCandidateWindow];
             } else {
                 [self hideCandidateWindow];
             }
@@ -207,7 +214,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
         
         // show candidate window
-        BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
         [candidateWindow updateCandidates:self.buffer.candidates];
         [candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
              bottomOutOfScreenAdjustmentHeight:lineHeightRect.size.height + 4.0];
@@ -217,6 +223,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             // beep when input made 0 possible candidate
             NSBeep();
         }
+    }
+}
+
+-(void) updateCandidateWindow {
+    BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
+    @synchronized(candidateWindow) {
+        [candidateWindow updateCandidates:self.buffer.candidates];
     }
 }
 
