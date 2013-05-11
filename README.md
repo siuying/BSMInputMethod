@@ -4,7 +4,7 @@
 
 ## 安裝
 
-1. 下載[程式](https://www.dropbox.com/s/csb33g2zv82o8sl/BSMInputMethod.zip)
+1. 下載[程式](https://www.dropbox.com/s/brck9pkffnuqeey/BSMInputMethod_0.1.1.zip)
 2. 解壓後，把程式檔 (BSMInputMethod.app) 複制到 ```/Users/<User-Name>/Library/Input Methods``` 資夾下
 3. 在 "系統偏好設定" > "語言與文字" > "輸入來源" 下選取 "BSM 筆順碼"
 4. 按 command-space 直到轉到 "BSM 筆順碼"
@@ -20,6 +20,10 @@
 可惜這個輸入法自2000年便沒有更新，而且香港的代理也倒閉了。本來我一直使用其 Java Applet 版本，但因為最近 Java 的安全性問題，要在 browser 開它也不大方便，終於要自己動手寫一個代用品了。
 
 ## 版本
+
+### 0.1.1
+
+- 修正一些快速輸入時的問題
 
 ### 0.1.0
 
