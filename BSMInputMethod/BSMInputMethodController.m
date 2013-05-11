@@ -33,14 +33,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     DDLogVerbose(@"Called inputText:%@ key:%ld modifiers:%lx client:%@", string, keyCode, flags, sender);
 
     if (keyCode == kVK_ANSI_KeypadDecimal) {
-        if (self.buffer.selectionMode) {
-            // if user already in selection mode, beep!
-            NSBeep();
-        } else {
-            // otehrwise enter selection mode
-            [self appendBuffer:string client:sender];
+        if (self.buffer.inputBuffer.length > 0) {
+            if (self.buffer.selectionMode) {
+                // if user already in selection mode, beep!
+                NSBeep();
+            } else {
+                // otehrwise enter selection mode
+                [self appendBuffer:string client:sender];
+            }
+            return YES;
         }
-        return YES;
 
     } else if (keyCode >= kVK_ANSI_Keypad0 && keyCode <= kVK_ANSI_Keypad9) {
         if (self.buffer.selectionMode) {
@@ -68,8 +70,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     } else if (keyCode == kVK_ANSI_KeypadEnter) {
         if ([self.buffer.candidates count] > 0) {
             return [self selectFirstMatch:sender];
-        } else {
-            return NO;
         }
     } else if (keyCode == kVK_ANSI_KeypadDivide) {
         if (self.buffer.inputBuffer.length > 0) {
