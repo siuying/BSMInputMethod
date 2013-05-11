@@ -30,7 +30,7 @@
         return [self appendBuffer:string client:sender];
 
     } else if (keyCode == kVK_ANSI_KeypadMinus) {
-        return [self minusLastBuffer:sender];
+        return [self minusBuffer:sender];
 
     } else if (keyCode == kVK_ANSI_KeypadEnter) {
         if ([self.buffer.candidates count] > 0) {
@@ -53,7 +53,7 @@
     return YES;
 }
 
-- (BOOL) minusLastBuffer:(id)sender {
+- (BOOL) minusBuffer:(id)sender {
 	if ([self.buffer.inputBuffer length] > 0) {
         [self.buffer deleteBackward];
         NSString* marker = self.buffer.marker;
