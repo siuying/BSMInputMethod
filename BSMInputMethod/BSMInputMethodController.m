@@ -72,7 +72,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             NSBeep();
             return YES;
         }
+    } else if (keyCode == kVK_ANSI_KeypadDivide) {
+        if (self.buffer.inputBuffer.length > 0) {
+            if ([self.buffer nextPage]) {
+                NSBeep();
+            }
+            [self showCandidateWindowWithClient:sender];            
+        }
+        return YES;
     }
+    
     return NO;
 }
 

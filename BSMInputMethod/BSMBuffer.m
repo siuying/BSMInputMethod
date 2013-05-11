@@ -9,6 +9,7 @@
 #import "BSMBuffer.h"
 #import "BSMMatch.h"
 #import "DDLog.h"
+#import <math.h>
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -42,6 +43,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     _composedString = @"";
     _needsUpdateCandidates = NO;
     _selectionMode = NO;
+    _numberOfPage = 0;
+    _currentPage = 0;
 }
 
 -(BOOL) setSelectedIndex:(NSUInteger)index {
@@ -52,6 +55,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return YES;
     } else {
         return NO;
+    }
+}
+
+-(BOOL) nextPage {
+    DDLogVerbose(@"nextPage: (%lu/%lu)", _currentPage, _numberOfPage);
+    if (_currentPage + 1 < _numberOfPage) {
+        _currentPage++;
+        _needsUpdateCandidates = YES;
+        DDLogVerbose(@" current page is now: %lu", _currentPage);
+        return NO;
+    } else {
+        _currentPage = 0;
+        _needsUpdateCandidates = YES;
+        DDLogVerbose(@" current page is now: %lu", _currentPage);
+        return YES;
     }
 }
 
@@ -91,7 +109,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(NSArray*) candidates {
     if (_needsUpdateCandidates) {
-        _candidates = [self.engine match:_inputBuffer];
+        NSUInteger numberOfMatches = [self.engine numberOfMatchWithCode:_inputBuffer];
+        _numberOfPage = ceil(numberOfMatches / 9.0);
+        _candidates = [self.engine match:_inputBuffer page:self.currentPage];
+        DDLogVerbose(@"(%@): matches: %lu, pages: %lu", _inputBuffer, numberOfMatches, _numberOfPage);
         if ([_candidates count] > 0) {
             BSMMatch* match = [_candidates objectAtIndex:0];
             _composedString = match.word;
@@ -104,6 +125,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(NSString*) composedString {
+    if (_composedString) {
+        [self candidates];
+    }
     return _composedString;
 }
 

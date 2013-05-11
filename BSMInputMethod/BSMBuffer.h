@@ -28,8 +28,10 @@
     BOOL _needsUpdateCandidates;
 }
 
-@property (nonatomic, assign) BOOL selectionMode;
 @property (nonatomic, strong) BSMEngine* engine;
+@property (nonatomic, assign) BOOL selectionMode;
+@property (nonatomic, assign) NSUInteger currentPage;
+@property (nonatomic, assign) NSUInteger numberOfPage;
 
 -(id) initWithEngine:(BSMEngine*)engine;
 
@@ -40,6 +42,10 @@
 -(void) reset;
 
 -(BOOL) setSelectedIndex:(NSUInteger)index;
+
+// Advance to next page
+// @return YES if no next page, where the current page will reset to 0
+-(BOOL) nextPage;
 
 -(NSString*) inputBuffer;
 

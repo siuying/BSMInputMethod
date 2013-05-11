@@ -48,24 +48,20 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(NSArray*) match:(NSString*)code page:(NSUInteger) page{
     NSMutableArray* result = [NSMutableArray array];
-    NSMutableSet* matched = [NSMutableSet set];
-    FMResultSet *rs = [self.db executeQuery:@"select word, code from ime where code LIKE ? LIMIT 9 OFFSET ?",
+    FMResultSet *rs = [self.db executeQuery:@"select min(id) as id, word, code from ime where code LIKE ? group by word order by id LIMIT 9 OFFSET ?",
                        [NSString stringWithFormat:@"%@%%", code],
-                       [NSNumber numberWithUnsignedInteger:(page)*9]];
+                       [NSNumber numberWithUnsignedInteger:page*9U]];
     while ([rs next]) {
         NSString* word = [rs stringForColumn:@"word"];
         NSString* code = [rs stringForColumn:@"code"];
-        if (![matched containsObject:word]) {
-            [matched addObject:word];
-            [result addObject:[BSMMatch matchWithCode:code word:word]];
-        }
+        [result addObject:[BSMMatch matchWithCode:code word:word]];
     }
     [rs close];
     return result;
 }
 
 -(NSUInteger) numberOfMatchWithCode:(NSString*)code {
-    FMResultSet *rs = [self.db executeQuery:@"select count(distinct(word)) from ime where code LIKE ?",
+    FMResultSet *rs = [self.db executeQuery:@"select count(*) from (select word, code from ime where code LIKE ? group by word)",
                        [NSString stringWithFormat:@"%@%%", code]];
     NSUInteger numberOfMatch = 0;
     if ([rs next]) {
