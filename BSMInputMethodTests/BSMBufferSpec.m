@@ -24,6 +24,14 @@ describe(@"BSMBuffer", ^{
         buffer = [[BSMBuffer alloc] initWithEngine:mockEngine];
     });
     
+    describe(@"-initWithEngine:", ^{
+        it(@"should init state properly", ^{
+            expect(buffer.composedString).to.equal(@"");
+            expect(buffer.marker).to.equal(@"");
+            expect(buffer.candidates).to.equal(@[]);
+        });
+    });
+    
     describe(@"-appendBuffer:", ^{
         it(@"should update marker", ^{
             [buffer appendBuffer:@"1"];

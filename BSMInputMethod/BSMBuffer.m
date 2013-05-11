@@ -31,6 +31,9 @@
 -(void) reset {
     _inputBuffer = [NSMutableString string];
     _markerBuffer = [NSMutableString string];
+    _candidates = @[];
+    _composedString = @"";
+    _needsUpdateCandidates = NO;
 }
 
 - (void) appendBuffer:(NSString*)string {
@@ -40,6 +43,17 @@
     [_markerBuffer appendString:marker];
 
     _needsUpdateCandidates = YES;
+}
+
+-(void) deleteBackward {
+    [_inputBuffer deleteCharactersInRange:NSMakeRange([_inputBuffer length]-1, 1)];
+    [_markerBuffer deleteCharactersInRange:NSMakeRange([_markerBuffer length]-1, 1)];
+    _needsUpdateCandidates = YES;
+
+}
+
+-(NSString*) inputBuffer {
+    return _inputBuffer;
 }
 
 -(NSString*) marker {
@@ -63,6 +77,7 @@
 }
 
 -(void) dealloc {
+    _composedString = nil;
     _candidates = nil;
     _markerBuffer = nil;
     _inputBuffer = nil;

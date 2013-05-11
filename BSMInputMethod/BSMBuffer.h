@@ -34,6 +34,12 @@
 
 -(void) appendBuffer:(NSString*)string;
 
+-(void) deleteBackward;
+
+-(void) reset;
+
+-(NSString*) inputBuffer;
+
 -(NSString*) marker;
 
 -(NSArray*) candidates;

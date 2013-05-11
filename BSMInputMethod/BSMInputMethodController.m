@@ -18,11 +18,7 @@
 - (id)initWithServer:(IMKServer*)server delegate:(id)delegate client:(id)inputClient {
     self = [super initWithServer:server delegate:delegate client:inputClient];
     if (self) {
-        _markerMapping = @{@"1": @"一", @"2": @"丨", @"3": @"丿",
-                           @"4": @"丶", @"5": @"亅", @"6": @"𠄌",
-                           @"7": @"乂", @"8": @"八", @"9": @"十",
-                           @"0": @"囗"};
-        [self resetBuffer];
+        self.buffer = [[BSMBuffer alloc] initWithEngine:[BSMAppDelegate sharedEngine]];
     }
     return self;
 }
@@ -37,56 +33,32 @@
         return [self minusLastBuffer:sender];
 
     } else if (keyCode == kVK_ANSI_KeypadEnter) {
-        if ([_inputBuffer length] > 0) {
+        if ([self.buffer.candidates count] > 0) {
             return [self selectFirstMatch:sender];
         }
     }
     return NO;
 }
 
--(void) resetBuffer {
-    self.composedString = @"";
-    _inputBuffer = [NSMutableString string];
-    _convertedInputBuffer = [NSMutableString string];
-    _page = 0;
-}
-
 -(BOOL) appendBuffer:(NSString*)string client:(id)sender {
-    [_inputBuffer appendString:string];
-
-    NSString* marker = [_markerMapping objectForKey:string];
-    [_convertedInputBuffer appendString:marker];
-    
-    [sender setMarkedText:_convertedInputBuffer
-           selectionRange:NSMakeRange(0, [_convertedInputBuffer length])
+    [self.buffer appendBuffer:string];
+    NSString* marker = self.buffer.marker;
+    DDLogVerbose(@"%@", marker);
+    [sender setMarkedText:marker
+           selectionRange:NSMakeRange(0, [marker length])
          replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-
-    // set composed string
-    BSMEngine* engine = [BSMAppDelegate sharedEngine];
-    NSArray* matches = [engine match:_inputBuffer];
-    if ([matches count] > 0) {
-        BSMMatch* match = [matches objectAtIndex:0];
-        self.composedString = match.word;
-    }
-
-    DDLogInfo(@" appendBuffer: %@ -> %@", _inputBuffer, _convertedInputBuffer);
-//    IMKCandidates* candidates = [BSMAppDelegate sharedCandidates];
-//    [candidates setSelectionKeys:@[]];
-//    [candidates updateCandidates];
-//    [candidates show:kIMKLocateCandidatesBelowHint];
     return YES;
 }
 
 - (BOOL) minusLastBuffer:(id)sender {
-	if ([_inputBuffer length] > 0) {
-        [_inputBuffer deleteCharactersInRange:NSMakeRange([_inputBuffer length]-1, 1)];
-        [_convertedInputBuffer deleteCharactersInRange:NSMakeRange([_convertedInputBuffer length]-1, 1)];
+	if ([self.buffer.inputBuffer length] > 0) {
+        [self.buffer deleteBackward];
+        NSString* marker = self.buffer.marker;
+        DDLogVerbose(@"%@", marker);
 
-        [sender setMarkedText:_convertedInputBuffer
-               selectionRange:NSMakeRange(0, [_convertedInputBuffer length])
+        [sender setMarkedText:marker
+               selectionRange:NSMakeRange(0, [marker length])
              replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
-
-        DDLogInfo(@" minusLastBuffer: %@ -> %@", _inputBuffer, _convertedInputBuffer);
         return YES;
 	} else {
         return NO;
@@ -94,47 +66,36 @@
 }
 
 - (void) clearInput:(id)sender {
-    [self resetBuffer];
-    [sender setMarkedText:_inputBuffer
+    DDLogVerbose(@"clear input");
+    [self.buffer reset];
+    [sender setMarkedText:@""
            selectionRange:NSMakeRange(NSNotFound,NSNotFound)
          replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
     [self cancelComposition];
 }
 
 - (BOOL) selectFirstMatch:(id)sender {
-    BSMEngine* engine = [BSMAppDelegate sharedEngine];
-    NSArray* matches = [engine match:_inputBuffer];
-    if ([matches count] > 0) {
-        BSMMatch* match = [matches objectAtIndex:0];
-        self.composedString = match.word;
+    if ([self.buffer.candidates count] > 0) {
         [self commitComposition:sender];
     } else {
         NSBeep();
     }
-
     return YES;
 }
 
 - (NSArray*)candidates:(id)sender {
     NSMutableArray* theCandidates = [NSMutableArray array];
-    BSMEngine* engine = [BSMAppDelegate sharedEngine];
-    
-    if ([_inputBuffer length] > 0) {
-        NSArray* matches = [engine match:_inputBuffer];
-        [matches enumerateObjectsUsingBlock:^(BSMMatch* match, NSUInteger idx, BOOL *stop) {
-            [theCandidates addObject:match.word];
-        }];
-        DDLogInfo(@"%ld candidates found: %@", [matches count], matches);
-    }
-
+    [self.buffer.candidates enumerateObjectsUsingBlock:^(BSMMatch* match, NSUInteger idx, BOOL *stop) {
+        [theCandidates addObject:match.word];
+    }];
 	return theCandidates;
 }
 
 - (void) commitComposition:(id)client {
     DDLogVerbose(@"Call commitComposition:%@", client);
-    [client insertText:self.composedString
+    [client insertText:self.buffer.composedString
       replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-    [self resetBuffer];
+    [self.buffer reset];
 }
 
 - (void)candidateSelectionChanged:(NSAttributedString*)candidateString {
@@ -147,9 +108,9 @@
 }
 
 - (void)candidateSelected:(NSAttributedString*)candidateString {
-    DDLogInfo(@" selected: %@", [candidateString string]);
-	[self commitComposition:[self client]];
-    [self resetBuffer];
+//    DDLogInfo(@" selected: %@", [candidateString string]);
+//	[self commitComposition:[self client]];
+//    [self resetBuffer];
 }
 
 @end
