@@ -8,11 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 #import "JAListView.h"
+#import "BSMView.h"
 
 @interface BSMCandidatesWindow : NSWindow <JAListViewDataSource>
 
 @property (strong, nonatomic) NSArray* candidates;
 
+@property (weak, nonatomic) IBOutlet BSMView* view;
 @property (weak, nonatomic) IBOutlet JAListView* listView;
 
 -(void) updateCandidates:(NSArray*)candidates;

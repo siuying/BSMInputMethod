@@ -32,6 +32,7 @@
 		540F928C173E59FA009054B3 /* BSMCandidatesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F928B173E59FA009054B3 /* BSMCandidatesWindow.m */; };
 		540F928E173E5B57009054B3 /* BSMCandidateViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540F928D173E5B57009054B3 /* BSMCandidateViewItem.xib */; };
 		540F9291173E5CC7009054B3 /* BSMCandidateViewItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9290173E5CC7009054B3 /* BSMCandidateViewItem.m */; };
+		540F9297173E92EB009054B3 /* BSMView.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9296173E92EB009054B3 /* BSMView.m */; };
 		692A6896FBA246CEB3AC7DAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2A044C9780448A9EAE21BA /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +84,8 @@
 		540F928D173E5B57009054B3 /* BSMCandidateViewItem.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BSMCandidateViewItem.xib; path = Views/BSMCandidateViewItem.xib; sourceTree = "<group>"; };
 		540F928F173E5CC7009054B3 /* BSMCandidateViewItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSMCandidateViewItem.h; path = Views/BSMCandidateViewItem.h; sourceTree = "<group>"; };
 		540F9290173E5CC7009054B3 /* BSMCandidateViewItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSMCandidateViewItem.m; path = Views/BSMCandidateViewItem.m; sourceTree = "<group>"; };
+		540F9295173E92EB009054B3 /* BSMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSMView.h; path = Views/BSMView.h; sourceTree = "<group>"; };
+		540F9296173E92EB009054B3 /* BSMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSMView.m; path = Views/BSMView.m; sourceTree = "<group>"; };
 		85F9EA81874245F69A3FFBB6 /* libPods-BSMInputMethodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSMInputMethodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D0C6273F9B5424CAFD7C98C /* Pods-BSMInputMethodTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSMInputMethodTests.xcconfig"; path = "Pods/Pods-BSMInputMethodTests.xcconfig"; sourceTree = SOURCE_ROOT; };
 		EC3CC1A565AE49A5852CFC17 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
@@ -227,6 +230,8 @@
 				540F928D173E5B57009054B3 /* BSMCandidateViewItem.xib */,
 				540F928F173E5CC7009054B3 /* BSMCandidateViewItem.h */,
 				540F9290173E5CC7009054B3 /* BSMCandidateViewItem.m */,
+				540F9295173E92EB009054B3 /* BSMView.h */,
+				540F9296173E92EB009054B3 /* BSMView.m */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 				540F9286173E4792009054B3 /* BSMBuffer.m in Sources */,
 				540F928C173E59FA009054B3 /* BSMCandidatesWindow.m in Sources */,
 				540F9291173E5CC7009054B3 /* BSMCandidateViewItem.m in Sources */,
+				540F9297173E92EB009054B3 /* BSMView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -6,6 +6,8 @@
 //  Copyright (c) 2013年 Ignition Soft. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "BSMCandidatesWindow.h"
 #import "BSMCandidateViewItem.h"
 #import "DDLog.h"
@@ -22,6 +24,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 -(void) awakeFromNib {
     [super awakeFromNib];
     [self setLevel:NSPopUpMenuWindowLevel];
+    
+    self.view.backgroundColor = [NSColor whiteColor];
+    self.listView.backgroundColor = [NSColor whiteColor];
+}
+
+- (BOOL)canBecomeKeyWindow {
+    return YES;
 }
 
 #pragma mark - Public
