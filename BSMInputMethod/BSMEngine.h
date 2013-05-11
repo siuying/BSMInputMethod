@@ -7,9 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FMDatabase.h"
 
 @interface BSMEngine : NSObject
 
+@property (nonatomic, strong) FMDatabase* db;
+
+// match give code with result, array of BSMMatch
 -(NSArray*) match:(NSString*)code;
 
 @end
