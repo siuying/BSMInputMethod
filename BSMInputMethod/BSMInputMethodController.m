@@ -35,6 +35,9 @@
     } else if (keyCode == kVK_ANSI_KeypadEnter) {
         if ([self.buffer.candidates count] > 0) {
             return [self selectFirstMatch:sender];
+        } else {
+            NSBeep();
+            return YES;
         }
     }
     return NO;
