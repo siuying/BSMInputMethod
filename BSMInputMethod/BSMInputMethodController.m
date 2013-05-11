@@ -78,13 +78,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(BOOL) appendBuffer:(NSString*)string client:(id)sender {
     [self.buffer appendBuffer:string];
+
     NSString* marker = self.buffer.marker;
     DDLogVerbose(@"%@", marker);
     [sender setMarkedText:marker
            selectionRange:NSMakeRange(0, [marker length])
          replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
     [self showCandidateWindowWithClient:sender];
-
     return YES;
 }
 
@@ -198,6 +198,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
          bottomOutOfScreenAdjustmentHeight:lineHeightRect.size.height + 4.0];
     [candidateWindow showCandidates];
+    
+    if (self.buffer.candidates.count == 0) {
+        // beep when input made 0 possible candidate
+        NSBeep();
+    }
 }
 
 -(void) hideCandidateWindow {
