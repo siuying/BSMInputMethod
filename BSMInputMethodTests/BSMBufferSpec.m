@@ -32,13 +32,44 @@ describe(@"BSMBuffer", ^{
         });
     });
     
-    describe(@"-appendBuffer:", ^{
-        it(@"should update marker", ^{
+    describe(@"-deleteBackward:", ^{
+        it(@"should update marker by delete", ^{
             [buffer appendBuffer:@"1"];
-            expect(buffer.marker).to.equal(@"一");
-
             [buffer appendBuffer:@"2"];
             expect(buffer.marker).to.equal(@"一丨");
+            [buffer deleteBackward];
+            expect(buffer.marker).to.equal(@"一");
+        });
+        
+        it(@"should update selection mode by delete", ^{
+            [buffer appendBuffer:@"1"];
+            [buffer appendBuffer:@"2"];
+            [buffer appendBuffer:@"."];
+            expect(buffer.selectionMode).to.beTruthy();
+            [buffer deleteBackward];
+            expect(buffer.selectionMode).to.beFalsy();
+        });
+    });
+    
+    describe(@"-appendBuffer:", ^{
+        it(@"should update marker by append number", ^{
+            [buffer appendBuffer:@"1"];
+            expect(buffer.marker).to.equal(@"一");
+            
+            [buffer appendBuffer:@"2"];
+            expect(buffer.marker).to.equal(@"一丨");
+        });
+        
+        it(@"should enter selection mode by append decimal", ^{
+            [buffer appendBuffer:@"1"];
+            expect(buffer.marker).to.equal(@"一");
+            
+            [buffer appendBuffer:@"2"];
+            expect(buffer.marker).to.equal(@"一丨");
+            expect(buffer.selectionMode).to.beFalsy();
+            
+            [buffer appendBuffer:@"."];
+            expect(buffer.selectionMode).to.beTruthy();
         });
     });
     

@@ -13,6 +13,12 @@
 #import "BSMMatch.h"
 #import "BSMAppDelegate.h"
 
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
+
 @implementation BSMInputMethodController
 
 - (id)initWithServer:(IMKServer*)server delegate:(id)delegate client:(id)inputClient {
@@ -26,8 +32,35 @@
 -(BOOL)inputText:(NSString*)string key:(NSInteger)keyCode modifiers:(NSUInteger)flags client:(id)sender {
     DDLogVerbose(@"Called inputText:%@ key:%ld modifiers:%lx client:%@", string, keyCode, flags, sender);
 
-    if (keyCode >= kVK_ANSI_Keypad0 && keyCode <= kVK_ANSI_Keypad9) {
-        return [self appendBuffer:string client:sender];
+    if (keyCode == kVK_ANSI_KeypadDecimal) {
+        if (self.buffer.selectionMode) {
+            // if user already in selection mode, beep!
+            NSBeep();
+        } else {
+            // otehrwise enter selection mode
+            [self appendBuffer:string client:sender];
+        }
+        return YES;
+
+    } else if (keyCode >= kVK_ANSI_Keypad0 && keyCode <= kVK_ANSI_Keypad9) {
+        if (self.buffer.selectionMode) {
+            // in selection mode, if user enter 1-9, apply the word
+            if (keyCode > kVK_ANSI_Keypad0) {
+                NSUInteger selectionIndex = keyCode - kVK_ANSI_Keypad1;
+                if ([self.buffer setSelectedIndex:selectionIndex]) {
+                    [self commitComposition:sender];
+                } else {
+                    NSBeep();
+                }
+                return YES;
+            } else {
+                NSBeep();
+            }
+
+            return YES;
+        } else {
+            return [self appendBuffer:string client:sender];
+        }
 
     } else if (keyCode == kVK_ANSI_KeypadMinus) {
         return [self minusBuffer:sender];
@@ -78,15 +111,15 @@
 
 - (void) clearInput:(id)sender {
     DDLogVerbose(@"clear input");
-    [self.buffer reset];
     [sender setMarkedText:@""
            selectionRange:NSMakeRange(NSNotFound,NSNotFound)
          replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
+    [self reset];
     [self cancelComposition];
 }
 
 - (BOOL) selectFirstMatch:(id)sender {
-    if ([self.buffer.candidates count] > 0) {
+    if ([self.buffer.candidates count] > 0 && self.buffer.composedString.length > 0) {
         [self commitComposition:sender];
     } else {
         NSBeep();
@@ -106,7 +139,7 @@
     DDLogVerbose(@"Call commitComposition:%@", client);
     [client insertText:self.buffer.composedString
       replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-    [self.buffer reset];
+    [self reset];
     [self hideCandidateWindow];
 }
 
@@ -125,6 +158,12 @@
         DDLogVerbose(@"no selection range");
     }
 }
+
+-(void) reset {
+    [self.buffer reset];
+}
+
+#pragma mark - IMKStateSetting
 
 - (void)activateServer:(id)client {
     [self.buffer reset];

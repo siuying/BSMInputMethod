@@ -12,8 +12,6 @@
 @interface BSMInputMethodController : IMKInputController {
     /* current number of page, in the IME match candidate window */
     NSUInteger _page;
-
-    BOOL _selectionMode;
 }
 
 @property (nonatomic, strong) BSMBuffer* buffer;

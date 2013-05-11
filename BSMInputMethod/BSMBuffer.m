@@ -8,6 +8,13 @@
 
 #import "BSMBuffer.h"
 #import "BSMMatch.h"
+#import "DDLog.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 @implementation BSMBuffer
 
@@ -21,7 +28,7 @@
         _markerMapping = @{@"1": @"一", @"2": @"丨", @"3": @"丿",
                            @"4": @"丶", @"5": @"亅", @"6": @"𠄌",
                            @"7": @"乂", @"8": @"八", @"9": @"十",
-                           @"0": @"囗"};
+                           @"0": @"囗", @".": @"."};
         self.engine = engine;
         [self reset];
     }
@@ -34,22 +41,44 @@
     _candidates = @[];
     _composedString = @"";
     _needsUpdateCandidates = NO;
+    _selectionMode = NO;
+}
+
+-(BOOL) setSelectedIndex:(NSUInteger)index {
+    if (self.selectionMode && self.candidates.count > index) {
+        BSMMatch* candidate = self.candidates[index];
+        _composedString = candidate.word;
+        DDLogVerbose(@"selected index: %lu, word: %@", (unsigned long) index, candidate.word);
+        return YES;
+    } else {
+        return NO;
+    }
 }
 
 - (void) appendBuffer:(NSString*)string {
-    [_inputBuffer appendString:string];
-
     NSString* marker = [_markerMapping objectForKey:string];
     [_markerBuffer appendString:marker];
 
-    _needsUpdateCandidates = YES;
+    if ([string isEqualToString:@"."]) {
+        self.selectionMode = YES;
+    } else {
+        [_inputBuffer appendString:string];
+        _needsUpdateCandidates = YES;
+    }
 }
 
 -(void) deleteBackward {
-    [_inputBuffer deleteCharactersInRange:NSMakeRange([_inputBuffer length]-1, 1)];
-    [_markerBuffer deleteCharactersInRange:NSMakeRange([_markerBuffer length]-1, 1)];
-    _needsUpdateCandidates = YES;
+    if ([_markerBuffer length] > 0) {
+        NSString* lastInput = [_markerBuffer substringFromIndex:[_markerBuffer length]-1];
+        [_markerBuffer deleteCharactersInRange:NSMakeRange([_markerBuffer length]-1, 1)];
 
+        if ([lastInput isEqualToString:@"."]) {
+            self.selectionMode = NO;
+        } else {
+            [_inputBuffer deleteCharactersInRange:NSMakeRange([_inputBuffer length]-1, 1)];
+            _needsUpdateCandidates = YES;
+        }
+    }
 }
 
 -(NSString*) inputBuffer {
@@ -66,6 +95,8 @@
         if ([_candidates count] > 0) {
             BSMMatch* match = [_candidates objectAtIndex:0];
             _composedString = match.word;
+        } else {
+            _composedString = nil;
         }
         _needsUpdateCandidates = NO;
     }

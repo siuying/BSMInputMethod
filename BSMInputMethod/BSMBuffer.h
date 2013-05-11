@@ -28,6 +28,7 @@
     BOOL _needsUpdateCandidates;
 }
 
+@property (nonatomic, assign) BOOL selectionMode;
 @property (nonatomic, strong) BSMEngine* engine;
 
 -(id) initWithEngine:(BSMEngine*)engine;
@@ -37,6 +38,8 @@
 -(void) deleteBackward;
 
 -(void) reset;
+
+-(BOOL) setSelectedIndex:(NSUInteger)index;
 
 -(NSString*) inputBuffer;
 
