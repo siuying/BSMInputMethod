@@ -109,15 +109,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(NSArray*) candidates {
     if (_needsUpdateCandidates) {
-        NSUInteger numberOfMatches = [self.engine numberOfMatchWithCode:_inputBuffer];
-        _numberOfPage = ceil(numberOfMatches / 9.0);
-        _candidates = [self.engine match:_inputBuffer page:self.currentPage];
-        DDLogVerbose(@"(%@): matches: %lu, pages: %lu", _inputBuffer, numberOfMatches, _numberOfPage);
-        if ([_candidates count] > 0) {
-            BSMMatch* match = [_candidates objectAtIndex:0];
-            _composedString = match.word;
+        if ([_inputBuffer length] > 0) {
+            NSUInteger numberOfMatches = [self.engine numberOfMatchWithCode:_inputBuffer];
+            _numberOfPage = ceil(numberOfMatches / 9.0);
+            _candidates = [self.engine match:_inputBuffer page:self.currentPage];
+
+            DDLogVerbose(@"(%@): matches: %lu, pages: %lu", _inputBuffer, numberOfMatches, _numberOfPage);
+            if ([_candidates count] > 0) {
+                BSMMatch* match = [_candidates objectAtIndex:0];
+                _composedString = match.word;
+            } else {
+                _composedString = @"";
+            }
         } else {
-            _composedString = nil;
+            _numberOfPage = 1;
+            _candidates = @[];
+            _composedString = @"";
         }
         _needsUpdateCandidates = NO;
     }

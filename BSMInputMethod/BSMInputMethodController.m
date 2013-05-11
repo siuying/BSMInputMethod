@@ -14,7 +14,7 @@
 #import "BSMAppDelegate.h"
 
 #ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+static const int ddLogLevel = LOG_LEVEL_INFO;
 #else
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
@@ -85,45 +85,51 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(BOOL) appendBuffer:(NSString*)string client:(id)sender {
-    [self.buffer appendBuffer:string];
+    @synchronized(self) {
+        [self.buffer appendBuffer:string];
 
-    NSString* marker = self.buffer.marker;
-    DDLogVerbose(@"%@", marker);
-    [sender setMarkedText:marker
-           selectionRange:NSMakeRange(0, [marker length])
-         replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-    [self showCandidateWindowWithClient:sender];
-    return YES;
+        NSString* marker = self.buffer.marker;
+        DDLogVerbose(@"%@", marker);
+        [sender setMarkedText:marker
+               selectionRange:NSMakeRange(0, [marker length])
+             replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+        [self showCandidateWindowWithClient:sender];
+        return YES;
+    }
 }
 
 - (BOOL) minusBuffer:(id)sender {
-	if ([self.buffer.inputBuffer length] > 0) {
-        [self.buffer deleteBackward];
-        NSString* marker = self.buffer.marker;
-        DDLogVerbose(@"%@", marker);
+    @synchronized(self) {
+        if ([self.buffer.inputBuffer length] > 0) {
+            [self.buffer deleteBackward];
+            NSString* marker = self.buffer.marker;
+            DDLogVerbose(@"%@", marker);
 
-        [sender setMarkedText:marker
-               selectionRange:NSMakeRange(0, [marker length])
-             replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
-        
-        if ([marker length]) {
-            [self showCandidateWindowWithClient:sender];
+            [sender setMarkedText:marker
+                   selectionRange:NSMakeRange(0, [marker length])
+                 replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
+            
+            if ([marker length]) {
+                [self showCandidateWindowWithClient:sender];
+            } else {
+                [self hideCandidateWindow];
+            }
+            return YES;
         } else {
-            [self hideCandidateWindow];
+            return NO;
         }
-        return YES;
-	} else {
-        return NO;
     }
 }
 
 - (void) clearInput:(id)sender {
-    DDLogVerbose(@"clear input");
-    [sender setMarkedText:@""
-           selectionRange:NSMakeRange(NSNotFound,NSNotFound)
-         replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
-    [self reset];
-    [self cancelComposition];
+    @synchronized(self) {
+        DDLogVerbose(@"clear input");
+        [sender setMarkedText:@""
+               selectionRange:NSMakeRange(NSNotFound,NSNotFound)
+             replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
+        [self reset];
+        [self cancelComposition];
+    }
 }
 
 - (BOOL) selectFirstMatch:(id)sender {
@@ -144,26 +150,20 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (void) commitComposition:(id)client {
-    DDLogVerbose(@"Call commitComposition:%@", client);
-    [client insertText:self.buffer.composedString
-      replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-    [self reset];
-    [self hideCandidateWindow];
+    @synchronized(self) {
+        DDLogVerbose(@"Call commitComposition:%@", client);
+        [client insertText:self.buffer.composedString
+          replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+        [self reset];
+        [self hideCandidateWindow];
+    }
 }
 
 -(void) cancelComposition {
-    [super cancelComposition];
-    [self hideCandidateWindow];
-}
-
--(void) showCandidates {
-    if (self.selectionRange.location != NSNotFound) {
-        NSRange actualRange;
-        NSRect rect = [self.client firstRectForCharacterRange:NSMakeRange(0, [self.buffer.marker length])
-                                                  actualRange:&actualRange];
-        DDLogVerbose(@" coordinate: %@, actualRange:%@", NSStringFromRect(rect),  NSStringFromRange(actualRange));
-    } else {
-        DDLogVerbose(@"no selection range");
+    @synchronized(self) {
+        [super cancelComposition];
+        [self reset];
+        [self hideCandidateWindow];
     }
 }
 
