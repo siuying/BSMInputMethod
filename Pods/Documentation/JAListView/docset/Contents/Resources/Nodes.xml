@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<DocSetNodes version="1.0">
+    <TOC>
+        <Node type="folder">
+            <Name>JAListView 0.0.1</Name>
+            <Path>index.html</Path>
+			<Subnodes>
+                
+				
+				<Node type="folder">
+					<Name>Classes</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="1"/>
+						<NodeRef refid="2"/>
+						<NodeRef refid="3"/>
+						<NodeRef refid="4"/>
+						<NodeRef refid="5"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				<Node type="folder">
+					<Name>Categories</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="6"/>
+						
+					</Subnodes>
+				</Node>
+				
+				
+				<Node type="folder">
+					<Name>Protocols</Name>
+					<Path>index.html</Path>
+					<Subnodes>
+						<NodeRef refid="7"/>
+						<NodeRef refid="8"/>
+						<NodeRef refid="9"/>
+						<NodeRef refid="10"/>
+						<NodeRef refid="11"/>
+						
+					</Subnodes>
+				</Node>
+				
+			</Subnodes>
+        </Node>
+    </TOC>
+	<Library>
+		
+		<Node id="1">
+			<Name>JAListView</Name>
+			<Path>Classes/JAListView.html</Path>
+		</Node>
+		<Node id="2">
+			<Name>JAListViewItem</Name>
+			<Path>Classes/JAListViewItem.html</Path>
+		</Node>
+		<Node id="3">
+			<Name>JAObjectListView</Name>
+			<Path>Classes/JAObjectListView.html</Path>
+		</Node>
+		<Node id="4">
+			<Name>JAObjectListViewItem</Name>
+			<Path>Classes/JAObjectListViewItem.html</Path>
+		</Node>
+		<Node id="5">
+			<Name>JASectionedListView</Name>
+			<Path>Classes/JASectionedListView.html</Path>
+		</Node>
+		
+		<Node id="6">
+			<Name>NSIndexPath(JAListViewExtensions)</Name>
+			<Path>Categories/NSIndexPath+JAListViewExtensions.html</Path>
+		</Node>
+		
+		<Node id="7">
+			<Name>JAListViewDataSource</Name>
+			<Path>Protocols/JAListViewDataSource.html</Path>
+		</Node>
+		<Node id="8">
+			<Name>JAListViewDelegate</Name>
+			<Path>Protocols/JAListViewDelegate.html</Path>
+		</Node>
+		<Node id="9">
+			<Name>JAListViewDraggingDestinationDelegate</Name>
+			<Path>Protocols/JAListViewDraggingDestinationDelegate.html</Path>
+		</Node>
+		<Node id="10">
+			<Name>JAListViewDraggingSourceDelegate</Name>
+			<Path>Protocols/JAListViewDraggingSourceDelegate.html</Path>
+		</Node>
+		<Node id="11">
+			<Name>JASectionedListViewDataSource</Name>
+			<Path>Protocols/JASectionedListViewDataSource.html</Path>
+		</Node>
+		
+	</Library>
+</DocSetNodes>

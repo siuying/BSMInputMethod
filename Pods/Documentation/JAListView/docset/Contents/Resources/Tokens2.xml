@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/JAListViewItem.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/JAListViewItem</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>
+			
+			<NodeRef refid="2"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAListViewItem/draggingImage</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>- (NSImage *)draggingImage</Declaration>
+			
+			
+			<Anchor>//api/name/draggingImage</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAListViewItem/setListView:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) JAListView *listView</Declaration>
+			
+			
+			<Anchor>//api/name/listView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JAListViewItem/listView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) JAListView *listView</Declaration>
+			
+			
+			<Anchor>//api/name/listView</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAListViewItem/setIgnoreInListViewLayout:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL ignoreInListViewLayout</Declaration>
+			
+			
+			<Anchor>//api/name/ignoreInListViewLayout</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JAListViewItem/ignoreInListViewLayout</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL ignoreInListViewLayout</Declaration>
+			
+			
+			<Anchor>//api/name/ignoreInListViewLayout</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAListViewItem/setSelected:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign, getter=isSelected) BOOL selected</Declaration>
+			
+			
+			<Anchor>//api/name/selected</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JAListViewItem/selected</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign, getter=isSelected) BOOL selected</Declaration>
+			
+			
+			<Anchor>//api/name/selected</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAListViewItem/setHighlighted:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign, getter=isHighlighted) BOOL highlighted</Declaration>
+			
+			
+			<Anchor>//api/name/highlighted</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JAListViewItem/highlighted</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign, getter=isHighlighted) BOOL highlighted</Declaration>
+			
+			
+			<Anchor>//api/name/highlighted</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAListViewItem/setListViewPosition:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) JAListViewPosition listViewPosition</Declaration>
+			
+			
+			<Anchor>//api/name/listViewPosition</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JAListViewItem/listViewPosition</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, readonly) JAListViewPosition listViewPosition</Declaration>
+			
+			
+			<Anchor>//api/name/listViewPosition</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAListViewItem/setIgnoresListViewPadding:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL ignoresListViewPadding</Declaration>
+			
+			
+			<Anchor>//api/name/ignoresListViewPadding</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instp/JAListViewItem/ignoresListViewPadding</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListViewItem.h</DeclaredIn>			
+			
+			<Declaration>@property (nonatomic, assign) BOOL ignoresListViewPadding</Declaration>
+			
+			
+			<Anchor>//api/name/ignoresListViewPadding</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/JAListViewDraggingSourceDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/JAListViewDraggingSourceDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>
+			
+			<NodeRef refid="10"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/JAListViewDraggingSourceDelegate/listView:shouldDragView:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)listView:(JAListView *)listView shouldDragView:(JAListViewItem *)view</Declaration>
+			
+			
+			<Anchor>//api/name/listView:shouldDragView:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/JAListViewDraggingSourceDelegate/listView:didStartDraggingView:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)listView:(JAListView *)listView didStartDraggingView:(JAListViewItem *)view</Declaration>
+			
+			
+			<Anchor>//api/name/listView:didStartDraggingView:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/JAListViewDraggingSourceDelegate/listView:didEndDraggingView:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)listView:(JAListView *)listView didEndDraggingView:(JAListViewItem *)view</Declaration>
+			
+			
+			<Anchor>//api/name/listView:didEndDraggingView:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

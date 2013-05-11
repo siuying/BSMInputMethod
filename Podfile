@@ -2,6 +2,7 @@ platform :osx
 
 pod 'FMDB'
 pod 'CocoaLumberjack'
+pod 'JAListView'
 
 target :BSMInputMethodTests do
   pod 'Specta'

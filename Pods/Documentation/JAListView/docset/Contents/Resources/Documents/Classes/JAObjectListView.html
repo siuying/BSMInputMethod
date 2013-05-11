@@ -1,0 +1,579 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="html/html; charset=utf-8" />
+		<title>JAObjectListView Class Reference</title>
+		<meta id="xcode-display" name="xcode-display" content="render"/>
+		<meta name="viewport" content="width=550" />
+		<link rel="stylesheet" type="text/css" href="../css/styles.css" media="all" />
+		<link rel="stylesheet" type="text/css" media="print" href="../css/stylesPrint.css" />
+		<meta name="generator" content="appledoc 2.0.5 (build 789)" />
+	</head>
+	<body>
+		<header id="top_header">
+			<div id="library" class="hideInXcode">
+				<h1><a id="libraryTitle" href="../index.html">JAListView 0.0.1 </a></h1>
+				<a id="developerHome" href="../index.html">Josh Abernathy</a>
+			</div>
+			
+			<div id="title" role="banner">
+				<h1 class="hideInXcode">JAObjectListView Class Reference</h1>
+			</div>
+			<ul id="headerButtons" role="toolbar">
+				<li id="toc_button">
+					<button aria-label="Show Table of Contents" role="checkbox" class="open" id="table_of_contents"><span class="disclosure"></span>Table of Contents</button>
+				</li>
+				<li id="jumpto_button" role="navigation">
+					<select id="jumpTo">
+	<option value="top">Jump To&#133;</option>
+	
+	
+	
+	
+	<option value="tasks">Tasks</option>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<option value="instance_methods">Instance Methods</option>
+	
+	<option value="//api/name/addListViewItem:forHeaderForSection:">&nbsp;&nbsp;&nbsp;&nbsp;- addListViewItem:forHeaderForSection:</option>
+	
+	<option value="//api/name/addListViewItem:inSection:">&nbsp;&nbsp;&nbsp;&nbsp;- addListViewItem:inSection:</option>
+	
+	<option value="//api/name/addListViewItem:inSection:atIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- addListViewItem:inSection:atIndex:</option>
+	
+	<option value="//api/name/allObjects">&nbsp;&nbsp;&nbsp;&nbsp;- allObjects</option>
+	
+	<option value="//api/name/debugString">&nbsp;&nbsp;&nbsp;&nbsp;- debugString</option>
+	
+	<option value="//api/name/headerForSection:">&nbsp;&nbsp;&nbsp;&nbsp;- headerForSection:</option>
+	
+	<option value="//api/name/indexPathForObject:">&nbsp;&nbsp;&nbsp;&nbsp;- indexPathForObject:</option>
+	
+	<option value="//api/name/numberOfSections">&nbsp;&nbsp;&nbsp;&nbsp;- numberOfSections</option>
+	
+	<option value="//api/name/removeAllListViewItems">&nbsp;&nbsp;&nbsp;&nbsp;- removeAllListViewItems</option>
+	
+	<option value="//api/name/removeListViewItem:">&nbsp;&nbsp;&nbsp;&nbsp;- removeListViewItem:</option>
+	
+	<option value="//api/name/removeListViewItemForHeaderForSection:">&nbsp;&nbsp;&nbsp;&nbsp;- removeListViewItemForHeaderForSection:</option>
+	
+	<option value="//api/name/removeListViewItemForObject:">&nbsp;&nbsp;&nbsp;&nbsp;- removeListViewItemForObject:</option>
+	
+	<option value="//api/name/removeListViewItemInSection:atIndex:">&nbsp;&nbsp;&nbsp;&nbsp;- removeListViewItemInSection:atIndex:</option>
+	
+	<option value="//api/name/viewItemForObject:">&nbsp;&nbsp;&nbsp;&nbsp;- viewItemForObject:</option>
+	
+	<option value="//api/name/viewsInSection:">&nbsp;&nbsp;&nbsp;&nbsp;- viewsInSection:</option>
+	
+	
+	
+</select>
+				</li>
+			</ul>
+		</header>
+		<nav id="tocContainer" class="isShowingTOC">
+			<ul id="toc" role="tree">
+				
+
+
+
+<li role="treeitem" id="task_treeitem"><span class="nodisclosure"></span><span class="sectionName"><a href="#tasks">Tasks</a></span><ul>
+	
+</ul></li>
+
+
+
+
+
+
+
+
+
+<li role="treeitem" class="children"><span class="disclosure"></span><span class="sectionName"><a href="#instance_methods">Instance Methods</a></span><ul>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addListViewItem:forHeaderForSection:">addListViewItem:forHeaderForSection:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addListViewItem:inSection:">addListViewItem:inSection:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/addListViewItem:inSection:atIndex:">addListViewItem:inSection:atIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/allObjects">allObjects</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/debugString">debugString</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/headerForSection:">headerForSection:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/indexPathForObject:">indexPathForObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/numberOfSections">numberOfSections</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeAllListViewItems">removeAllListViewItems</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeListViewItem:">removeListViewItem:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeListViewItemForHeaderForSection:">removeListViewItemForHeaderForSection:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeListViewItemForObject:">removeListViewItemForObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/removeListViewItemInSection:atIndex:">removeListViewItemInSection:atIndex:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/viewItemForObject:">viewItemForObject:</a></span></li>
+	
+	<li><span class="nodisclosure"></span><span class="sectionName"><a href="#//api/name/viewsInSection:">viewsInSection:</a></span></li>
+	
+</ul></li>
+
+
+			</ul>
+		</nav>
+		<article>
+			<div id="contents" class="isShowingTOC" role="main">
+				<a title="JAObjectListView Class Reference" name="top"></a>
+				<div class="main-navigation navigation-top">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="header">
+					<div class="section-header">
+						<h1 class="title title-header">JAObjectListView Class Reference</h1>
+					</div>		
+				</div>
+				<div id="container">	
+					
+					<div class="section section-specification"><table cellspacing="0"><tbody>
+						<tr>
+	<td class="specification-title">Inherits from</td>
+	<td class="specification-value"><a href="../Classes/JASectionedListView.html">JASectionedListView</a> : <a href="../Classes/JAListView.html">JAListView</a> : NSView</td>
+</tr><tr>
+	<td class="specification-title">Conforms to</td>
+	<td class="specification-value"><a href="../Protocols/JASectionedListViewDataSource.html">JASectionedListViewDataSource</a></td>
+</tr><tr>
+	<td class="specification-title">Declared in</td>
+	<td class="specification-value">JAObjectListView.h</td>
+</tr>
+						</tbody></table></div>
+					
+					
+					
+					
+					
+					
+					<div class="section section-tasks">
+						<a title="Tasks" name="tasks"></a>
+						<h2 class="subtitle subtitle-tasks">Tasks</h2>
+						
+						
+						
+						
+
+						<ul class="task-list">
+							<li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addListViewItem:inSection:atIndex:">&ndash;&nbsp;addListViewItem:inSection:atIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addListViewItem:inSection:">&ndash;&nbsp;addListViewItem:inSection:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeListViewItemInSection:atIndex:">&ndash;&nbsp;removeListViewItemInSection:atIndex:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/addListViewItem:forHeaderForSection:">&ndash;&nbsp;addListViewItem:forHeaderForSection:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeListViewItemForHeaderForSection:">&ndash;&nbsp;removeListViewItemForHeaderForSection:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeListViewItem:">&ndash;&nbsp;removeListViewItem:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeAllListViewItems">&ndash;&nbsp;removeAllListViewItems</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/viewsInSection:">&ndash;&nbsp;viewsInSection:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/numberOfSections">&ndash;&nbsp;numberOfSections</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/headerForSection:">&ndash;&nbsp;headerForSection:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/viewItemForObject:">&ndash;&nbsp;viewItemForObject:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/indexPathForObject:">&ndash;&nbsp;indexPathForObject:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/removeListViewItemForObject:">&ndash;&nbsp;removeListViewItemForObject:</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/allObjects">&ndash;&nbsp;allObjects</a></code>
+		
+	</span>
+	
+	
+</li><li>
+	<span class="tooltip">
+		<code><a href="#//api/name/debugString">&ndash;&nbsp;debugString</a></code>
+		
+	</span>
+	
+	
+</li>
+						</ul>
+						
+					</div>
+					
+					
+					
+					
+					
+					
+					
+					
+					
+					<div class="section section-methods">
+						<a title="Instance Methods" name="instance_methods"></a>
+						<h2 class="subtitle subtitle-methods">Instance Methods</h2>
+						
+						<div class="section-method">
+	<a name="//api/name/addListViewItem:forHeaderForSection:" title="addListViewItem:forHeaderForSection:"></a>
+	<h3 class="subsubtitle method-title">addListViewItem:forHeaderForSection:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)addListViewItem:(JAObjectListViewItem *)<em>view</em> forHeaderForSection:(NSUInteger)<em>section</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addListViewItem:inSection:" title="addListViewItem:inSection:"></a>
+	<h3 class="subsubtitle method-title">addListViewItem:inSection:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)addListViewItem:(JAObjectListViewItem *)<em>view</em> inSection:(NSUInteger)<em>section</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/addListViewItem:inSection:atIndex:" title="addListViewItem:inSection:atIndex:"></a>
+	<h3 class="subsubtitle method-title">addListViewItem:inSection:atIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)addListViewItem:(JAObjectListViewItem *)<em>view</em> inSection:(NSUInteger)<em>section</em> atIndex:(NSUInteger)<em>index</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/allObjects" title="allObjects"></a>
+	<h3 class="subsubtitle method-title">allObjects</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)allObjects</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/debugString" title="debugString"></a>
+	<h3 class="subsubtitle method-title">debugString</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSString *)debugString</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/headerForSection:" title="headerForSection:"></a>
+	<h3 class="subsubtitle method-title">headerForSection:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (JAListViewItem *)headerForSection:(NSUInteger)<em>section</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/indexPathForObject:" title="indexPathForObject:"></a>
+	<h3 class="subsubtitle method-title">indexPathForObject:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSIndexPath *)indexPathForObject:(id)<em>object</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/numberOfSections" title="numberOfSections"></a>
+	<h3 class="subsubtitle method-title">numberOfSections</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSUInteger)numberOfSections</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeAllListViewItems" title="removeAllListViewItems"></a>
+	<h3 class="subsubtitle method-title">removeAllListViewItems</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)removeAllListViewItems</code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeListViewItem:" title="removeListViewItem:"></a>
+	<h3 class="subsubtitle method-title">removeListViewItem:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)removeListViewItem:(JAListViewItem *)<em>view</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeListViewItemForHeaderForSection:" title="removeListViewItemForHeaderForSection:"></a>
+	<h3 class="subsubtitle method-title">removeListViewItemForHeaderForSection:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)removeListViewItemForHeaderForSection:(NSUInteger)<em>section</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeListViewItemForObject:" title="removeListViewItemForObject:"></a>
+	<h3 class="subsubtitle method-title">removeListViewItemForObject:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)removeListViewItemForObject:(id)<em>object</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/removeListViewItemInSection:atIndex:" title="removeListViewItemInSection:atIndex:"></a>
+	<h3 class="subsubtitle method-title">removeListViewItemInSection:atIndex:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (void)removeListViewItemInSection:(NSUInteger)<em>section</em> atIndex:(NSUInteger)<em>index</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/viewItemForObject:" title="viewItemForObject:"></a>
+	<h3 class="subsubtitle method-title">viewItemForObject:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (JAObjectListViewItem *)viewItemForObject:(id)<em>object</em></code></div>
+
+    
+</div>
+						
+						<div class="section-method">
+	<a name="//api/name/viewsInSection:" title="viewsInSection:"></a>
+	<h3 class="subsubtitle method-title">viewsInSection:</h3>
+	
+	
+
+	<div class="method-subsection method-declaration"><code>- (NSArray *)viewsInSection:(NSUInteger)<em>section</em></code></div>
+
+    
+</div>
+						
+					</div>
+					
+					
+				</div>
+				<div class="main-navigation navigation-bottom">
+					<ul>
+	<li><a href="../index.html">Index</a></li>
+	<li><a href="../hierarchy.html">Hierarchy</a></li>
+</ul>
+				</div>
+				<div id="footer">
+					<hr />
+					<div class="footer-copyright">
+						<p><span class="copyright">&copy; 2013 Josh Abernathy. All rights reserved. (Last updated: 2013-05-11)</span><br />
+						
+						<span class="generator">Generated by <a href="http://appledoc.gentlebytes.com">appledoc 2.0.5 (build 789)</a>.</span></p>
+						
+					</div>
+				</div>
+			</div>
+		</article>
+		<script type="text/javascript">
+			function jumpToChange()
+			{
+				window.location.hash = this.options[this.selectedIndex].value;
+			}
+			
+			function toggleTOC()
+			{
+				var contents = document.getElementById('contents');
+				var tocContainer = document.getElementById('tocContainer');
+				
+				if (this.getAttribute('class') == 'open')
+				{
+					this.setAttribute('class', '');
+					contents.setAttribute('class', '');
+					tocContainer.setAttribute('class', '');
+					
+					window.name = "hideTOC";
+				}
+				else
+				{
+					this.setAttribute('class', 'open');
+					contents.setAttribute('class', 'isShowingTOC');
+					tocContainer.setAttribute('class', 'isShowingTOC');
+					
+					window.name = "";
+				}
+				return false;
+			}
+			
+			function toggleTOCEntryChildren(e)
+			{
+				e.stopPropagation();
+				var currentClass = this.getAttribute('class');
+				if (currentClass == 'children') {
+					this.setAttribute('class', 'children open');
+				}
+				else if (currentClass == 'children open') {
+					this.setAttribute('class', 'children');
+				}
+				return false;
+			}
+			
+			function tocEntryClick(e)
+			{
+				e.stopPropagation();
+				return true;
+			}
+			
+			function init()
+			{
+				var selectElement = document.getElementById('jumpTo');
+				selectElement.addEventListener('change', jumpToChange, false);
+				
+				var tocButton = document.getElementById('table_of_contents');
+				tocButton.addEventListener('click', toggleTOC, false);
+				
+				var taskTreeItem = document.getElementById('task_treeitem');
+				if (taskTreeItem.getElementsByTagName('li').length > 0)
+				{
+					taskTreeItem.setAttribute('class', 'children');
+					taskTreeItem.firstChild.setAttribute('class', 'disclosure');
+				}
+				
+				var tocList = document.getElementById('toc');
+				
+				var tocEntries = tocList.getElementsByTagName('li');
+				for (var i = 0; i < tocEntries.length; i++) {
+					tocEntries[i].addEventListener('click', toggleTOCEntryChildren, false);
+				}
+				
+				var tocLinks = tocList.getElementsByTagName('a');
+				for (var i = 0; i < tocLinks.length; i++) {
+					tocLinks[i].addEventListener('click', tocEntryClick, false);
+				}
+				
+				if (window.name == "hideTOC") {
+					toggleTOC.call(tocButton);
+				}
+			}
+			
+			window.onload = init;
+			
+			// If showing in Xcode, hide the TOC and Header
+			if (navigator.userAgent.match(/xcode/i)) {
+				document.getElementById("contents").className = "hideInXcode"
+				document.getElementById("tocContainer").className = "hideInXcode"
+				document.getElementById("top_header").className = "hideInXcode"
+			}
+			
+		</script>
+	</body>
+</html>

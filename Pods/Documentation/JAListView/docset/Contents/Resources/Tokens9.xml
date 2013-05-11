@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Protocols/JAListViewDraggingDestinationDelegate.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intf/JAListViewDraggingDestinationDelegate</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>
+			
+			<NodeRef refid="9"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/JAListViewDraggingDestinationDelegate/listView:shouldAcceptViews:location:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>			
+			
+			<Declaration>- (BOOL)listView:(JAListView *)listView shouldAcceptViews:(NSArray *)draggedViews location:(NSPoint)location</Declaration>
+			
+			
+			<Anchor>//api/name/listView:shouldAcceptViews:location:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/JAListViewDraggingDestinationDelegate/listView:dragEntered:location:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)listView:(JAListView *)listView dragEntered:(NSArray *)draggedViews location:(NSPoint)location</Declaration>
+			
+			
+			<Anchor>//api/name/listView:dragEntered:location:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/JAListViewDraggingDestinationDelegate/listView:dragUpdated:location:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)listView:(JAListView *)listView dragUpdated:(NSArray *)draggedViews location:(NSPoint)location</Declaration>
+			
+			
+			<Anchor>//api/name/listView:dragUpdated:location:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/JAListViewDraggingDestinationDelegate/listView:dragEnded:location:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)listView:(JAListView *)listView dragEnded:(NSArray *)draggedViews location:(NSPoint)location</Declaration>
+			
+			
+			<Anchor>//api/name/listView:dragEnded:location:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/intfm/JAListViewDraggingDestinationDelegate/listView:dragExited:location:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)listView:(JAListView *)listView dragExited:(NSArray *)draggedViews location:(NSPoint)location</Declaration>
+			
+			
+			<Anchor>//api/name/listView:dragExited:location:</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>

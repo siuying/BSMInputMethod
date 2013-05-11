@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Tokens version="1.0">
+	<File path="Classes/JAObjectListView.html">
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/cl/JAObjectListView</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>
+			
+			<NodeRef refid="3"/>
+		</Token>
+		
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/addListViewItem:inSection:atIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)addListViewItem:(JAObjectListViewItem *)view inSection:(NSUInteger)section atIndex:(NSUInteger)index</Declaration>
+			
+			
+			<Anchor>//api/name/addListViewItem:inSection:atIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/addListViewItem:inSection:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)addListViewItem:(JAObjectListViewItem *)view inSection:(NSUInteger)section</Declaration>
+			
+			
+			<Anchor>//api/name/addListViewItem:inSection:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/removeListViewItemInSection:atIndex:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)removeListViewItemInSection:(NSUInteger)section atIndex:(NSUInteger)index</Declaration>
+			
+			
+			<Anchor>//api/name/removeListViewItemInSection:atIndex:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/addListViewItem:forHeaderForSection:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)addListViewItem:(JAObjectListViewItem *)view forHeaderForSection:(NSUInteger)section</Declaration>
+			
+			
+			<Anchor>//api/name/addListViewItem:forHeaderForSection:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/removeListViewItemForHeaderForSection:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)removeListViewItemForHeaderForSection:(NSUInteger)section</Declaration>
+			
+			
+			<Anchor>//api/name/removeListViewItemForHeaderForSection:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/removeListViewItem:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)removeListViewItem:(JAListViewItem *)view</Declaration>
+			
+			
+			<Anchor>//api/name/removeListViewItem:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/removeAllListViewItems</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)removeAllListViewItems</Declaration>
+			
+			
+			<Anchor>//api/name/removeAllListViewItems</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/viewsInSection:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (NSArray *)viewsInSection:(NSUInteger)section</Declaration>
+			
+			
+			<Anchor>//api/name/viewsInSection:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/numberOfSections</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (NSUInteger)numberOfSections</Declaration>
+			
+			
+			<Anchor>//api/name/numberOfSections</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/headerForSection:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (JAListViewItem *)headerForSection:(NSUInteger)section</Declaration>
+			
+			
+			<Anchor>//api/name/headerForSection:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/viewItemForObject:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (JAObjectListViewItem *)viewItemForObject:(id)object</Declaration>
+			
+			
+			<Anchor>//api/name/viewItemForObject:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/indexPathForObject:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (NSIndexPath *)indexPathForObject:(id)object</Declaration>
+			
+			
+			<Anchor>//api/name/indexPathForObject:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/removeListViewItemForObject:</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (void)removeListViewItemForObject:(id)object</Declaration>
+			
+			
+			<Anchor>//api/name/removeListViewItemForObject:</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/allObjects</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (NSArray *)allObjects</Declaration>
+			
+			
+			<Anchor>//api/name/allObjects</Anchor>
+		</Token>
+		
+		<Token>
+			<TokenIdentifier>//apple_ref/occ/instm/JAObjectListView/debugString</TokenIdentifier>
+			<Abstract type="html"></Abstract>
+			<DeclaredIn>JAObjectListView.h</DeclaredIn>			
+			
+			<Declaration>- (NSString *)debugString</Declaration>
+			
+			
+			<Anchor>//api/name/debugString</Anchor>
+		</Token>
+		
+	</File>
+</Tokens>
