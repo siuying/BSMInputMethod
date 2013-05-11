@@ -20,11 +20,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @interface BSMAppDelegate : NSObject <NSApplicationDelegate>
 
-@property (assign, nonatomic) IBOutlet NSWindow *window;
 @property (strong, nonatomic) DDFileLogger *fileLogger;
 @property (strong, nonatomic) IMKServer* server;
 @property (strong, nonatomic) IMKCandidates* candidates;
 
 +(BSMEngine*) sharedEngine;
++(IMKServer*) sharedServer;
++(IMKCandidates*) sharedCandidates;
 
 @end

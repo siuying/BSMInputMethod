@@ -23,6 +23,16 @@ static BSMEngine* _sharedEngine;
     return _sharedEngine;
 }
 
++(IMKServer*) sharedServer {
+    BSMAppDelegate* delegate = [NSApp delegate];
+    return delegate.server;
+}
+
++(IMKCandidates*) sharedCandidates {
+    BSMAppDelegate* delegate = [NSApp delegate];
+    return delegate.candidates;
+}
+
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     [self setupLogger];
 }
@@ -34,6 +44,7 @@ static BSMEngine* _sharedEngine;
     self.fileLogger.rollingFrequency = 60 * 60 * 24;
     self.fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
     [DDLog addLogger:self.fileLogger];
+    DDLogInfo(@"logger configured.");
 }
 
 @end

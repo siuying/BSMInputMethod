@@ -13,23 +13,28 @@
 const NSString* kConnectionName = @"BSMInputMethod_Connection";
 
 IMKServer* server;
+IMKCandidates* candidates;
 
 int main(int argc, char *argv[])
 {
     //find the bundle identifier and then initialize the input method server
     NSString* identifier = [[NSBundle mainBundle] bundleIdentifier];
 
+    server = [[IMKServer alloc] initWithName:(NSString*)kConnectionName bundleIdentifier:identifier];
+    candidates = [[IMKCandidates alloc] initWithServer:server panelType:kIMKSingleColumnScrollingCandidatePanel];
     NSApplication* app = [NSApplication sharedApplication];
 	
     //load the bundle explicitly because in this case the input method is a background only application
 	[NSBundle loadNibNamed:@"MainMenu" owner:app];
     
     // attach IME server and candidate window to App Delegate
+    NSLog(@"attach IME server and candidate window to App Delegate");
     BSMAppDelegate* delegate = app.delegate;
-    delegate.server = [[IMKServer alloc] initWithName:(NSString*)kConnectionName bundleIdentifier:identifier];
-    delegate.candidates = [[IMKCandidates alloc] initWithServer:delegate.server panelType:kIMKSingleColumnScrollingCandidatePanel];
-    
+    delegate.server = server;
+    delegate.candidates = candidates;
+
 	//finally run everything
+    NSLog(@"run everything");
 	[app run];
 	
     return 0;

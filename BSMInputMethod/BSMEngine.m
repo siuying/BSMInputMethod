@@ -8,6 +8,13 @@
 
 #import "BSMEngine.h"
 #import "BSMMatch.h"
+#import "DDLog.h"
+
+#ifdef DEBUG
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
+#else
+static const int ddLogLevel = LOG_LEVEL_WARN;
+#endif
 
 @implementation BSMEngine
 
@@ -23,6 +30,7 @@
         [self.db executeQuery:@"PRAGMA synchronous = OFF;"];
         [self.db executeQuery:@"PRAGMA journal_mode = MEMORY;"];
         [self.db executeQuery:@"PRAGMA temp_store = MEMORY;"];
+        DDLogInfo(@"BSMEngine configured.");
     }
     return self;
 }
