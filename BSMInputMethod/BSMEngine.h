@@ -13,7 +13,15 @@
 
 @property (nonatomic, strong) FMDatabase* db;
 
-// match give code with result, array of BSMMatch
+// match given code with BSMMatch
+// @param code ime code
+// @return array of BSMMatch
 -(NSArray*) match:(NSString*)code;
+
+// match given code with BSMMatch
+// @param code ime code
+// @param number of page
+// @return array of BSMMatch
+-(NSArray*) match:(NSString*)code page:(NSUInteger) page;
 
 @end
