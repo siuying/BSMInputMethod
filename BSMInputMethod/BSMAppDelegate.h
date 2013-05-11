@@ -7,6 +7,7 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <InputMethodKit/InputMethodKit.h>
 
 #import "BSMEngine.h"
 #import "DDFileLogger.h"
@@ -21,6 +22,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @property (assign, nonatomic) IBOutlet NSWindow *window;
 @property (strong, nonatomic) DDFileLogger *fileLogger;
+@property (strong, nonatomic) IMKServer* server;
+@property (strong, nonatomic) IMKCandidates* candidates;
 
 +(BSMEngine*) sharedEngine;
 
