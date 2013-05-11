@@ -56,29 +56,7 @@ describe(@"BSMEngine", ^{
         });
     });
     
-    describe(@"-match:", ^{
-        it(@"should match input code", ^{
-            NSArray* result = [engine match:@"121"];
-            BSMMatch* expectMatch = [BSMMatch matchWithCode:@"121" word:@"工"];
-            expect(result).notTo.beNil();
-            expect(result).to.contain(expectMatch);
-            
-            result = [engine match:@"53"];
-            expectMatch = [BSMMatch matchWithCode:@"53" word:@"刀"];
-            expect(result).notTo.beNil();
-            expect(result).to.contain(expectMatch);
-            
-            result = [engine match:@"32562"];
-            expectMatch = [BSMMatch matchWithCode:@"32562" word:@"他"];
-            expect(result).notTo.beNil();
-            expect(result).to.contain(expectMatch);
-            
-            result = [engine match:@"301453"];
-            expectMatch = [BSMMatch matchWithCode:@"301453" word:@"的"];
-            expect(result).notTo.beNil();
-            expect(result).to.contain(expectMatch);
-        });
-        
+    describe(@"-match:page:", ^{
         it(@"should be able to paginate", ^{
             NSArray* result = [engine match:@"1" page:0];
             expect(result).notTo.beNil();
@@ -88,6 +66,22 @@ describe(@"BSMEngine", ^{
             expect(result).notTo.beNil();
             expect([result count]).to.beGreaterThan(0);
             expect([result count]).to.beLessThanOrEqualTo(9);
+        });
+        
+        it(@"should return 9 result every page (except the last)", ^{
+            NSUInteger matchesCount = [engine numberOfMatchWithCode:@"122"];
+            NSMutableArray* matches = [NSMutableArray array];;
+            NSUInteger totalPage = ceil(matchesCount / 9.0);
+            NSUInteger counter = 0;
+            while(counter < totalPage) {
+                NSArray* currentPageMatches = [engine match:@"122" page:counter];
+                if (counter + 1 < totalPage) {
+                    expect(currentPageMatches.count).to.equal(9);
+                }
+                [matches addObjectsFromArray:currentPageMatches];
+                counter++;
+            }
+            expect([matches count]).to.equal(matchesCount);
         });
     });
     
@@ -102,18 +96,6 @@ describe(@"BSMEngine", ^{
             
             matches = [engine numberOfMatchWithCode:@"11119111"];
             expect(matches).to.equal(0U);
-        });
-
-        it(@"should consistence with the actual matches returned", ^{
-            NSUInteger matchesCount = [engine numberOfMatchWithCode:@"1234"];
-            NSMutableArray* matches = [NSMutableArray array];;
-            NSUInteger totalPage = ceil(matchesCount / 9.0);
-            NSUInteger counter = 0;
-            while(counter < totalPage) {
-                [matches addObjectsFromArray:[engine match:@"1234" page:counter]];
-                counter++;
-            }
-            expect([matches count]).to.equal(matchesCount);
         });
     });
 });
