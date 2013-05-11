@@ -69,8 +69,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if ([self.buffer.candidates count] > 0) {
             return [self selectFirstMatch:sender];
         } else {
-            NSBeep();
-            return YES;
+            return NO;
         }
     } else if (keyCode == kVK_ANSI_KeypadDivide) {
         if (self.buffer.inputBuffer.length > 0) {
