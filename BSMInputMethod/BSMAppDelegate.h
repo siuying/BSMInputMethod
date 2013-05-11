@@ -11,6 +11,7 @@
 
 #import "BSMEngine.h"
 #import "DDFileLogger.h"
+#import "BSMCandidatesWindow.h"
 
 #ifdef DEBUG
 static const int ddLogLevel = LOG_LEVEL_VERBOSE;
@@ -22,10 +23,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 @property (strong, nonatomic) DDFileLogger *fileLogger;
 @property (strong, nonatomic) IMKServer* server;
-@property (strong, nonatomic) IMKCandidates* candidates;
+@property (weak, nonatomic) IBOutlet BSMCandidatesWindow* candidateWindow;
 
 +(BSMEngine*) sharedEngine;
 +(IMKServer*) sharedServer;
-+(IMKCandidates*) sharedCandidates;
++(BSMCandidatesWindow*) sharedCandidatesWindow;
 
 @end

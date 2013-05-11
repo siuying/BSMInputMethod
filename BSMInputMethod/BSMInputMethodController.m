@@ -50,6 +50,8 @@
     [sender setMarkedText:marker
            selectionRange:NSMakeRange(0, [marker length])
          replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+    [self showCandidateWindowWithClient:sender];
+
     return YES;
 }
 
@@ -62,6 +64,12 @@
         [sender setMarkedText:marker
                selectionRange:NSMakeRange(0, [marker length])
              replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
+        
+        if ([marker length]) {
+            [self showCandidateWindowWithClient:sender];
+        } else {
+            [self hideCandidateWindow];
+        }
         return YES;
 	} else {
         return NO;
@@ -114,6 +122,57 @@
 //    DDLogInfo(@" selected: %@", [candidateString string]);
 //	[self commitComposition:[self client]];
 //    [self resetBuffer];
+}
+
+-(void) showCandidates {
+    if (self.selectionRange.location != NSNotFound) {
+        NSRange actualRange;
+        NSRect rect = [self.client firstRectForCharacterRange:NSMakeRange(0, [self.buffer.marker length])
+                                                  actualRange:&actualRange];
+        DDLogVerbose(@" coordinate: %@, actualRange:%@", NSStringFromRect(rect),  NSStringFromRange(actualRange));
+    } else {
+        DDLogVerbose(@"no selection range");
+    }
+}
+
+- (void)activateServer:(id)client {
+    [self.buffer reset];
+}
+
+- (void)deactivateServer:(id)client {
+    BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
+    [candidateWindow hideCandidates];
+}
+
+#pragma mark - Private
+
+-(void) showCandidateWindowWithClient:(id)sender {
+    // find the position of the window
+    NSUInteger cursorIndex = self.selectionRange.location;
+    if (cursorIndex == [self.buffer.marker length] && cursorIndex) {
+        cursorIndex--;
+    }
+    NSRect lineHeightRect = NSMakeRect(0.0, 0.0, 16.0, 16.0);
+    @try {
+        NSDictionary *attr = [sender attributesForCharacterIndex:cursorIndex lineHeightRectangle:&lineHeightRect];
+        if (![attr count]) {
+            [sender attributesForCharacterIndex:0 lineHeightRectangle:&lineHeightRect];
+        }
+    }
+    @catch (NSException *exception) {
+    }
+    
+    // show candidate window
+    BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
+    [candidateWindow updateCandidates:self.buffer.candidates];
+    [candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
+         bottomOutOfScreenAdjustmentHeight:lineHeightRect.size.height + 4.0];
+    [candidateWindow showCandidates];
+}
+
+-(void) hideCandidateWindow {
+    BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
+    [candidateWindow hideCandidates];
 }
 
 @end

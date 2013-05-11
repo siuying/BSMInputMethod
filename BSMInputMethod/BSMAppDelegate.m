@@ -28,9 +28,9 @@ static BSMEngine* _sharedEngine;
     return delegate.server;
 }
 
-+(IMKCandidates*) sharedCandidates {
++(BSMCandidatesWindow*) sharedCandidatesWindow {
     BSMAppDelegate* delegate = [NSApp delegate];
-    return delegate.candidates;
+    return delegate.candidateWindow;
 }
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
