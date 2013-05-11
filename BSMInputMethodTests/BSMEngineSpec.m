@@ -11,6 +11,7 @@
 
 #import "BSMEngine.h"
 #import "BSMMatch.h"
+#import <math.h>
 
 SpecBegin(BSMEngine)
 
@@ -101,6 +102,18 @@ describe(@"BSMEngine", ^{
             
             matches = [engine numberOfMatchWithCode:@"11119111"];
             expect(matches).to.equal(0U);
+        });
+
+        it(@"should consistence with the actual matches returned", ^{
+            NSUInteger matchesCount = [engine numberOfMatchWithCode:@"1234"];
+            NSMutableArray* matches = [NSMutableArray array];;
+            NSUInteger totalPage = ceil(matchesCount / 9.0);
+            NSUInteger counter = 0;
+            while(counter < totalPage) {
+                [matches addObjectsFromArray:[engine match:@"1234" page:counter]];
+                counter++;
+            }
+            expect([matches count]).to.equal(matchesCount);
         });
     });
 });
