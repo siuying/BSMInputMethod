@@ -3,6 +3,8 @@ require 'bundler'
 Bundler.require
 require 'fileutils'
 
+require './tools/bsm_converter'
+
 PROJECT_NAME = "BSMInputMethod"
 
 namespace "build" do
@@ -31,6 +33,27 @@ namespace "build" do
 
   task :clean do
     puts `xcodebuild -project '#{PROJECT_NAME}.xcodeproj' -scheme '#{PROJECT_NAME}' clean`
+  end
+end
+
+namespace "preprocess" do
+  task :convert do
+    @converter = BsmConverter.new("./data/bsm.db")
+    @converter.setup
+
+
+    data = open("data/bsm_applet.dat", 'r:BIG5-HKSCS').read
+
+    ec = Encoding::Converter.new("BIG5-HKSCS", "UTF-8", :invalid => :replace, :undef => :replace )
+    output = ec.convert(data)
+
+    @converter.db.transaction do
+      output.each_line do |line|
+        if line =~ /(.{1,6}) (.)/
+          @converter.add($1, $2)
+        end
+      end
+    end
   end
 end
 
