@@ -74,40 +74,30 @@ describe(@"BSMBuffer", ^{
     });
     
     describe(@"-candidates", ^{
-        it(@"should match using BSMEngine", ^{
-            NSArray* mockResponse = @[];
-            [[[mockEngine expect] andReturn:mockResponse] match:@"1"];
+        before(^{
+            buffer = [[BSMBuffer alloc] initWithEngine:[[BSMEngine alloc] init]];
+        });
+
+        it(@"should return proepr candidates", ^{
+            [buffer appendBuffer:@"9"];
+            [buffer appendBuffer:@"9"];
             [buffer appendBuffer:@"1"];
+            [buffer appendBuffer:@"9"];
             expect(buffer.candidates).notTo.beNil();
-            expect(buffer.candidates).to.equal(mockResponse);
-            [mockEngine verify];
-            
-            mockResponse = @[[BSMMatch matchWithCode:@"12" word:@"A"]];
-            [[[mockEngine expect] andReturn:mockResponse] match:@"12"];
-            [buffer appendBuffer:@"2"];
-            expect(buffer.candidates).notTo.beNil();
-            expect(buffer.candidates).to.equal(mockResponse);
-            [mockEngine verify];
+            expect([buffer.candidates count]).to.equal(9U);
+            [buffer appendBuffer:@"1"];
+            expect([buffer.candidates count]).to.equal(4U);
         });
 
         it(@"should set composedString", ^{
-            BSMMatch* match = [BSMMatch matchWithCode:@"1" word:@"A"];
-            NSArray* candidates = @[match];
-            [[[mockEngine expect] andReturn:candidates] match:@"1"];
+            [buffer appendBuffer:@"9"];
+            [buffer appendBuffer:@"9"];
             [buffer appendBuffer:@"1"];
-            expect(buffer.candidates).notTo.beNil();
-            expect(buffer.candidates).to.equal(candidates);
-            expect(buffer.composedString).to.equal(match.word);
-            [mockEngine verify];
-            
-            match = [BSMMatch matchWithCode:@"12" word:@"B"];
-            candidates = @[match];
-            [[[mockEngine expect] andReturn:candidates] match:@"12"];
-            [buffer appendBuffer:@"2"];
-            expect(buffer.candidates).notTo.beNil();
-            expect(buffer.candidates).to.equal(candidates);
-            expect(buffer.composedString).to.equal(match.word);
-            [mockEngine verify];
+            [buffer appendBuffer:@"9"];
+            expect(buffer.composedString).notTo.beNil();
+            expect(buffer.composedString).to.equal(@"苹");
+            [buffer appendBuffer:@"1"];
+            expect(buffer.composedString).to.equal(@"茸");
         });
     });
 });
