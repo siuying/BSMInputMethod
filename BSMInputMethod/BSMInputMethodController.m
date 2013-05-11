@@ -185,37 +185,46 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #pragma mark - Private
 
 -(void) showCandidateWindowWithClient:(id)sender {
-    // find the position of the window
-    NSUInteger cursorIndex = self.selectionRange.location;
-    if (cursorIndex == [self.buffer.marker length] && cursorIndex) {
-        cursorIndex--;
-    }
-    NSRect lineHeightRect = NSMakeRect(0.0, 0.0, 16.0, 16.0);
-    @try {
-        NSDictionary *attr = [sender attributesForCharacterIndex:cursorIndex lineHeightRectangle:&lineHeightRect];
-        if (![attr count]) {
-            [sender attributesForCharacterIndex:0 lineHeightRectangle:&lineHeightRect];
-        }
-    }
-    @catch (NSException *exception) {
-    }
-    
-    // show candidate window
     BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
-    [candidateWindow updateCandidates:self.buffer.candidates];
-    [candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
-         bottomOutOfScreenAdjustmentHeight:lineHeightRect.size.height + 4.0];
-    [candidateWindow showCandidates];
-    
-    if (self.buffer.candidates.count == 0) {
-        // beep when input made 0 possible candidate
-        NSBeep();
+    @synchronized(candidateWindow) {
+        // find the position of the window
+        NSUInteger cursorIndex = self.selectionRange.location;
+        if (cursorIndex == [self.buffer.marker length] && cursorIndex) {
+            cursorIndex--;
+        }
+        DDLogInfo(@"showCandidateWindowWithClient: select range: %@",
+                  NSStringFromRange(self.selectionRange));
+
+        NSRect lineHeightRect = NSMakeRect(0.0, 0.0, 16.0, 16.0);
+        @try {
+            NSDictionary *attr = [sender attributesForCharacterIndex:cursorIndex lineHeightRectangle:&lineHeightRect];
+            if (![attr count]) {
+                [sender attributesForCharacterIndex:0 lineHeightRectangle:&lineHeightRect];
+            }
+        }
+        @catch (NSException *exception) {
+            DDLogError(@"Exception: cannot find string attribute: %@", [exception debugDescription]);
+        }
+        
+        // show candidate window
+        BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
+        [candidateWindow updateCandidates:self.buffer.candidates];
+        [candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
+             bottomOutOfScreenAdjustmentHeight:lineHeightRect.size.height + 4.0];
+        [candidateWindow showCandidates];
+        
+        if (self.buffer.candidates.count == 0) {
+            // beep when input made 0 possible candidate
+            NSBeep();
+        }
     }
 }
 
 -(void) hideCandidateWindow {
     BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
-    [candidateWindow hideCandidates];
+    @synchronized(candidateWindow) {
+        [candidateWindow hideCandidates];
+    }
 }
 
 @end
