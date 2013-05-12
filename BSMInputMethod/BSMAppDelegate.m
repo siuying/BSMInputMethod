@@ -46,10 +46,6 @@ static BSMEngine* _sharedEngine;
 -(void) setupLogger {
     [DDLog addLogger:[DDASLLogger sharedInstance]];
     [DDLog addLogger:[DDTTYLogger sharedInstance]];
-    self.fileLogger = [[DDFileLogger alloc] init];
-    self.fileLogger.rollingFrequency = 60 * 60 * 24;
-    self.fileLogger.logFileManager.maximumNumberOfLogFiles = 7;
-    [DDLog addLogger:self.fileLogger];
     DDLogInfo(@"logger configured.");
 }
 
