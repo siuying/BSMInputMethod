@@ -45,9 +45,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [self.db close];
         self.db = nil;
     }
-
     [self.cache removeAllObjects];
-    self.cache = nil;
 }
 
 -(NSArray*) match:(NSString*)code {

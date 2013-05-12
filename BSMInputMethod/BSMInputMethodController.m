@@ -30,11 +30,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return self;
 }
 
--(void) dealloc {
-    self.candidateWindow = nil;
-    self.buffer = nil;
-}
-
 -(BOOL)inputText:(NSString*)string key:(NSInteger)keyCode modifiers:(NSUInteger)flags client:(id)sender {
     DDLogVerbose(@"Called inputText:%@ key:%ld modifiers:%lx client:%@", string, keyCode, flags, sender);
 

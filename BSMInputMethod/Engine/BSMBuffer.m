@@ -157,18 +157,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(NSString*) composedString {
-    if (_composedString) {
+    if (_needsUpdateCandidates || !_composedString) {
         [self candidates];
     }
-    return _composedString;
+    return [_composedString copy];
 }
 
 -(void) dealloc {
-    _composedString = nil;
-    _candidates = nil;
-    _markerBuffer = nil;
-    _inputBuffer = nil;
-    _engine = nil;
 }
 
 @end
