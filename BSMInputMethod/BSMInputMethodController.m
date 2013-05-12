@@ -35,7 +35,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (keyCode == kVK_ANSI_KeypadDecimal) {
         if (self.buffer.inputBuffer.length > 0) {
             if (self.buffer.selectionMode) {
-                // if user already in selection mode, beep!
+                // if user already in selection mode, select the first word
+                [self selectFirstMatch:sender];
                 NSBeep();
             } else {
                 // otehrwise enter selection mode
@@ -79,8 +80,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [self showCandidateWindowWithClient:sender];            
         }
         return YES;
+    } else if (keyCode == kVK_ANSI_KeypadEquals) {
+        if ([self.buffer previousPage]) {
+            NSBeep();
+        }
+        [self showCandidateWindowWithClient:sender];
+        return YES;
     }
-    
+
     return NO;
 }
 

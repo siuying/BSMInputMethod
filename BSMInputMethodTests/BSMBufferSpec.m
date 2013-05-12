@@ -77,7 +77,7 @@ describe(@"BSMBuffer", ^{
         before(^{
             buffer = [[BSMBuffer alloc] initWithEngine:[[BSMEngine alloc] init]];
         });
-
+        
         it(@"should return proepr candidates", ^{
             [buffer appendBuffer:@"9"];
             [buffer appendBuffer:@"9"];
@@ -88,7 +88,7 @@ describe(@"BSMBuffer", ^{
             [buffer appendBuffer:@"1"];
             expect([buffer.candidates count]).to.equal(4U);
         });
-
+        
         it(@"should set composedString", ^{
             [buffer appendBuffer:@"9"];
             [buffer appendBuffer:@"9"];
@@ -98,6 +98,32 @@ describe(@"BSMBuffer", ^{
             expect(buffer.composedString).to.equal(@"苹");
             [buffer appendBuffer:@"1"];
             expect(buffer.composedString).to.equal(@"茸");
+        });
+    });
+    
+    describe(@"-nextPage", ^{
+        it(@"should move to next page and wrap", ^{
+            buffer.numberOfPage = 3;
+            expect([buffer currentPage]).to.equal(0);
+            expect([buffer nextPage]).to.beFalsy();
+            expect([buffer currentPage]).to.equal(1);
+            expect([buffer nextPage]).to.beFalsy();
+            expect([buffer currentPage]).to.equal(2);
+            expect([buffer nextPage]).to.beTruthy();
+            expect([buffer currentPage]).to.equal(0);
+        });
+    });
+    
+    describe(@"-previousPage", ^{
+        it(@"should move to previous page and wrap", ^{
+            buffer.numberOfPage = 3;
+            expect([buffer currentPage]).to.equal(0);
+            expect([buffer previousPage]).to.beTruthy();
+            expect([buffer currentPage]).to.equal(2);
+            expect([buffer previousPage]).to.beFalsy();
+            expect([buffer currentPage]).to.equal(1);
+            expect([buffer previousPage]).to.beFalsy();
+            expect([buffer currentPage]).to.equal(0);
         });
     });
 });

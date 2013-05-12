@@ -75,6 +75,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 }
 
+-(BOOL) previousPage {
+    @synchronized(self) {
+        DDLogVerbose(@"previousPage: (%lu/%lu)", _currentPage, _numberOfPage);
+        if (_currentPage > 0) {
+            _currentPage--;
+            _needsUpdateCandidates = YES;
+            DDLogVerbose(@" current page is now: %lu", _currentPage);
+            return NO;
+        } else {
+            _currentPage = _numberOfPage - 1;
+            _needsUpdateCandidates = YES;
+            DDLogVerbose(@" current page is now: %lu", _currentPage);
+            return YES;
+        }
+    }
+}
+
 - (void) appendBuffer:(NSString*)string {
     @synchronized(self) {
         NSString* marker = [_markerMapping objectForKey:string];

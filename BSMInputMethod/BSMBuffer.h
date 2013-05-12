@@ -47,6 +47,10 @@
 // @return YES if no next page, where the current page will reset to 0
 -(BOOL) nextPage;
 
+// Back to previous page
+// @return YES if no previous page, where the current page will reset to last page
+-(BOOL) previousPage;
+
 -(NSString*) inputBuffer;
 
 -(NSString*) marker;
