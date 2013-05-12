@@ -13,24 +13,29 @@
     /* input code to marker mapping, e.g. 1 -> 一 */
     NSDictionary* _markerMapping;
 
-    /* what user entered in buffer */
-    NSMutableString* _inputBuffer;
-    
-    /* user input converted into markers */
-    NSMutableString* _markerBuffer;
-    
     /* candidates */
     NSArray* _candidates;
     
-    /* composed string from input buffer */
-    NSString* _composedString;
 
     BOOL _needsUpdateCandidates;
 }
 
+/* BSM Engine */
 @property (nonatomic, strong) BSMEngine* engine;
+
+/* what user entered in buffer */
+@property (nonatomic, strong) NSMutableString* inputBuffer;
+
+/* user input converted into markers */
+@property (nonatomic, strong) NSMutableString* marker;
+
+/* composed string from input buffer */
+@property (nonatomic, strong) NSString* composedString;
+
 @property (nonatomic, assign) BOOL selectionMode;
+
 @property (nonatomic, assign) NSUInteger currentPage;
+
 @property (nonatomic, assign) NSUInteger numberOfPage;
 
 -(id) initWithEngine:(BSMEngine*)engine;
@@ -55,12 +60,6 @@
 // @return YES if the buffer is empty, NO otherwise
 -(BOOL) isEmpty;
 
--(NSString*) inputBuffer;
-
--(NSString*) marker;
-
 -(NSArray*) candidates;
-
--(NSString*) composedString;
 
 @end

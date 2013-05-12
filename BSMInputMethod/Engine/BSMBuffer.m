@@ -37,20 +37,22 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(void) reset {
-    _inputBuffer = [NSMutableString string];
-    _markerBuffer = [NSMutableString string];
-    _candidates = @[];
-    _composedString = @"";
-    _needsUpdateCandidates = NO;
-    _selectionMode = NO;
-    _numberOfPage = 0;
-    _currentPage = 0;
+    @synchronized(self) {
+        _inputBuffer = [NSMutableString string];
+        _marker = [NSMutableString string];
+        _candidates = @[];
+        _composedString = @"";
+        _needsUpdateCandidates = NO;
+        _selectionMode = NO;
+        _numberOfPage = 0;
+        _currentPage = 0;
+    }
 }
 
 -(BOOL) setSelectedIndex:(NSUInteger)index {
     if (self.selectionMode && self.candidates.count > index) {
         BSMMatch* candidate = self.candidates[index];
-        _composedString = candidate.word;
+        self.composedString = candidate.word;
         DDLogVerbose(@"selected index: %lu, word: %@", (unsigned long) index, candidate.word);
         return YES;
     } else {
@@ -99,7 +101,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void) appendBuffer:(NSString*)string {
     @synchronized(self) {
         NSString* marker = [_markerMapping objectForKey:string];
-        [_markerBuffer appendString:marker];
+        [self.marker appendString:marker];
 
         if ([string isEqualToString:@"."]) {
             _selectionMode = YES;
@@ -112,26 +114,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(void) deleteBackward {
     @synchronized(self) {
-        if ([_markerBuffer length] > 0) {
-            NSString* lastInput = [_markerBuffer substringFromIndex:[_markerBuffer length]-1];
-            [_markerBuffer deleteCharactersInRange:NSMakeRange([_markerBuffer length]-1, 1)];
+        if ([self.marker length] > 0) {
+            NSString* lastInput = [self.marker substringFromIndex:[self.marker length]-1];
+            NSLog(@" self.marker deleteCharactersInRange:%@ (%@)", NSStringFromRange(NSMakeRange([self.marker length]-1, 1)), lastInput);
+            [self.marker deleteCharactersInRange:NSMakeRange([self.marker length]-1, 1)];
 
             if ([lastInput isEqualToString:@"."]) {
                 _selectionMode = NO;
             } else {
-                [_inputBuffer deleteCharactersInRange:NSMakeRange([_inputBuffer length]-1, 1)];
+                [self.inputBuffer deleteCharactersInRange:NSMakeRange([self.inputBuffer length]-1, 1)];
                 _needsUpdateCandidates = YES;
             }
         }
     }
-}
-
--(NSString*) inputBuffer {
-    return _inputBuffer;
-}
-
--(NSString*) marker {
-    return _markerBuffer;
 }
 
 -(NSArray*) candidates {
@@ -158,13 +153,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
         return _candidates;
     }
-}
-
--(NSString*) composedString {
-    if (_needsUpdateCandidates || !_composedString) {
-        [self candidates];
-    }
-    return _composedString;
 }
 
 -(void) dealloc {
