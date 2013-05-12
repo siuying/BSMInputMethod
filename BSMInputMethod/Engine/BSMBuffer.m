@@ -52,7 +52,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 -(BOOL) setSelectedIndex:(NSUInteger)index {
     if (self.selectionMode && self.candidates.count > index) {
         BSMMatch* candidate = self.candidates[index];
-        self.composedString = candidate.word;
+        _composedString = candidate.word;
         DDLogVerbose(@"selected index: %lu, word: %@", (unsigned long) index, candidate.word);
         return YES;
     } else {
@@ -92,6 +92,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             return YES;
         }
     }
+}
+
+-(NSString*) composedString {
+    if (_needsUpdateCandidates || !_composedString) {
+        [self candidates];
+    }
+    return _composedString;
 }
 
 -(BOOL) isEmpty {

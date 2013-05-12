@@ -16,6 +16,7 @@
     /* candidates */
     NSArray* _candidates;
     
+    NSString* _composedString;
 
     BOOL _needsUpdateCandidates;
 }
@@ -28,9 +29,6 @@
 
 /* user input converted into markers */
 @property (nonatomic, strong) NSMutableString* marker;
-
-/* composed string from input buffer */
-@property (nonatomic, strong) NSString* composedString;
 
 @property (nonatomic, assign) BOOL selectionMode;
 
@@ -55,6 +53,8 @@
 // Back to previous page
 // @return YES if no previous page, where the current page will reset to last page
 -(BOOL) previousPage;
+
+-(NSString*) composedString;
 
 // If the input buffer is empty
 // @return YES if the buffer is empty, NO otherwise
