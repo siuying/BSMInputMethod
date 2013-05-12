@@ -139,30 +139,23 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(BOOL) appendBuffer:(NSString*)string client:(id)sender {
-    DDLogVerbose(@"will append buffer %@", string);
+    DDLogVerbose(@"will append buffer: %@ + %@", self.buffer.inputBuffer, string);
     @synchronized(self) {
         [self.buffer appendBuffer:string];
-
-        NSString* marker = self.buffer.marker;
-        [sender setMarkedText:marker
-               selectionRange:NSMakeRange(0, [marker length])
-             replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-
+        [self updateMarkedText:sender];
         [self showCandidateWindowWithClient:sender];
         return YES;
     }
 }
 
 - (BOOL) minusBuffer:(id)sender {
-    DDLogVerbose(@"will minus buffer");
+    DDLogVerbose(@"will minus buffer: %@", self.buffer.inputBuffer);
     @synchronized(self) {
         if (![self.buffer isEmpty]) {
             [self.buffer deleteBackward];
-            NSString* marker = self.buffer.marker;
-            [sender setMarkedText:marker
-                   selectionRange:NSMakeRange(0, [marker length])
-                 replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
-            
+
+            [self updateMarkedText:sender];
+
             if (self.buffer.composedString.length > 0) {
                 [self showCandidateWindowWithClient:sender];
             } else {
@@ -173,6 +166,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             return NO;
         }
     }
+}
+
+-(void) updateMarkedText:(id)sender {
+    NSString* marker = self.buffer.marker;
+    [sender setMarkedText:[self attrStringWithString:marker]
+           selectionRange:NSMakeRange(marker.length, 0)
+         replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
 }
 
 - (void) clearInput:(id)sender {
@@ -221,6 +221,12 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 }
 
+-(NSAttributedString*) attrStringWithString:(NSString*)string {
+    NSDictionary* attr = [self markForStyle:kTSMHiliteRawText atRange:NSMakeRange(0, string.length)];
+    NSAttributedString* attrString = [[NSAttributedString alloc] initWithString:string attributes:attr];
+    return attrString;
+}
+
 -(void) reset {
     [self.buffer reset];
 }
@@ -233,7 +239,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void)activateServer:(id)client {
     DDLogVerbose(@"will activate server");
-    [self.buffer reset];
 }
 
 - (void)deactivateServer:(id)client {
