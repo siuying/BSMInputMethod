@@ -38,7 +38,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                 // if user already in selection mode, select the first word
                 [self selectFirstMatch:sender];
             } else {
-                // otehrwise enter selection mode
+                // otherwise enter selection mode
                 [self appendBuffer:string client:sender];
             }
             return YES;
@@ -48,7 +48,27 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if (self.buffer.selectionMode) {
             // in selection mode, if user enter 1-9, apply the word
             if (keyCode > kVK_ANSI_Keypad0) {
-                NSUInteger selectionIndex = keyCode - kVK_ANSI_Keypad1;
+                NSUInteger selectionIndex = 0;
+                switch (keyCode) {
+                    case kVK_ANSI_Keypad1:
+                    case kVK_ANSI_Keypad2:
+                    case kVK_ANSI_Keypad3:
+                    case kVK_ANSI_Keypad4:
+                    case kVK_ANSI_Keypad5:
+                    case kVK_ANSI_Keypad6:
+                    case kVK_ANSI_Keypad7:
+                        selectionIndex = keyCode - kVK_ANSI_Keypad1;
+                        break;
+                    case kVK_ANSI_Keypad8:
+                        selectionIndex = 7;
+                        break;
+                    case kVK_ANSI_Keypad9:
+                        selectionIndex = 8;
+                        break;
+                    default:
+                        break;
+                }
+
                 if ([self.buffer setSelectedIndex:selectionIndex]) {
                     [self commitComposition:sender];
                 } else {
