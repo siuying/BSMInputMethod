@@ -101,7 +101,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (void) appendBuffer:(NSString*)string {
     @synchronized(self) {
         NSString* marker = [_markerMapping objectForKey:string];
-        [self.marker appendString:marker];
+        if (marker) {
+            [self.marker appendString:marker];
+        } else {
+            NSAssert(@"Unexpected character: %@", string);
+        }
 
         if ([string isEqualToString:@"."]) {
             _selectionMode = YES;
