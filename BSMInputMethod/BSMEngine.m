@@ -46,11 +46,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     return [self match:code page:0];
 }
 
--(NSArray*) match:(NSString*)code page:(NSUInteger) page{
+-(NSArray*) match:(NSString*)code page:(NSUInteger) page {
+    NSAssert(code, @"code cannot be nil");
+    NSString* query = [NSString stringWithFormat:@"%@%%", [code stringByReplacingOccurrencesOfString:@"*" withString:@"%"]];
     NSMutableArray* result = [NSMutableArray array];
-    FMResultSet *rs = [self.db executeQuery:@"select min(id) as id, word, code from ime where code LIKE ? group by word order by id LIMIT 9 OFFSET ?",
-                       [NSString stringWithFormat:@"%@%%", code],
-                       [NSNumber numberWithUnsignedInteger:page*9U]];
+    FMResultSet *rs = [self.db executeQuery:@"select min(id) as id, word, code from ime where code LIKE ? group by word order by id LIMIT 9 OFFSET ?", query, @(page*9U)];
     while ([rs next]) {
         NSString* word = [rs stringForColumn:@"word"];
         NSString* code = [rs stringForColumn:@"code"];
@@ -61,8 +61,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(NSUInteger) numberOfMatchWithCode:(NSString*)code {
-    FMResultSet *rs = [self.db executeQuery:@"select count(*) from (select word, code from ime where code LIKE ? group by word)",
-                       [NSString stringWithFormat:@"%@%%", code]];
+    NSAssert(code, @"code cannot be nil");
+    NSString* query = [NSString stringWithFormat:@"%@%%", [code stringByReplacingOccurrencesOfString:@"*" withString:@"%"]];
+    FMResultSet *rs = [self.db executeQuery:@"select count(*) from (select word, code from ime where code LIKE ? group by word)", query];
     NSUInteger numberOfMatch = 0;
     if ([rs next]) {
         numberOfMatch = (NSUInteger) [rs intForColumnIndex:0];

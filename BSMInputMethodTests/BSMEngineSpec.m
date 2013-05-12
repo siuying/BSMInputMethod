@@ -54,6 +54,25 @@ describe(@"BSMEngine", ^{
             expect(result).notTo.beNil();
             expect([result count]).to.beLessThanOrEqualTo(9);
         });
+        
+        it(@"should use * as wildcard", ^{
+            NSUInteger numberOfMatch = [engine numberOfMatchWithCode:@"325*2"];
+            expect(numberOfMatch).to.beGreaterThanOrEqualTo(1);
+
+            NSUInteger totalPage = ceil(numberOfMatch / 9.0);
+            NSUInteger counter = 0;
+
+            BSMMatch* expectMatch = [BSMMatch matchWithCode:@"32562" word:@"他"];
+            BOOL hasTarget = NO;
+            while(counter < totalPage) {
+                NSArray* currentPageMatches = [engine match:@"325*2" page:counter];
+                if ([currentPageMatches containsObject:expectMatch]) {
+                    hasTarget = YES;
+                }
+                counter++;
+            }
+            expect(hasTarget).to.beTruthy();
+        });
     });
     
     describe(@"-match:page:", ^{
@@ -84,8 +103,7 @@ describe(@"BSMEngine", ^{
             expect([matches count]).to.equal(matchesCount);
         });
     });
-    
-    
+
     describe(@"-numberOfMatchWithCode:", ^{
         it(@"should return number of matches", ^{
             NSUInteger matches = [engine numberOfMatchWithCode:@"99991"];
