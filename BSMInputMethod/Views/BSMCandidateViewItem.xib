@@ -35,32 +35,32 @@
 			</object>
 			<object class="NSCustomView" id="1005">
 				<reference key="NSNextResponder"/>
-				<int key="NSvFlags">274</int>
+				<int key="NSvFlags">268</int>
 				<array class="NSMutableArray" key="NSSubviews">
 					<object class="NSCustomView" id="72484382">
 						<reference key="NSNextResponder" ref="1005"/>
-						<int key="NSvFlags">274</int>
+						<int key="NSvFlags">268</int>
 						<array class="NSMutableArray" key="NSSubviews">
-							<object class="NSTextField" id="313168003">
+							<object class="NSTextField" id="426245241">
 								<reference key="NSNextResponder" ref="72484382"/>
-								<int key="NSvFlags">274</int>
-								<string key="NSFrame">{{17, 4}, {80, 18}}</string>
+								<int key="NSvFlags">270</int>
+								<string key="NSFrame">{{48, 2}, {75, 17}}</string>
 								<reference key="NSSuperview" ref="72484382"/>
 								<reference key="NSWindow"/>
 								<reference key="NSNextKeyView"/>
 								<string key="NSReuseIdentifierKey">_NS:1535</string>
 								<bool key="NSEnabled">YES</bool>
-								<object class="NSTextFieldCell" key="NSCell" id="691157022">
+								<object class="NSTextFieldCell" key="NSCell" id="702503356">
 									<int key="NSCellFlags">68157504</int>
 									<int key="NSCellFlags2">272630784</int>
-									<string key="NSContents">筆</string>
+									<string key="NSContents">001000</string>
 									<object class="NSFont" key="NSSupport">
-										<string key="NSName">STHeitiTC-Light</string>
-										<double key="NSSize">16</double>
+										<string key="NSName">Monaco</string>
+										<double key="NSSize">13</double>
 										<int key="NSfFlags">16</int>
 									</object>
 									<string key="NSCellIdentifier">_NS:1535</string>
-									<reference key="NSControlView" ref="313168003"/>
+									<reference key="NSControlView" ref="426245241"/>
 									<object class="NSColor" key="NSBackgroundColor" id="920130791">
 										<int key="NSColorSpace">6</int>
 										<string key="NSCatalogName">System</string>
@@ -70,6 +70,39 @@
 											<bytes key="NSWhite">MC42NjY2NjY2NjY3AA</bytes>
 										</object>
 									</object>
+									<object class="NSColor" key="NSTextColor">
+										<int key="NSColorSpace">6</int>
+										<string key="NSCatalogName">System</string>
+										<string key="NSColorName">controlShadowColor</string>
+										<object class="NSColor" key="NSColor" id="880832102">
+											<int key="NSColorSpace">3</int>
+											<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
+										</object>
+									</object>
+								</object>
+								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
+							</object>
+							<object class="NSTextField" id="313168003">
+								<reference key="NSNextResponder" ref="72484382"/>
+								<int key="NSvFlags">268</int>
+								<string key="NSFrame">{{17, 2}, {29, 20}}</string>
+								<reference key="NSSuperview" ref="72484382"/>
+								<reference key="NSWindow"/>
+								<reference key="NSNextKeyView" ref="426245241"/>
+								<string key="NSReuseIdentifierKey">_NS:1535</string>
+								<bool key="NSEnabled">YES</bool>
+								<object class="NSTextFieldCell" key="NSCell" id="691157022">
+									<int key="NSCellFlags">68157504</int>
+									<int key="NSCellFlags2">138413056</int>
+									<string key="NSContents">筆</string>
+									<object class="NSFont" key="NSSupport">
+										<string key="NSName">STHeitiTC-Light</string>
+										<double key="NSSize">16</double>
+										<int key="NSfFlags">16</int>
+									</object>
+									<string key="NSCellIdentifier">_NS:1535</string>
+									<reference key="NSControlView" ref="313168003"/>
+									<reference key="NSBackgroundColor" ref="920130791"/>
 									<object class="NSColor" key="NSTextColor">
 										<int key="NSColorSpace">6</int>
 										<string key="NSCatalogName">System</string>
@@ -84,7 +117,7 @@
 							</object>
 							<object class="NSTextField" id="201096697">
 								<reference key="NSNextResponder" ref="72484382"/>
-								<int key="NSvFlags">276</int>
+								<int key="NSvFlags">268</int>
 								<string key="NSFrame">{{-3, 6}, {18, 15}}</string>
 								<reference key="NSSuperview" ref="72484382"/>
 								<reference key="NSWindow"/>
@@ -96,7 +129,7 @@
 									<int key="NSCellFlags2">71304192</int>
 									<string key="NSContents">1</string>
 									<object class="NSFont" key="NSSupport">
-										<string key="NSName">STHeitiTC-Light</string>
+										<string key="NSName">STHeitiTC-Medium</string>
 										<double key="NSSize">15</double>
 										<int key="NSfFlags">16</int>
 									</object>
@@ -107,16 +140,13 @@
 										<int key="NSColorSpace">6</int>
 										<string key="NSCatalogName">System</string>
 										<string key="NSColorName">disabledControlTextColor</string>
-										<object class="NSColor" key="NSColor">
-											<int key="NSColorSpace">3</int>
-											<bytes key="NSWhite">MC4zMzMzMzMzMzMzAA</bytes>
-										</object>
+										<reference key="NSColor" ref="880832102"/>
 									</object>
 								</object>
 								<bool key="NSAllowsLogicalLayoutDirection">NO</bool>
 							</object>
 						</array>
-						<string key="NSFrameSize">{104, 24}</string>
+						<string key="NSFrameSize">{120, 24}</string>
 						<reference key="NSSuperview" ref="1005"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="201096697"/>
@@ -124,7 +154,7 @@
 						<string key="NSClassName">BSMView</string>
 					</object>
 				</array>
-				<string key="NSFrameSize">{104, 24}</string>
+				<string key="NSFrameSize">{120, 24}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="72484382"/>
@@ -148,6 +178,14 @@
 						<reference key="destination" ref="313168003"/>
 					</object>
 					<int key="connectionID">16</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">codeText</string>
+						<reference key="source" ref="1005"/>
+						<reference key="destination" ref="426245241"/>
+					</object>
+					<int key="connectionID">24</int>
 				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
@@ -190,6 +228,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="201096697"/>
 							<reference ref="313168003"/>
+							<reference ref="426245241"/>
 						</array>
 						<reference key="parent" ref="1005"/>
 					</object>
@@ -221,6 +260,20 @@
 						<reference key="object" ref="50517058"/>
 						<reference key="parent" ref="201096697"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">22</int>
+						<reference key="object" ref="426245241"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="702503356"/>
+						</array>
+						<reference key="parent" ref="72484382"/>
+						<string key="objectName">Code Text</string>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">23</int>
+						<reference key="object" ref="702503356"/>
+						<reference key="parent" ref="426245241"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -233,12 +286,14 @@
 				<string key="13.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="19.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="22.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="23.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">19</int>
+			<int key="maxID">24</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -246,10 +301,15 @@
 					<string key="className">BSMCandidateViewItem</string>
 					<string key="superclassName">JAListViewItem</string>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="codeText">NSTextField</string>
 						<string key="numberText">NSTextField</string>
 						<string key="wordText">NSTextField</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="codeText">
+							<string key="name">codeText</string>
+							<string key="candidateClassName">NSTextField</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="numberText">
 							<string key="name">numberText</string>
 							<string key="candidateClassName">NSTextField</string>

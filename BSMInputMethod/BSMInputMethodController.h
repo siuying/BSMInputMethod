@@ -7,7 +7,9 @@
 //
 
 #import <InputMethodKit/InputMethodKit.h>
+
 #import "BSMBuffer.h"
+#import "BSMCandidatesWindow.h"
 
 @interface BSMInputMethodController : IMKInputController {
     /* current number of page, in the IME match candidate window */
@@ -15,6 +17,7 @@
 }
 
 @property (nonatomic, strong) BSMBuffer* buffer;
+@property (nonatomic, strong) BSMCandidatesWindow* candidateWindow;
 
 - (BOOL) appendBuffer:(NSString*)string client:(id)sender;
 

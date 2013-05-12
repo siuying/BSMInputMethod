@@ -7,6 +7,7 @@
 //
 
 #import <QuartzCore/QuartzCore.h>
+#import <AppKit/AppKit.h>
 
 #import "BSMCandidatesWindow.h"
 #import "BSMCandidateViewItem.h"
@@ -18,6 +19,9 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
+
+#define kCandidateWindowWidthWithoutCode 50
+#define kCandidateWindowWidthWithCode 120
 
 @implementation BSMCandidatesWindow
 
@@ -49,6 +53,26 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 -(void) hideCandidates {
     DDLogVerbose(@"hide candidates");
     [self close];
+}
+
+-(void) showCandidatesCode {
+    if (!_isShowingCandidatesCode) {
+        [NSAnimationContext beginGrouping];
+        [[NSAnimationContext currentContext] setDuration:0.2];
+        [[self animator] setFrame:NSMakeRect(self.frame.origin.x, self.frame.origin.y, kCandidateWindowWidthWithCode, self.frame.size.height) display:YES];
+        [NSAnimationContext endGrouping];
+        _isShowingCandidatesCode = YES;
+    }
+}
+
+-(void) hideCandidatesCode {
+    if (_isShowingCandidatesCode) {
+        [NSAnimationContext beginGrouping];
+        [[NSAnimationContext currentContext] setDuration:0.2];
+        [[self animator] setFrame:NSMakeRect(self.frame.origin.x, self.frame.origin.y, kCandidateWindowWidthWithoutCode, self.frame.size.height) display:YES];
+        [NSAnimationContext endGrouping];
+        _isShowingCandidatesCode = NO;
+    }
 }
 
 - (void)setWindowTopLeftPoint:(NSPoint)topLeftPoint bottomOutOfScreenAdjustmentHeight:(CGFloat)height {
@@ -105,7 +129,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (JAListViewItem *)listView:(JAListView *)listView viewAtIndex:(NSUInteger)index {
     BSMMatch* match = self.candidates[index];
     BSMCandidateViewItem* item = [BSMCandidateViewItem itemWithOwner:self];
-    [item setNumber:(index+1) word:match.word];
+    [item setNumber:(index+1) word:match.word code:match.code];
     return item;
 }
 

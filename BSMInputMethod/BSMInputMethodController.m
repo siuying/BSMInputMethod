@@ -24,9 +24,15 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (id)initWithServer:(IMKServer*)server delegate:(id)delegate client:(id)inputClient {
     self = [super initWithServer:server delegate:delegate client:inputClient];
     if (self) {
+        self.candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
         self.buffer = [[BSMBuffer alloc] initWithEngine:[BSMAppDelegate sharedEngine]];
     }
     return self;
+}
+
+-(void) dealloc {
+    self.candidateWindow = nil;
+    self.buffer = nil;
 }
 
 -(BOOL)inputText:(NSString*)string key:(NSInteger)keyCode modifiers:(NSUInteger)flags client:(id)sender {
@@ -89,6 +95,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
     } else if (keyCode == kVK_ANSI_KeypadMinus) {
         return [self minusBuffer:sender];
+
+    } else if (keyCode == kVK_ANSI_KeypadPlus) {
+        if (self.buffer.inputBuffer.length > 0) {
+            DDLogInfo(@"toggle show candidate code");
+            if ([self.candidateWindow isShowingCandidatesCode]) {
+                [self.candidateWindow hideCandidatesCode];
+            } else {
+                [self.candidateWindow showCandidatesCode];
+            }
+            return YES;
+        }
 
     } else if (keyCode == kVK_ANSI_KeypadEnter) {
         if (self.buffer.composedString.length > 0) {
@@ -221,15 +238,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (void)deactivateServer:(id)client {
-    BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
-    [candidateWindow hideCandidates];
+    [self.candidateWindow hideCandidates];
 }
 
 #pragma mark - Private
 
 -(void) showCandidateWindowWithClient:(id)sender {
-    BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
-    @synchronized(candidateWindow) {
+    @synchronized(self.candidateWindow) {
         // find the position of the window
         NSUInteger cursorIndex = self.selectionRange.location;
         if (cursorIndex == [self.buffer.marker length] && cursorIndex) {
@@ -250,17 +265,16 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
         
         // show candidate window
-        [candidateWindow updateCandidates:self.buffer.candidates];
-        [candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
+        [self.candidateWindow updateCandidates:self.buffer.candidates];
+        [self.candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
              bottomOutOfScreenAdjustmentHeight:lineHeightRect.size.height + 4.0];
-        [candidateWindow showCandidates];
+        [self.candidateWindow showCandidates];
     }
 }
 
 -(void) hideCandidateWindow {
-    BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
-    @synchronized(candidateWindow) {
-        [candidateWindow hideCandidates];
+    @synchronized(self.candidateWindow) {
+        [self.candidateWindow hideCandidates];
     }
 }
 

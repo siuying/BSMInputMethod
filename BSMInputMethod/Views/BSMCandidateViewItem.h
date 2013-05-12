@@ -13,9 +13,10 @@
 
 @property (weak, nonatomic) IBOutlet NSTextField* numberText;
 @property (weak, nonatomic) IBOutlet NSTextField* wordText;
+@property (weak, nonatomic) IBOutlet NSTextField* codeText;
 
 +(BSMCandidateViewItem*) itemWithOwner:(id)owner;
 
--(void) setNumber:(NSUInteger)number word:(NSString*)word;
+-(void) setNumber:(NSUInteger)number word:(NSString*)word code:(NSString*)code;
 
 @end

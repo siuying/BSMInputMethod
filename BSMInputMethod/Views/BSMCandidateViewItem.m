@@ -25,9 +25,10 @@
     }
 }
 
--(void) setNumber:(NSUInteger)number word:(NSString*)word {
+-(void) setNumber:(NSUInteger)number word:(NSString*)word code:(NSString*)code {
     [self.numberText setStringValue:[[NSNumber numberWithUnsignedInteger:number] stringValue]];
     [self.wordText setStringValue:word];
+    [self.codeText setStringValue:code];
 }
 
 @end

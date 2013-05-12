@@ -13,6 +13,7 @@
 #import <InputMethodKit/InputMethodKit.h>
 
 #import "BSMInputMethodController.h"
+#import "BSMCandidatesWindow.h"
 
 SpecBegin(BSMInputMethodController)
 
@@ -22,6 +23,7 @@ describe(@"BSMInputMethodController", ^{
     __block id mockClient;
     __block id mockBuffer;
     __block id mockController;
+    __block id mockCandidateWindow;
 
     before(^{
         mockServer = [OCMockObject niceMockForClass:[IMKServer class]];
@@ -29,6 +31,9 @@ describe(@"BSMInputMethodController", ^{
         controller = [[BSMInputMethodController alloc] initWithServer:nil delegate:nil client:nil];
         mockController = [OCMockObject partialMockForObject:controller];
         controller = mockController;
+        
+        mockCandidateWindow = [OCMockObject niceMockForClass:[BSMCandidatesWindow class]];
+        controller.candidateWindow = mockCandidateWindow;
 
         mockBuffer = [OCMockObject partialMockForObject:controller.buffer];
         controller.buffer = mockBuffer;
@@ -37,6 +42,7 @@ describe(@"BSMInputMethodController", ^{
         mockServer = nil;
         mockClient = nil;
         mockController = nil;
+        mockCandidateWindow = nil;
         mockBuffer = nil;
         [controller inputControllerWillClose];
         controller = nil;
@@ -126,6 +132,41 @@ describe(@"BSMInputMethodController", ^{
             BOOL handled = [controller inputText:@"\n" key:kVK_ANSI_KeypadEnter modifiers:0 client:mockClient];
             [mockController verify];
             expect(handled).to.beFalsy();
+        });
+    });
+    
+    describe(@"plus key", ^{
+        it(@"should pass enter key to system if no input", ^{
+            BOOL handled = [controller inputText:@"+" key:kVK_ANSI_KeypadPlus modifiers:0 client:mockClient];
+            expect(handled).to.beFalsy();
+        });
+        
+        it(@"should toggle candidate window", ^{
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"1" key:kVK_ANSI_Keypad1 modifiers:0 client:mockClient];
+            NSValue* value = [NSNumber numberWithBool:NO];
+            [[[mockCandidateWindow stub] andReturnValue:value] isShowingCandidatesCode];
+            [[mockCandidateWindow expect] showCandidatesCode];
+
+            BOOL handled = [controller inputText:@"+" key:kVK_ANSI_KeypadPlus modifiers:0 client:mockClient];
+            expect(handled).to.beTruthy();
+            [mockCandidateWindow verify];
+        });
+        
+        it(@"should toggle candidate window", ^{
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"1" key:kVK_ANSI_Keypad1 modifiers:0 client:mockClient];
+            BOOL handled = [controller inputText:@"+" key:kVK_ANSI_KeypadPlus modifiers:0 client:mockClient];
+            expect(handled).to.beTruthy();
+
+            NSValue* value = [NSNumber numberWithBool:YES];
+            [[[mockCandidateWindow stub] andReturnValue:value] isShowingCandidatesCode];
+            [[mockCandidateWindow expect] hideCandidatesCode];
+            handled = [controller inputText:@"+" key:kVK_ANSI_KeypadPlus modifiers:0 client:mockClient];
+            expect(handled).to.beTruthy();
+            [mockCandidateWindow verify];
         });
     });
 });

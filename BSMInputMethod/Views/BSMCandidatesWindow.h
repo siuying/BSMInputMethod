@@ -14,6 +14,7 @@
 
 @property (strong, nonatomic) NSArray* candidates;
 
+@property (assign, nonatomic) BOOL isShowingCandidatesCode;
 @property (weak, nonatomic) IBOutlet BSMView* view;
 @property (weak, nonatomic) IBOutlet JAListView* listView;
 
@@ -22,6 +23,10 @@
 -(void) showCandidates;
 
 -(void) hideCandidates;
+
+-(void) showCandidatesCode;
+
+-(void) hideCandidatesCode;
 
 -(void) setWindowTopLeftPoint:(NSPoint)topLeftPoint bottomOutOfScreenAdjustmentHeight:(CGFloat)height;
 
