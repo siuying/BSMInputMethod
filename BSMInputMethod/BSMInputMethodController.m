@@ -60,15 +60,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             }
 
             return YES;
-        } else {
+        } else if (self.buffer.inputBuffer.length < 6) {
             return [self appendBuffer:string client:sender];
+        } else {
+            NSBeep();
+            return YES;
         }
 
     } else if (keyCode == kVK_ANSI_KeypadMinus) {
         return [self minusBuffer:sender];
 
     } else if (keyCode == kVK_ANSI_KeypadEnter) {
-        if ([self.buffer.candidates count] > 0) {
+        if (self.buffer.composedString.length > 0) {
             return [self selectFirstMatch:sender];
         }
 
@@ -116,7 +119,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (BOOL) minusBuffer:(id)sender {
     @synchronized(self) {
-        if ([self.buffer.inputBuffer length] > 0) {
+        if (self.buffer.inputBuffer.length > 0) {
             [self.buffer deleteBackward];
             NSString* marker = self.buffer.marker;
             DDLogVerbose(@"%@", marker);
@@ -125,7 +128,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                    selectionRange:NSMakeRange(0, [marker length])
                  replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
             
-            [self showCandidateWindowWithClient:sender];
+            if (self.buffer.composedString.length > 0) {
+                [self showCandidateWindowWithClient:sender];
+            } else {
+                [self hideCandidateWindow];
+            }
             return YES;
         } else {
             return NO;
@@ -223,11 +230,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
              bottomOutOfScreenAdjustmentHeight:lineHeightRect.size.height + 4.0];
         [candidateWindow showCandidates];
-        
-        if (self.buffer.candidates.count == 0) {
-            // beep when input made 0 possible candidate
-            NSBeep();
-        }
     }
 }
 
