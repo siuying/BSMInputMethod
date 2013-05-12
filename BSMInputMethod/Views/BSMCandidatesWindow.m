@@ -46,16 +46,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(void) showCandidates {
-    DDLogVerbose(@"show candidates");
+    DDLogVerbose(@"will show candidates");
     [self makeKeyAndOrderFront:self];
 }
 
 -(void) hideCandidates {
-    DDLogVerbose(@"hide candidates");
+    DDLogVerbose(@"will hide candidates");
     [self close];
 }
 
 -(void) showCandidatesCode {
+    DDLogInfo(@"will show candidate code");
     if (!_isShowingCandidatesCode) {
         [NSAnimationContext beginGrouping];
         [[NSAnimationContext currentContext] setDuration:0.2];
@@ -66,6 +67,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(void) hideCandidatesCode {
+    DDLogInfo(@"will show candidate code");
     if (_isShowingCandidatesCode) {
         [NSAnimationContext beginGrouping];
         [[NSAnimationContext currentContext] setDuration:0.2];
