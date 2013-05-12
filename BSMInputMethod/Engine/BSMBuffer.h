@@ -51,6 +51,10 @@
 // @return YES if no previous page, where the current page will reset to last page
 -(BOOL) previousPage;
 
+// If the input buffer is empty
+// @return YES if the buffer is empty, NO otherwise
+-(BOOL) isEmpty;
+
 -(NSString*) inputBuffer;
 
 -(NSString*) marker;

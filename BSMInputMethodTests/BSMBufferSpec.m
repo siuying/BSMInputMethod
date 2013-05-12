@@ -73,6 +73,17 @@ describe(@"BSMBuffer", ^{
         });
     });
     
+    describe(@"-isEmpty", ^{
+        it(@"should not empty if we append content", ^{
+            expect([buffer isEmpty]).to.beTruthy();
+            [buffer appendBuffer:@"1"];
+            expect([buffer isEmpty]).to.beFalsy();
+
+            [buffer deleteBackward];
+            expect([buffer isEmpty]).to.beTruthy();
+        });
+    });
+    
     describe(@"-candidates", ^{
         before(^{
             buffer = [[BSMBuffer alloc] initWithEngine:[[BSMEngine alloc] init]];

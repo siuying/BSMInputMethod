@@ -92,6 +92,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 }
 
+-(BOOL) isEmpty {
+    return !self.inputBuffer || self.inputBuffer.length == 0;
+}
+
 - (void) appendBuffer:(NSString*)string {
     @synchronized(self) {
         NSString* marker = [_markerMapping objectForKey:string];
@@ -127,7 +131,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(NSString*) marker {
-    return [_markerBuffer copy];
+    return _markerBuffer;
 }
 
 -(NSArray*) candidates {
@@ -160,7 +164,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     if (_needsUpdateCandidates || !_composedString) {
         [self candidates];
     }
-    return [_composedString copy];
+    return _composedString;
 }
 
 -(void) dealloc {

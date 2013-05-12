@@ -34,7 +34,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     DDLogVerbose(@"Called inputText:%@ key:%ld modifiers:%lx client:%@", string, keyCode, flags, sender);
 
     if (keyCode == kVK_ANSI_KeypadDecimal) {
-        if (self.buffer.inputBuffer.length > 0) {
+        if (![self.buffer isEmpty]) {
             if (self.buffer.selectionMode) {
                 // if user already in selection mode, select the first word
                 [self selectFirstCandidate:sender];
@@ -92,8 +92,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         return [self minusBuffer:sender];
 
     } else if (keyCode == kVK_ANSI_KeypadPlus) {
-        if (self.buffer.inputBuffer.length > 0) {
-            DDLogInfo(@"toggle show candidate code");
+        if (![self.buffer isEmpty]) {
             if ([self.candidateWindow isShowingCandidatesCode]) {
                 [self.candidateWindow hideCandidatesCode];
             } else {
@@ -103,7 +102,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
 
     } else if (keyCode == kVK_ANSI_KeypadEnter) {
-        if (self.buffer.inputBuffer.length > 0) {
+        if (![self.buffer isEmpty]) {
             if (self.buffer.composedString.length > 0) {
                 return [self selectFirstCandidate:sender];
             } else {
@@ -113,7 +112,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
 
     } else if (keyCode == kVK_ANSI_KeypadDivide) {
-        if (self.buffer.inputBuffer.length > 0) {
+        if (![self.buffer isEmpty]) {
             if ([self.buffer nextPage]) {
                 [self beep];
             }
@@ -122,7 +121,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
 
     } else if (keyCode == kVK_ANSI_KeypadEquals) {
-        if (self.buffer.inputBuffer.length > 0) {
+        if (![self.buffer isEmpty]) {
             if ([self.buffer previousPage]) {
                 [self beep];
             }
@@ -140,11 +139,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(BOOL) appendBuffer:(NSString*)string client:(id)sender {
+    DDLogVerbose(@"will append buffer %@", string);
     @synchronized(self) {
         [self.buffer appendBuffer:string];
 
         NSString* marker = self.buffer.marker;
-        DDLogVerbose(@"%@", marker);
         [sender setMarkedText:marker
                selectionRange:NSMakeRange(0, [marker length])
              replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
@@ -157,11 +156,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 - (BOOL) minusBuffer:(id)sender {
     DDLogVerbose(@"will minus buffer");
     @synchronized(self) {
-        if (self.buffer.inputBuffer.length > 0) {
+        if (![self.buffer isEmpty]) {
             [self.buffer deleteBackward];
             NSString* marker = self.buffer.marker;
-            DDLogVerbose(@"%@", marker);
-            
             [sender setMarkedText:marker
                    selectionRange:NSMakeRange(0, [marker length])
                  replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
