@@ -73,6 +73,25 @@ describe(@"BSMEngine", ^{
             }
             expect(hasTarget).to.beTruthy();
         });
+        
+        it(@"should not match 3252 if enter 325*2", ^{
+            NSUInteger numberOfMatch = [engine numberOfMatchWithCode:@"325*2"];
+            expect(numberOfMatch).to.beGreaterThanOrEqualTo(1);
+            
+            NSUInteger totalPage = ceil(numberOfMatch / 9.0);
+            NSUInteger counter = 0;
+            
+            BSMMatch* expectMatch = [BSMMatch matchWithCode:@"3252" word:@"師"];
+            BOOL hasTarget = NO;
+            while(counter < totalPage) {
+                NSArray* currentPageMatches = [engine match:@"325*2" page:counter];
+                if ([currentPageMatches containsObject:expectMatch]) {
+                    hasTarget = YES;
+                }
+                counter++;
+            }
+            expect(hasTarget).to.beFalsy();
+        });
     });
     
     describe(@"-match:page:", ^{
