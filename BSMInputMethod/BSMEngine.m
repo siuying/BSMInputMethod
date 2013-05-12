@@ -16,11 +16,16 @@ static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
 
+#define kCacheObjects 100
+
 @implementation BSMEngine
 
 -(id) init {
     self = [super init];
     if (self) {
+        self.cache = [[NSCache alloc] init];
+        [self.cache setCountLimit:kCacheObjects];
+
         NSBundle* bundle = [NSBundle bundleForClass:[self class]];
         NSString* path = [bundle pathForResource:@"bsm" ofType:@"db"];
         self.db = [FMDatabase databaseWithPath:path];
@@ -40,6 +45,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         [self.db close];
         self.db = nil;
     }
+
+    [self.cache removeAllObjects];
+    self.cache = nil;
 }
 
 -(NSArray*) match:(NSString*)code {
@@ -48,38 +56,56 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(NSArray*) match:(NSString*)code page:(NSUInteger) page {
     NSAssert(code, @"code cannot be nil");
-    NSMutableArray* result = [NSMutableArray array];
-    NSString* query = [NSString stringWithFormat:@"%@%%", [code stringByReplacingOccurrencesOfString:@"*" withString:@"%"]];
-    NSUInteger minCodeLength = MAX([query length] - 1, 1);
-    FMResultSet *rs;
-    
-    // if this is a wildcard search, we sort result by frequency first
-    if ([code rangeOfString:@"*"].location != NSNotFound) {
-        rs = [self.db executeQuery:@"select frequency, length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, frequency LIMIT 9 OFFSET ?", query, @(minCodeLength), @(page*9U)];
-    } else {
-        rs = [self.db executeQuery:@"select length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, minid LIMIT 9 OFFSET ?", query, @(minCodeLength), @(page*9U)];
+    @autoreleasepool {
+        NSString* cacheKey = [NSString stringWithFormat:@"match.%@p%lu", code, page];
+        NSMutableArray* result = [self.cache objectForKey:cacheKey];
+        if (!result) {
+            NSMutableArray* newResult = [NSMutableArray array];
+            NSString* query = [NSString stringWithFormat:@"%@%%", [code stringByReplacingOccurrencesOfString:@"*" withString:@"%"]];
+            NSUInteger minCodeLength = MAX([query length] - 1, 1);
+            FMResultSet *rs;
+            
+            // if this is a wildcard search, we sort result by frequency first
+            if ([code rangeOfString:@"*"].location != NSNotFound) {
+                rs = [self.db executeQuery:@"select frequency, length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, frequency LIMIT 9 OFFSET ?", query, @(minCodeLength), @(page*9U)];
+            } else {
+                rs = [self.db executeQuery:@"select length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, minid LIMIT 9 OFFSET ?", query, @(minCodeLength), @(page*9U)];
+            }
+            
+            while ([rs next]) {
+                NSString* word = [rs stringForColumn:@"word"];
+                NSString* code = [rs stringForColumn:@"code"];
+                [newResult addObject:[BSMMatch matchWithCode:code word:word]];
+            }
+            [rs close];
+
+            result = [newResult copy];
+            [self.cache setObject:result forKey:cacheKey];
+        }
+
+        return result;
     }
-    
-    while ([rs next]) {
-        NSString* word = [rs stringForColumn:@"word"];
-        NSString* code = [rs stringForColumn:@"code"];
-        [result addObject:[BSMMatch matchWithCode:code word:word]];
-    }
-    [rs close];
-    return result;
 }
 
 -(NSUInteger) numberOfMatchWithCode:(NSString*)code {
     NSAssert(code, @"code cannot be nil");
-    NSString* query = [NSString stringWithFormat:@"%@%%", [code stringByReplacingOccurrencesOfString:@"*" withString:@"%"]];
-    NSUInteger minCodeLength = MAX([query length] - 1, 1);
-    FMResultSet *rs = [self.db executeQuery:@"select count(*) from (select word, code, length(code) as len from ime where code LIKE ? and len >= ? group by word)", query, @(minCodeLength)];
-    NSUInteger numberOfMatch = 0;
-    if ([rs next]) {
-        numberOfMatch = (NSUInteger) [rs intForColumnIndex:0];
+    @autoreleasepool {        
+        NSString* cacheKey = [NSString stringWithFormat:@"matchcount.%@", code];
+        NSNumber* result = [self.cache objectForKey:cacheKey];
+        if (!result) {
+            NSString* query = [NSString stringWithFormat:@"%@%%", [code stringByReplacingOccurrencesOfString:@"*" withString:@"%"]];
+            NSUInteger minCodeLength = MAX([query length] - 1, 1);
+            FMResultSet *rs = [self.db executeQuery:@"select count(*) from (select word, code, length(code) as len from ime where code LIKE ? and len >= ? group by word)", query, @(minCodeLength)];
+            NSUInteger numberOfMatch = 0;
+            if ([rs next]) {
+                numberOfMatch = (NSUInteger) [rs intForColumnIndex:0];
+            }
+            [rs close];
+            result = @(numberOfMatch);
+            [self.cache setObject:result forKey:cacheKey];
+        }
+        return [result unsignedIntegerValue];
     }
-    [rs close];
-    return numberOfMatch;
 }
 
 @end

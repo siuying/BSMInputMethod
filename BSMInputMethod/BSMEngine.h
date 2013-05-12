@@ -12,6 +12,7 @@
 @interface BSMEngine : NSObject
 
 @property (nonatomic, strong) FMDatabase* db;
+@property (nonatomic, strong) NSCache* cache;
 
 // match given code with BSMMatch
 // @param code ime code
