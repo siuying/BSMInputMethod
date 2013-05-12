@@ -71,20 +71,29 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if ([self.buffer.candidates count] > 0) {
             return [self selectFirstMatch:sender];
         }
+
     } else if (keyCode == kVK_ANSI_KeypadDivide) {
         if (self.buffer.inputBuffer.length > 0) {
             if ([self.buffer nextPage]) {
                 NSBeep();
             }
-            [self showCandidateWindowWithClient:sender];            
+            [self showCandidateWindowWithClient:sender];
+            return YES;
         }
-        return YES;
+
     } else if (keyCode == kVK_ANSI_KeypadEquals) {
-        if ([self.buffer previousPage]) {
-            NSBeep();
+        if (self.buffer.inputBuffer.length > 0) {
+            if ([self.buffer previousPage]) {
+                NSBeep();
+            }
+            [self showCandidateWindowWithClient:sender];
+            return YES;
         }
-        [self showCandidateWindowWithClient:sender];
+
+    } else if (keyCode == kVK_ANSI_KeypadClear) {
+        [self clearInput:sender];
         return YES;
+
     }
 
     return NO;
