@@ -33,14 +33,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     self.listView.backgroundColor = [NSColor whiteColor];
 }
 
-- (BOOL)canBecomeKeyWindow {
-    return YES;
-}
-
 #pragma mark - Public
 
 -(void) updateCandidates:(NSArray*)candidates {
-    DDLogVerbose(@"update candidates: %@", candidates);
+    DDLogVerbose(@"update candidates: %lu", [candidates count]);
     self.candidates = [candidates copy];
     [self.listView reloadData];
 }
