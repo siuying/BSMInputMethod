@@ -50,8 +50,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             return YES;
         }
 
-    } else if (keyCode >= kVK_ANSI_Keypad0 && keyCode <= kVK_ANSI_Keypad9) {
-        if (self.buffer.selectionMode) {
+    } else if ((keyCode >= kVK_ANSI_Keypad0 && keyCode <= kVK_ANSI_Keypad9) || keyCode == kVK_ANSI_KeypadMultiply) {
+        if (self.buffer.selectionMode && keyCode != kVK_ANSI_KeypadMultiply) {
             // in selection mode, if user enter 1-9, apply the word
             if (keyCode > kVK_ANSI_Keypad0) {
                 NSUInteger selectionIndex = 0;

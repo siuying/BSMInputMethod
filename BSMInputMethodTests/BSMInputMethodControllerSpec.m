@@ -71,6 +71,24 @@ describe(@"BSMInputMethodController", ^{
                 [mockController verify];
             });
         });
+        
+        
+        describe(@"* key", ^{
+            it(@"should enter input", ^{
+                [((BSMBuffer*)[mockBuffer expect]) appendBuffer:@"*"];
+                [controller inputText:@"*" key:kVK_ANSI_KeypadMultiply modifiers:0 client:mockClient];
+                [mockBuffer verify];
+            });
+
+            it(@"should not allow * key in selection mode", ^{
+                [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+                [controller inputText:@"." key:kVK_ANSI_KeypadDecimal modifiers:0 client:mockClient];
+
+                [[mockController expect] beep];
+                [controller inputText:@"*" key:kVK_ANSI_KeypadMultiply modifiers:0 client:mockClient];
+                [mockBuffer verify];
+            });
+        });
 
         describe(@"decimal key", ^{            
             it(@"should enter selection mode", ^{
