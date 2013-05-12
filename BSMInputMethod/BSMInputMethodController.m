@@ -37,7 +37,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             if (self.buffer.selectionMode) {
                 // if user already in selection mode, select the first word
                 [self selectFirstMatch:sender];
-                NSBeep();
             } else {
                 // otehrwise enter selection mode
                 [self appendBuffer:string client:sender];
