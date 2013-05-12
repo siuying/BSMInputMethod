@@ -94,8 +94,39 @@ describe(@"BSMInputMethodController", ^{
                 [mockBuffer verify];
             });
         });
+    });
+    
+    describe(@"minus key", ^{
+        it(@"should delete last input", ^{
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"1" key:kVK_ANSI_Keypad1 modifiers:0 client:mockClient];
+            [controller inputText:@"-" key:kVK_ANSI_KeypadMinus modifiers:0 client:mockClient];
+            expect([[mockBuffer inputBuffer] length]).to.equal(2);
+        });
+        
+        it(@"should pass minus key to system if no word in buffer", ^{
+            BOOL handled = [controller inputText:@"-" key:kVK_ANSI_KeypadMinus modifiers:0 client:mockClient];
+            expect(handled).to.beFalsy();
+        });
+    });
+    
+    describe(@"enter key", ^{
+        it(@"should pass enter key to system if no input", ^{
+            BOOL handled = [controller inputText:@"\n" key:kVK_ANSI_KeypadEnter modifiers:0 client:mockClient];
+            expect(handled).to.beFalsy();
+        });
 
+        it(@"should select first candidate", ^{
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"1" key:kVK_ANSI_Keypad1 modifiers:0 client:mockClient];
 
+            [((BSMInputMethodController*)[mockController expect]) selectFirstCandidate:mockClient];
+            BOOL handled = [controller inputText:@"\n" key:kVK_ANSI_KeypadEnter modifiers:0 client:mockClient];
+            [mockController verify];
+            expect(handled).to.beFalsy();
+        });
     });
 });
 

@@ -36,7 +36,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         if (self.buffer.inputBuffer.length > 0) {
             if (self.buffer.selectionMode) {
                 // if user already in selection mode, select the first word
-                [self selectFirstMatch:sender];
+                [self selectFirstCandidate:sender];
             } else {
                 // otherwise enter selection mode
                 [self appendBuffer:string client:sender];
@@ -92,7 +92,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
     } else if (keyCode == kVK_ANSI_KeypadEnter) {
         if (self.buffer.composedString.length > 0) {
-            return [self selectFirstMatch:sender];
+            return [self selectFirstCandidate:sender];
         }
 
     } else if (keyCode == kVK_ANSI_KeypadDivide) {
@@ -171,7 +171,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 }
 
-- (BOOL) selectFirstMatch:(id)sender {
+- (BOOL) selectFirstCandidate:(id)sender {
     if ([self.buffer.candidates count] > 0 && self.buffer.composedString.length > 0) {
         [self commitComposition:sender];
     } else {

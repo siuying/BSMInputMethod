@@ -18,6 +18,9 @@
 
 - (BOOL) appendBuffer:(NSString*)string client:(id)sender;
 
+// select the first matching candidate
+- (BOOL) selectFirstCandidate:(id)sender;
+
 - (void) commitComposition:(id)client;
 
 // notify something was wrong to user
