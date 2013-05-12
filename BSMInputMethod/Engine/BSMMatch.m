@@ -20,7 +20,7 @@
 }
 
 -(BOOL) isEqual:(id)object {
-    if ([object class] == [BSMMatch class]) {
+    if ([object class] != [BSMMatch class]) {
         return NO;
     }
     

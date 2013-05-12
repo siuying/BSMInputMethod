@@ -19,14 +19,10 @@
 		540F9260173D4925009054B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 540F925E173D4925009054B3 /* InfoPlist.strings */; };
 		540F926E173D49BA009054B3 /* BSMInputMethodController.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F926D173D49BA009054B3 /* BSMInputMethodController.m */; };
 		540F9273173D4AA9009054B3 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9272173D4AA9009054B3 /* InputMethodKit.framework */; };
-		540F9276173D4E30009054B3 /* BSMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9275173D4E30009054B3 /* BSMEngine.m */; };
 		540F9279173D5872009054B3 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9278173D5872009054B3 /* Carbon.framework */; };
 		540F927B173DFBBA009054B3 /* bsm.db in Resources */ = {isa = PBXBuildFile; fileRef = 540F927A173DFBBA009054B3 /* bsm.db */; };
 		540F927C173DFBBA009054B3 /* bsm.db in Resources */ = {isa = PBXBuildFile; fileRef = 540F927A173DFBBA009054B3 /* bsm.db */; };
-		540F927F173DFDA5009054B3 /* BSMMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F927E173DFDA5009054B3 /* BSMMatch.m */; };
-		540F9280173DFDA5009054B3 /* BSMMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F927E173DFDA5009054B3 /* BSMMatch.m */; };
 		540F9283173DFEE5009054B3 /* BSMEngineSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9281173DFEE5009054B3 /* BSMEngineSpec.m */; };
-		540F9286173E4792009054B3 /* BSMBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9285173E4792009054B3 /* BSMBuffer.m */; };
 		540F9288173E4962009054B3 /* BSMBufferSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9287173E4962009054B3 /* BSMBufferSpec.m */; };
 		540F928C173E59FA009054B3 /* BSMCandidatesWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F928B173E59FA009054B3 /* BSMCandidatesWindow.m */; };
 		540F928E173E5B57009054B3 /* BSMCandidateViewItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 540F928D173E5B57009054B3 /* BSMCandidateViewItem.xib */; };
@@ -35,6 +31,12 @@
 		543FB198173F4E0800F0F155 /* BSMInputMethodControllerSpec.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FB197173F4E0800F0F155 /* BSMInputMethodControllerSpec.m */; };
 		543FB199173F501D00F0F155 /* InputMethodKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9272173D4AA9009054B3 /* InputMethodKit.framework */; };
 		543FB19A173F501F00F0F155 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9278173D5872009054B3 /* Carbon.framework */; };
+		543FB1A2173F982600F0F155 /* BSMBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FB19D173F982600F0F155 /* BSMBuffer.m */; };
+		543FB1A3173F982600F0F155 /* BSMBuffer.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FB19D173F982600F0F155 /* BSMBuffer.m */; };
+		543FB1A4173F982600F0F155 /* BSMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FB19F173F982600F0F155 /* BSMEngine.m */; };
+		543FB1A5173F982600F0F155 /* BSMEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FB19F173F982600F0F155 /* BSMEngine.m */; };
+		543FB1A6173F982600F0F155 /* BSMMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FB1A1173F982600F0F155 /* BSMMatch.m */; };
+		543FB1A7173F982600F0F155 /* BSMMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FB1A1173F982600F0F155 /* BSMMatch.m */; };
 		546CE672173EC05D0098C067 /* bsm.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 546CE671173EC05D0098C067 /* bsm.tiff */; };
 		692A6896FBA246CEB3AC7DAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2A044C9780448A9EAE21BA /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -71,15 +73,9 @@
 		540F926C173D49BA009054B3 /* BSMInputMethodController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMInputMethodController.h; sourceTree = "<group>"; };
 		540F926D173D49BA009054B3 /* BSMInputMethodController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMInputMethodController.m; sourceTree = "<group>"; };
 		540F9272173D4AA9009054B3 /* InputMethodKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = InputMethodKit.framework; path = System/Library/Frameworks/InputMethodKit.framework; sourceTree = SDKROOT; };
-		540F9274173D4E30009054B3 /* BSMEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMEngine.h; sourceTree = "<group>"; };
-		540F9275173D4E30009054B3 /* BSMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMEngine.m; sourceTree = "<group>"; };
 		540F9278173D5872009054B3 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		540F927A173DFBBA009054B3 /* bsm.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = bsm.db; path = data/bsm.db; sourceTree = SOURCE_ROOT; };
-		540F927D173DFDA5009054B3 /* BSMMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMMatch.h; sourceTree = "<group>"; };
-		540F927E173DFDA5009054B3 /* BSMMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMMatch.m; sourceTree = "<group>"; };
 		540F9281173DFEE5009054B3 /* BSMEngineSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMEngineSpec.m; sourceTree = "<group>"; };
-		540F9284173E4792009054B3 /* BSMBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMBuffer.h; sourceTree = "<group>"; };
-		540F9285173E4792009054B3 /* BSMBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMBuffer.m; sourceTree = "<group>"; };
 		540F9287173E4962009054B3 /* BSMBufferSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMBufferSpec.m; sourceTree = "<group>"; };
 		540F928A173E59FA009054B3 /* BSMCandidatesWindow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSMCandidatesWindow.h; path = Views/BSMCandidatesWindow.h; sourceTree = "<group>"; };
 		540F928B173E59FA009054B3 /* BSMCandidatesWindow.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSMCandidatesWindow.m; path = Views/BSMCandidatesWindow.m; sourceTree = "<group>"; };
@@ -89,6 +85,12 @@
 		540F9295173E92EB009054B3 /* BSMView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BSMView.h; path = Views/BSMView.h; sourceTree = "<group>"; };
 		540F9296173E92EB009054B3 /* BSMView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BSMView.m; path = Views/BSMView.m; sourceTree = "<group>"; };
 		543FB197173F4E0800F0F155 /* BSMInputMethodControllerSpec.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMInputMethodControllerSpec.m; sourceTree = "<group>"; };
+		543FB19C173F982600F0F155 /* BSMBuffer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMBuffer.h; sourceTree = "<group>"; };
+		543FB19D173F982600F0F155 /* BSMBuffer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMBuffer.m; sourceTree = "<group>"; };
+		543FB19E173F982600F0F155 /* BSMEngine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMEngine.h; sourceTree = "<group>"; };
+		543FB19F173F982600F0F155 /* BSMEngine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMEngine.m; sourceTree = "<group>"; };
+		543FB1A0173F982600F0F155 /* BSMMatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BSMMatch.h; sourceTree = "<group>"; };
+		543FB1A1173F982600F0F155 /* BSMMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMMatch.m; sourceTree = "<group>"; };
 		546CE671173EC05D0098C067 /* bsm.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = bsm.tiff; sourceTree = "<group>"; };
 		54E08468173EB46300D9E5A6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		85F9EA81874245F69A3FFBB6 /* libPods-BSMInputMethodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSMInputMethodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -172,16 +174,11 @@
 			isa = PBXGroup;
 			children = (
 				540F9289173E59DB009054B3 /* Views */,
+				543FB19B173F982600F0F155 /* Engine */,
 				540F924A173D4924009054B3 /* BSMAppDelegate.h */,
 				540F924B173D4924009054B3 /* BSMAppDelegate.m */,
 				540F926C173D49BA009054B3 /* BSMInputMethodController.h */,
 				540F926D173D49BA009054B3 /* BSMInputMethodController.m */,
-				540F9274173D4E30009054B3 /* BSMEngine.h */,
-				540F9275173D4E30009054B3 /* BSMEngine.m */,
-				540F927D173DFDA5009054B3 /* BSMMatch.h */,
-				540F927E173DFDA5009054B3 /* BSMMatch.m */,
-				540F9284173E4792009054B3 /* BSMBuffer.h */,
-				540F9285173E4792009054B3 /* BSMBuffer.m */,
 				540F924D173D4924009054B3 /* MainMenu.xib */,
 				540F926F173D4A93009054B3 /* Resources */,
 				540F923F173D4924009054B3 /* Supporting Files */,
@@ -242,6 +239,19 @@
 				540F9296173E92EB009054B3 /* BSMView.m */,
 			);
 			name = Views;
+			sourceTree = "<group>";
+		};
+		543FB19B173F982600F0F155 /* Engine */ = {
+			isa = PBXGroup;
+			children = (
+				543FB19C173F982600F0F155 /* BSMBuffer.h */,
+				543FB19D173F982600F0F155 /* BSMBuffer.m */,
+				543FB19E173F982600F0F155 /* BSMEngine.h */,
+				543FB19F173F982600F0F155 /* BSMEngine.m */,
+				543FB1A0173F982600F0F155 /* BSMMatch.h */,
+				543FB1A1173F982600F0F155 /* BSMMatch.m */,
+			);
+			path = Engine;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,12 +431,12 @@
 				540F9245173D4924009054B3 /* main.m in Sources */,
 				540F924C173D4924009054B3 /* BSMAppDelegate.m in Sources */,
 				540F926E173D49BA009054B3 /* BSMInputMethodController.m in Sources */,
-				540F9276173D4E30009054B3 /* BSMEngine.m in Sources */,
-				540F927F173DFDA5009054B3 /* BSMMatch.m in Sources */,
-				540F9286173E4792009054B3 /* BSMBuffer.m in Sources */,
 				540F928C173E59FA009054B3 /* BSMCandidatesWindow.m in Sources */,
 				540F9291173E5CC7009054B3 /* BSMCandidateViewItem.m in Sources */,
 				540F9297173E92EB009054B3 /* BSMView.m in Sources */,
+				543FB1A2173F982600F0F155 /* BSMBuffer.m in Sources */,
+				543FB1A4173F982600F0F155 /* BSMEngine.m in Sources */,
+				543FB1A6173F982600F0F155 /* BSMMatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -434,10 +444,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				540F9280173DFDA5009054B3 /* BSMMatch.m in Sources */,
 				540F9283173DFEE5009054B3 /* BSMEngineSpec.m in Sources */,
 				540F9288173E4962009054B3 /* BSMBufferSpec.m in Sources */,
 				543FB198173F4E0800F0F155 /* BSMInputMethodControllerSpec.m in Sources */,
+				543FB1A3173F982600F0F155 /* BSMBuffer.m in Sources */,
+				543FB1A5173F982600F0F155 /* BSMEngine.m in Sources */,
+				543FB1A7173F982600F0F155 /* BSMMatch.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
