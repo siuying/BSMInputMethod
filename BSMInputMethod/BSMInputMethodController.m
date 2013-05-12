@@ -14,7 +14,7 @@
 #import "BSMAppDelegate.h"
 
 #ifdef DEBUG
-static const int ddLogLevel = LOG_LEVEL_INFO;
+static const int ddLogLevel = LOG_LEVEL_VERBOSE;
 #else
 static const int ddLogLevel = LOG_LEVEL_WARN;
 #endif
@@ -155,6 +155,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (BOOL) minusBuffer:(id)sender {
+    DDLogVerbose(@"will minus buffer");
     @synchronized(self) {
         if (self.buffer.inputBuffer.length > 0) {
             [self.buffer deleteBackward];
@@ -178,8 +179,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (void) clearInput:(id)sender {
+    DDLogVerbose(@"will clear input");
     @synchronized(self) {
-        DDLogVerbose(@"clear input");
         [sender setMarkedText:@""
                selectionRange:NSMakeRange(NSNotFound,NSNotFound)
              replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
@@ -234,6 +235,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #pragma mark - IMKStateSetting
 
 - (void)activateServer:(id)client {
+    DDLogVerbose(@"will activate server");
     [self.buffer reset];
 }
 
@@ -254,6 +256,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                   NSStringFromRange(self.selectionRange));
 
         NSRect lineHeightRect = NSMakeRect(0.0, 0.0, 16.0, 16.0);
+        // some apps (e.g. Twitter for Mac's search bar) handle this call incorrectly, hence the try-catch
         @try {
             NSDictionary *attr = [sender attributesForCharacterIndex:cursorIndex lineHeightRectangle:&lineHeightRect];
             if (![attr count]) {
