@@ -20,4 +20,8 @@
 
 - (void) commitComposition:(id)client;
 
+// notify something was wrong to user
+// by default call beep on system
+- (void) beep;
+
 @end

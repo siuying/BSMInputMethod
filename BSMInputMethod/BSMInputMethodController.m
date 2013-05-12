@@ -52,18 +52,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                 if ([self.buffer setSelectedIndex:selectionIndex]) {
                     [self commitComposition:sender];
                 } else {
-                    NSBeep();
+                    [self beep];
                 }
                 return YES;
             } else {
-                NSBeep();
+                [self beep];
             }
 
             return YES;
         } else if (self.buffer.inputBuffer.length < 6) {
             return [self appendBuffer:string client:sender];
         } else {
-            NSBeep();
+            [self beep];
             return YES;
         }
 
@@ -78,7 +78,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     } else if (keyCode == kVK_ANSI_KeypadDivide) {
         if (self.buffer.inputBuffer.length > 0) {
             if ([self.buffer nextPage]) {
-                NSBeep();
+                [self beep];
             }
             [self showCandidateWindowWithClient:sender];
             return YES;
@@ -87,7 +87,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     } else if (keyCode == kVK_ANSI_KeypadEquals) {
         if (self.buffer.inputBuffer.length > 0) {
             if ([self.buffer previousPage]) {
-                NSBeep();
+                [self beep];
             }
             [self showCandidateWindowWithClient:sender];
             return YES;
@@ -188,6 +188,10 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(void) reset {
     [self.buffer reset];
+}
+
+- (void) beep {
+    NSBeep();
 }
 
 #pragma mark - IMKStateSetting
