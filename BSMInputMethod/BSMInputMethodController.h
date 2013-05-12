@@ -12,8 +12,6 @@
 #import "BSMCandidatesWindow.h"
 
 @interface BSMInputMethodController : IMKInputController {
-    /* current number of page, in the IME match candidate window */
-    NSUInteger _page;
 }
 
 @property (nonatomic, strong) BSMBuffer* buffer;
