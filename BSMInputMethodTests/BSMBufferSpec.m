@@ -49,6 +49,22 @@ describe(@"BSMBuffer", ^{
             [buffer deleteBackward];
             expect(buffer.selectionMode).to.beFalsy();
         });
+        
+        it(@"should append 6 char and delete twice", ^{
+            [buffer appendBuffer:@"6"];
+            [buffer appendBuffer:@"6"];
+            [buffer appendBuffer:@"4"];
+            [buffer appendBuffer:@"6"];
+            [buffer appendBuffer:@"6"];
+            [buffer appendBuffer:@"4"];
+            [buffer deleteBackward];            
+            expect(buffer.inputBuffer).to.equal(@"66466");
+            expect(buffer.marker).to.equal(@"𠄌𠄌丶𠄌𠄌");
+
+            [buffer deleteBackward];
+            expect(buffer.inputBuffer).to.equal(@"6646");
+            expect(buffer.marker).to.equal(@"𠄌𠄌丶𠄌");
+        });
     });
     
     describe(@"-appendBuffer:", ^{
