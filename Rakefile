@@ -3,6 +3,7 @@ require 'bundler'
 Bundler.require
 require 'fileutils'
 
+require './tools/word_frequency'
 require './tools/bsm_converter'
 
 namespace "build" do
@@ -36,9 +37,9 @@ end
 
 namespace "preprocess" do
   task :convert do
-    @converter = BsmConverter.new("./data/bsm.db")
+    @frequency = WordFrequency.new("./data/BIAU1.TXT")
+    @converter = BsmConverter.new("./data/bsm.db", @frequency)
     @converter.setup
-
 
     data = open("data/bsm_applet.dat", 'r:BIG5-HKSCS').read
 

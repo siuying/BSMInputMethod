@@ -78,7 +78,7 @@ describe(@"BSMBuffer", ^{
             buffer = [[BSMBuffer alloc] initWithEngine:[[BSMEngine alloc] init]];
         });
         
-        it(@"should return proepr candidates", ^{
+        it(@"should return proper candidates", ^{
             [buffer appendBuffer:@"9"];
             [buffer appendBuffer:@"9"];
             [buffer appendBuffer:@"1"];
@@ -87,16 +87,6 @@ describe(@"BSMBuffer", ^{
             expect([buffer.candidates count]).to.equal(9U);
             [buffer appendBuffer:@"1"];
             expect([buffer.candidates count]).to.equal(4U);
-        });
-        
-        it(@"should set composedString", ^{
-            [buffer appendBuffer:@"9"];
-            [buffer appendBuffer:@"9"];
-            [buffer appendBuffer:@"1"];
-            [buffer appendBuffer:@"9"];
-            expect(buffer.composedString).notTo.beNil();
-            expect(buffer.composedString).to.equal(@"苹");
-            [buffer appendBuffer:@"1"];
             expect(buffer.composedString).to.equal(@"茸");
         });
     });

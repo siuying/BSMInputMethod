@@ -48,10 +48,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(NSArray*) match:(NSString*)code page:(NSUInteger) page {
     NSAssert(code, @"code cannot be nil");
+    NSMutableArray* result = [NSMutableArray array];
     NSString* query = [NSString stringWithFormat:@"%@%%", [code stringByReplacingOccurrencesOfString:@"*" withString:@"%"]];
     NSUInteger minCodeLength = MAX([query length] - 1, 1);
-    NSMutableArray* result = [NSMutableArray array];
-    FMResultSet *rs = [self.db executeQuery:@"select min(id) as id, length(code) as len, word, code from ime where code LIKE ? and len >= ? group by word order by id LIMIT 9 OFFSET ?", query, @(minCodeLength), @(page*9U)];
+    FMResultSet *rs;
+    
+    // if this is a wildcard search, we sort result by frequency first
+    if ([code rangeOfString:@"*"].location != NSNotFound) {
+        rs = [self.db executeQuery:@"select frequency, length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, frequency LIMIT 9 OFFSET ?", query, @(minCodeLength), @(page*9U)];
+    } else {
+        rs = [self.db executeQuery:@"select length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, minid LIMIT 9 OFFSET ?", query, @(minCodeLength), @(page*9U)];
+    }
+    
     while ([rs next]) {
         NSString* word = [rs stringForColumn:@"word"];
         NSString* code = [rs stringForColumn:@"code"];

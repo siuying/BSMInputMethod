@@ -4,8 +4,9 @@ require "sequel"
 class BsmConverter
   attr_accessor :db
 
-  def initialize(db=':memory:')
+  def initialize(db=':memory:', frequency=nil)
     @db = Sequel.sqlite(db)
+    @frequency = frequency
     setup
   end
 
@@ -14,6 +15,7 @@ class BsmConverter
       primary_key :id
       String :code, :fixed => true, :size => 6, :index => true
       String :word, :fixed => true, :size => 1
+      Integer :frequency, :default => 6000, :index => true
     end
   end
 
@@ -22,6 +24,6 @@ class BsmConverter
   end
 
   def add(code, word)
-    ime.insert(:code => code, :word => word)
+    ime.insert(:code => code, :word => word, :frequency => @frequency[word])
   end
 end

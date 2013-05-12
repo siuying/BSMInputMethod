@@ -92,6 +92,20 @@ describe(@"BSMEngine", ^{
             }
             expect(hasTarget).to.beFalsy();
         });
+        
+        it(@"should order result by frequency", ^{
+            NSUInteger numberOfMatch = [engine numberOfMatchWithCode:@"1*8"];
+            expect(numberOfMatch).to.beGreaterThanOrEqualTo(1);
+            BSMMatch* expectMatch = [BSMMatch matchWithCode:@"118" word:@"天"];
+            NSArray* currentPageMatches = [engine match:@"1*8" page:0];
+            expect([currentPageMatches containsObject:expectMatch]).to.beTruthy();
+        });
+        
+        it(@"should return single word", ^{
+            NSArray* currentPageMatches = [engine match:@"4" page:0];
+            BSMMatch* firstMatch = [currentPageMatches objectAtIndex:0];
+            expect(firstMatch.word).to.equal(@"這");
+        });
     });
     
     describe(@"-match:page:", ^{
