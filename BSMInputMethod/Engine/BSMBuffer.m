@@ -115,16 +115,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 -(void) deleteBackward {
     @synchronized(self) {
         if ([self.marker length] > 0) {
-            NSString* lastInput = [self.marker substringFromIndex:[self.marker length]-1];
-            NSLog(@" self.marker deleteCharactersInRange:%@ (%@)", NSStringFromRange(NSMakeRange([self.marker length]-1, 1)), lastInput);
-            [self.marker deleteCharactersInRange:NSMakeRange([self.marker length]-1, 1)];
-
-            if ([lastInput isEqualToString:@"."]) {
+            if ([self.marker hasSuffix:@"."]) {
                 _selectionMode = NO;
             } else {
-                [self.inputBuffer deleteCharactersInRange:NSMakeRange([self.inputBuffer length]-1, 1)];
+                [self.inputBuffer deleteCharactersInRange:[self.inputBuffer rangeOfComposedCharacterSequencesForRange:NSMakeRange([self.inputBuffer length]-1, 1)]];
                 _needsUpdateCandidates = YES;
             }
+            [self.marker deleteCharactersInRange:[self.marker rangeOfComposedCharacterSequencesForRange:NSMakeRange([self.marker length]-1, 1)]];
         }
     }
 }
