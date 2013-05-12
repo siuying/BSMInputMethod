@@ -100,13 +100,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                selectionRange:NSMakeRange(0, [marker length])
              replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
 
-        BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
-        if ([candidateWindow isVisible]) {
-            [self updateCandidateWindow];
-        } else {
-            [self showCandidateWindowWithClient:sender];
-        }
-
+        [self showCandidateWindowWithClient:sender];
         return YES;
     }
 }
@@ -122,11 +116,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
                    selectionRange:NSMakeRange(0, [marker length])
                  replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
             
-            if ([marker length]) {
-                [self updateCandidateWindow];
-            } else {
-                [self hideCandidateWindow];
-            }
+            [self showCandidateWindowWithClient:sender];
             return YES;
         } else {
             return NO;
@@ -229,13 +219,6 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             // beep when input made 0 possible candidate
             NSBeep();
         }
-    }
-}
-
--(void) updateCandidateWindow {
-    BSMCandidatesWindow* candidateWindow = [BSMAppDelegate sharedCandidatesWindow];
-    @synchronized(candidateWindow) {
-        [candidateWindow updateCandidates:self.buffer.candidates];
     }
 }
 
