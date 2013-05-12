@@ -237,6 +237,19 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (void)deactivateServer:(id)client {
+    DDLogVerbose(@"will deactivate server");
+
+    // cleanup
+    if (![self.buffer isEmpty]) {
+        [self.buffer reset];
+        [client setMarkedText:@""
+               selectionRange:NSMakeRange(0, 0)
+             replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+    }
+
+    // commit any residue in the composing buffer
+    [self commitComposition:client];
+    
     [self.candidateWindow hideCandidates];
 }
 
