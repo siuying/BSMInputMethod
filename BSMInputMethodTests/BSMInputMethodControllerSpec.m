@@ -147,9 +147,22 @@ describe(@"BSMInputMethodController", ^{
             [controller inputText:@"1" key:kVK_ANSI_Keypad1 modifiers:0 client:mockClient];
 
             [((BSMInputMethodController*)[mockController expect]) selectFirstCandidate:mockClient];
-            BOOL handled = [controller inputText:@"\n" key:kVK_ANSI_KeypadEnter modifiers:0 client:mockClient];
+            [controller inputText:@"\n" key:kVK_ANSI_KeypadEnter modifiers:0 client:mockClient];
             [mockController verify];
-            expect(handled).to.beFalsy();
+        });
+
+        it(@"should beep if press enter when no match", ^{
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"1" key:kVK_ANSI_Keypad1 modifiers:0 client:mockClient];
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"8" key:kVK_ANSI_Keypad8 modifiers:0 client:mockClient];
+            [controller inputText:@"1" key:kVK_ANSI_Keypad1 modifiers:0 client:mockClient];
+
+            [((BSMInputMethodController*)[mockController expect]) beep];
+            BOOL handled = [controller inputText:@"\n" key:kVK_ANSI_KeypadEnter modifiers:0 client:mockClient];
+            expect(handled).to.beTruthy();
+            [mockController verify];
         });
     });
     

@@ -108,8 +108,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
         }
 
     } else if (keyCode == kVK_ANSI_KeypadEnter) {
-        if (self.buffer.composedString.length > 0) {
-            return [self selectFirstCandidate:sender];
+        if (self.buffer.inputBuffer.length > 0) {
+            if (self.buffer.composedString.length > 0) {
+                return [self selectFirstCandidate:sender];
+            } else {
+                [self beep];
+                return YES;
+            }
         }
 
     } else if (keyCode == kVK_ANSI_KeypadDivide) {
