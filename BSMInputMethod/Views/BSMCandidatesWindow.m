@@ -37,7 +37,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(void) updateCandidates:(NSArray*)candidates {
     DDLogVerbose(@"update candidates: %lu", [candidates count]);
-    self.candidates = [candidates copy];
+    self.candidates = candidates;
     [self.listView reloadData];
 }
 

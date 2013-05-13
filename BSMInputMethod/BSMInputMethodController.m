@@ -140,31 +140,27 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(BOOL) appendBuffer:(NSString*)string client:(id)sender {
     DDLogVerbose(@"will append buffer: %@ + %@", self.buffer.inputBuffer, string);
-    @synchronized(self) {
-        [self.buffer appendBuffer:string];
-        [self updateMarkedText:sender];
-        [self showCandidateWindowWithClient:sender];
-        return YES;
-    }
+    [self.buffer appendBuffer:string];
+    [self updateMarkedText:sender];
+    [self showCandidateWindowWithClient:sender];
+    return YES;
 }
 
 - (BOOL) minusBuffer:(id)sender {
     DDLogVerbose(@"will minus buffer: %@", self.buffer.inputBuffer);
-    @synchronized(self) {
-        if (![self.buffer isEmpty]) {
-            [self.buffer deleteBackward];
+    if (![self.buffer isEmpty]) {
+        [self.buffer deleteBackward];
 
-            [self updateMarkedText:sender];
+        [self updateMarkedText:sender];
 
-            if (self.buffer.composedString.length > 0) {
-                [self showCandidateWindowWithClient:sender];
-            } else {
-                [self hideCandidateWindow];
-            }
-            return YES;
+        if (self.buffer.composedString.length > 0) {
+            [self showCandidateWindowWithClient:sender];
         } else {
-            return NO;
+            [self hideCandidateWindow];
         }
+        return YES;
+    } else {
+        return NO;
     }
 }
 
@@ -177,13 +173,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 - (void) clearInput:(id)sender {
     DDLogVerbose(@"will clear input");
-    @synchronized(self) {
-        [sender setMarkedText:@""
-               selectionRange:NSMakeRange(NSNotFound,NSNotFound)
-             replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
-        [self reset];
-        [self cancelComposition];
-    }
+    [sender setMarkedText:@""
+           selectionRange:NSMakeRange(NSNotFound,NSNotFound)
+         replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
+    [self reset];
+    [self cancelComposition];
 }
 
 - (BOOL) selectFirstCandidate:(id)sender {
@@ -204,21 +198,17 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 - (void) commitComposition:(id)client {
-    @synchronized(self) {
-        DDLogVerbose(@"Call commitComposition:%@", client);
-        [client insertText:self.buffer.composedString
-          replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
-        [self reset];
-        [self hideCandidateWindow];
-    }
+    DDLogVerbose(@"Call commitComposition:%@", client);
+    [client insertText:self.buffer.composedString
+      replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
+    [self reset];
+    [self hideCandidateWindow];
 }
 
 -(void) cancelComposition {
-    @synchronized(self) {
-        [super cancelComposition];
-        [self reset];
-        [self hideCandidateWindow];
-    }
+    [super cancelComposition];
+    [self reset];
+    [self hideCandidateWindow];
 }
 
 -(NSAttributedString*) attrStringWithString:(NSString*)string {
@@ -261,33 +251,31 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 #pragma mark - Private
 
 -(void) showCandidateWindowWithClient:(id)sender {
-    @synchronized(self.candidateWindow) {
-        // find the position of the window
-        NSUInteger cursorIndex = self.selectionRange.location;
-        if (cursorIndex == [self.buffer.marker length] && cursorIndex) {
-            cursorIndex--;
-        }
-        DDLogInfo(@"showCandidateWindowWithClient: select range: %@",
-                  NSStringFromRange(self.selectionRange));
-
-        NSRect lineHeightRect = NSMakeRect(0.0, 0.0, 16.0, 16.0);
-        // some apps (e.g. Twitter for Mac's search bar) handle this call incorrectly, hence the try-catch
-        @try {
-            NSDictionary *attr = [sender attributesForCharacterIndex:cursorIndex lineHeightRectangle:&lineHeightRect];
-            if (![attr count]) {
-                [sender attributesForCharacterIndex:0 lineHeightRectangle:&lineHeightRect];
-            }
-        }
-        @catch (NSException *exception) {
-            DDLogError(@"Exception: cannot find string attribute: %@", [exception debugDescription]);
-        }
-        
-        // show candidate window
-        [self.candidateWindow updateCandidates:self.buffer.candidates];
-        [self.candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
-             bottomOutOfScreenAdjustmentHeight:lineHeightRect.size.height + 4.0];
-        [self.candidateWindow showCandidates];
+    // find the position of the window
+    NSUInteger cursorIndex = self.selectionRange.location;
+    if (cursorIndex == [self.buffer.marker length] && cursorIndex) {
+        cursorIndex--;
     }
+    DDLogInfo(@"showCandidateWindowWithClient: select range: %@",
+              NSStringFromRange(self.selectionRange));
+
+    NSRect lineHeightRect = NSMakeRect(0.0, 0.0, 16.0, 16.0);
+    // some apps (e.g. Twitter for Mac's search bar) handle this call incorrectly, hence the try-catch
+    @try {
+        NSDictionary *attr = [sender attributesForCharacterIndex:cursorIndex lineHeightRectangle:&lineHeightRect];
+        if (![attr count]) {
+            [sender attributesForCharacterIndex:0 lineHeightRectangle:&lineHeightRect];
+        }
+    }
+    @catch (NSException *exception) {
+        DDLogError(@"Exception: cannot find string attribute: %@", [exception debugDescription]);
+    }
+    
+    // show candidate window
+    [self.candidateWindow updateCandidates:self.buffer.candidates];
+    [self.candidateWindow setWindowTopLeftPoint:lineHeightRect.origin
+         bottomOutOfScreenAdjustmentHeight:lineHeightRect.size.height + 4.0];
+    [self.candidateWindow showCandidates];
 }
 
 -(void) hideCandidateWindow {
