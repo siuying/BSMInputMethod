@@ -36,4 +36,8 @@
 // @return number of matches
 -(NSUInteger) numberOfMatchWithCode:(NSString*)code;
 
+// Given a input code, return set of next input code that has results
+// @return set of string, where they are valid input code
+-(NSSet*) possibleNextCodeWithCode:(NSString*)code;
+
 @end

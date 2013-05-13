@@ -18,11 +18,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 #define kCacheObjects 100
 
+@interface BSMEngine () {
+    NSSet* _inputCode;
+}
+@end
+
 @implementation BSMEngine
 
 -(id) init {
     self = [super init];
     if (self) {
+        _inputCode = [NSSet setWithArray:@[@"0", @"1", @"2", @"3", @"4", @"5", @"6", @"7", @"8", @"9"]];
+
         self.cache = [[NSCache alloc] init];
         [self.cache setCountLimit:kCacheObjects];
 
@@ -109,6 +116,21 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             [self.cache setObject:result forKey:cacheKey];
         }
         return [result unsignedIntegerValue];
+    }
+}
+
+-(NSSet*) possibleNextCodeWithCode:(NSString*)code {
+    if ([code length] >= 6) {
+        return [NSSet set];
+    } else {
+        NSMutableSet* possibleNextCodes = [NSMutableSet set];
+        [_inputCode enumerateObjectsUsingBlock:^(NSString* nextCodeChar, BOOL *stop) {
+            NSString* nextCode = [code stringByAppendingString:nextCodeChar];
+            if ([self numberOfMatchWithCode:nextCode] > 0) {
+                [possibleNextCodes addObject:nextCode];
+            }
+        }];
+        return possibleNextCodes;
     }
 }
 

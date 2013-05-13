@@ -156,6 +156,23 @@ describe(@"BSMEngine", ^{
             expect(matches).to.equal(0U);
         });
     });
+    
+    describe(@"-possibleNextCodeWithCode:", ^{
+        it(@"should return possible next input codes", ^{
+            NSSet* possibleNext = [engine possibleNextCodeWithCode:@"118"];
+            NSArray* posibleNextChar = @[@"1", @"2", @"4", @"6", @"8", @"9", @"0"];
+            [posibleNextChar enumerateObjectsUsingBlock:^(NSString* nextChar, NSUInteger idx, BOOL *stop) {
+                NSString* nextCode = [@"118" stringByAppendingString:nextChar];
+                expect(possibleNext).to.contain(nextCode);
+            }];
+            
+            NSArray* imposibleNextChar = @[@"3", @"5", @"7"];
+            [imposibleNextChar enumerateObjectsUsingBlock:^(NSString* nextChar, NSUInteger idx, BOOL *stop) {
+                NSString* nextCode = [@"118" stringByAppendingString:nextChar];
+                expect(possibleNext).notTo.contain(nextCode);
+            }];
+        });
+    });
 });
 
 SpecEnd
