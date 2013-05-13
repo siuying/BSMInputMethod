@@ -56,4 +56,8 @@ namespace "preprocess" do
   end
 end
 
+task :test do
+  system('xctool test')
+end
+
 task :default => "build:install"
