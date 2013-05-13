@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) BSMBuffer* buffer;
 @property (nonatomic, strong) BSMCandidatesWindow* candidateWindow;
+@property (nonatomic, strong) id currentClient;
 
 - (BOOL) appendBuffer:(NSString*)string client:(id)sender;
 

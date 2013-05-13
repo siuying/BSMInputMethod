@@ -140,18 +140,20 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 
 -(BOOL) appendBuffer:(NSString*)string client:(id)sender {
     DDLogVerbose(@"will append buffer: %@ + %@", self.buffer.inputBuffer, string);
+    self.currentClient = sender;
     [self.buffer appendBuffer:string];
-    [self updateMarkedText:sender];
+    [self updateMarkedText];
     [self showCandidateWindowWithClient:sender];
     return YES;
 }
 
 - (BOOL) minusBuffer:(id)sender {
     DDLogVerbose(@"will minus buffer: %@", self.buffer.inputBuffer);
+    self.currentClient = sender;
     if (![self.buffer isEmpty]) {
         [self.buffer deleteBackward];
 
-        [self updateMarkedText:sender];
+        [self updateMarkedText];
 
         if (self.buffer.composedString.length > 0) {
             [self showCandidateWindowWithClient:sender];
@@ -164,11 +166,11 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 }
 
--(void) updateMarkedText:(id)sender {
+-(void) updateMarkedText {
     NSString* marker = self.buffer.marker;
-    [sender setMarkedText:[self attrStringWithString:marker]
-           selectionRange:NSMakeRange(marker.length, 0)
-         replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
+    [self.currentClient setMarkedText:[self attrStringWithString:marker]
+                       selectionRange:NSMakeRange(marker.length, 0)
+                     replacementRange:NSMakeRange(NSNotFound,NSNotFound)];
 }
 
 - (void) clearInput:(id)sender {
@@ -197,9 +199,18 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 	return theCandidates;
 }
 
-- (void) commitComposition:(id)client {
-    DDLogVerbose(@"Call commitComposition:%@", client);
-    [client insertText:self.buffer.composedString
+- (void) commitComposition:(id)sender {
+    DDLogVerbose(@"Call commitComposition:%@", sender);
+
+    // fix the premature commit bug in Terminal.app since OS X 10.5
+    if ([[sender bundleIdentifier] isEqualToString:@"com.apple.Terminal"] && ![NSStringFromClass([sender class]) isEqualToString:@"IPMDServerClientWrapper"]) {
+        [self performSelector:@selector(updateMarkedText)
+                   withObject:self.currentClient
+                   afterDelay:0.0];
+        return;
+    }
+    
+    [sender insertText:self.buffer.composedString
       replacementRange:NSMakeRange(NSNotFound, NSNotFound)];
     [self reset];
     [self hideCandidateWindow];
@@ -246,6 +257,8 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     [self commitComposition:client];
     
     [self.candidateWindow hideCandidates];
+
+    self.currentClient = nil;
 }
 
 #pragma mark - Private
