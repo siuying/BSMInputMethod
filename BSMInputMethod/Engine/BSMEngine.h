@@ -19,11 +19,18 @@
 // @return array of BSMMatch
 -(NSArray*) match:(NSString*)code;
 
-// match given code with BSMMatch
+// match given code with BSMMatch, at given page. each page consist of at most 9 result.
 // @param code ime code
 // @param number of page, begin with 0
 // @return array of BSMMatch
 -(NSArray*) match:(NSString*)code page:(NSUInteger) page;
+
+// match given code with BSMMatch
+// @param code ime code
+// @param number of page, begin with 0
+// @param items per page, must greater than 0
+// @return array of BSMMatch
+-(NSArray*) match:(NSString*)code page:(NSUInteger) page itemsPerPage:(NSUInteger)itemsPerPage;
 
 // Number of match by given code
 // @return number of matches

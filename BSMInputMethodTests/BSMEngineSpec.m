@@ -136,6 +136,13 @@ describe(@"BSMEngine", ^{
             expect([matches count]).to.equal(matchesCount);
         });
     });
+    
+    describe(@"-match:page:", ^{        
+        it(@"should return number of result we specify", ^{
+            NSArray* matches = [engine match:@"1" page:0 itemsPerPage:20];
+            expect(matches).haveCountOf(20);
+        });
+    });
 
     describe(@"-numberOfMatchWithCode:", ^{
         it(@"should return number of matches", ^{

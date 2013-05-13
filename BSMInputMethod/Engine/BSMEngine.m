@@ -53,7 +53,13 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
 }
 
 -(NSArray*) match:(NSString*)code page:(NSUInteger) page {
+    return [self match:code page:page itemsPerPage:9U];
+}
+
+-(NSArray*) match:(NSString*)code page:(NSUInteger) page itemsPerPage:(NSUInteger)itemsPerPage {
     NSAssert(code, @"code cannot be nil");
+    NSAssert(itemsPerPage != 0, @"items per page must be > 1");
+
     @autoreleasepool {
         NSString* cacheKey = [NSString stringWithFormat:@"match.%@p%lu", code, page];
         NSMutableArray* result = [self.cache objectForKey:cacheKey];
@@ -65,9 +71,9 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             
             // if this is a wildcard search, we sort result by frequency first
             if ([code rangeOfString:@"*"].location != NSNotFound) {
-                rs = [self.db executeQuery:@"select frequency, length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, frequency LIMIT 9 OFFSET ?", query, @(minCodeLength), @(page*9U)];
+                rs = [self.db executeQuery:@"select frequency, length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, frequency LIMIT ? OFFSET ?", query, @(minCodeLength), @(itemsPerPage), @(page*itemsPerPage)];
             } else {
-                rs = [self.db executeQuery:@"select length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, minid LIMIT 9 OFFSET ?", query, @(minCodeLength), @(page*9U)];
+                rs = [self.db executeQuery:@"select length(code) as len, word, code, min(id) as minid from ime where code LIKE ? and len >= ? group by word order by len, minid LIMIT ? OFFSET ?", query, @(minCodeLength), @(itemsPerPage), @(page*9U)];
             }
             
             while ([rs next]) {
