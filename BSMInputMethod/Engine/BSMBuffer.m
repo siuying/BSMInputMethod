@@ -163,6 +163,14 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
     }
 }
 
+-(NSSet*) possibleNextCode {
+    if ([self isEmpty]) {
+        return [BSMEngine allCode];
+    } else {
+        return [self.engine possibleNextCodeWithCode:self.inputBuffer];
+    }
+}
+
 -(void) dealloc {
 }
 

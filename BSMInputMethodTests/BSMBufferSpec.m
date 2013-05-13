@@ -118,6 +118,17 @@ describe(@"BSMBuffer", ^{
         });
     });
     
+    describe(@"-possibleNextCode:", ^{
+        it(@"should ask engine next possible code", ^{
+            [buffer appendBuffer:@"1"];
+            [buffer appendBuffer:@"2"];
+            [buffer appendBuffer:@"3"];
+            [[mockEngine expect] possibleNextCodeWithCode:@"123"];
+            [buffer possibleNextCode];
+            [mockEngine verify];            
+        });
+    });
+    
     describe(@"-nextPage", ^{
         it(@"should move to next page and wrap", ^{
             buffer.numberOfPage = 3;

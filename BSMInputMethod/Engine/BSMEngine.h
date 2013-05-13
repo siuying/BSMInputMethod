@@ -40,4 +40,7 @@
 // @return set of string, where they are valid input code
 -(NSSet*) possibleNextCodeWithCode:(NSString*)code;
 
+// Return set of all valid code (0-9)
++(NSSet*) allCode;
+
 @end

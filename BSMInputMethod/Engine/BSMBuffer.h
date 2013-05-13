@@ -62,4 +62,8 @@
 
 -(NSArray*) candidates;
 
+// Get set of next input code that has at least one result
+// @return set of string, where they are valid input code
+-(NSSet*) possibleNextCode;
+
 @end
