@@ -101,7 +101,7 @@ static const int ddLogLevel = LOG_LEVEL_WARN;
             return YES;
         }
 
-    } else if (keyCode == kVK_ANSI_KeypadEnter) {
+    } else if (keyCode == kVK_ANSI_KeypadEnter || keyCode == kVK_Space) {
         if (![self.buffer isEmpty]) {
             if (self.buffer.composedString.length > 0) {
                 return [self selectFirstCandidate:sender];
