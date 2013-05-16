@@ -41,19 +41,13 @@
 
 標點符號的字碼為 60-62、933-939。
 
-|60|  。，、；：？！..." "|
-|61|  ' ' 《》︽︾〈〉︿﹀|
-|62|  @%$( ) > < 「」|
-|933|   ＋－×÷＝＜＞≦≧|
-|934|   ≠∞±√∵∴≒≡∼|
-|935|   ⊥∠㏒㏑∥♁☉℃℉|
-|936|   @$%∩∪→←％Δ|
-|937|   αβγδεζηθλ|
-|938|   πμξρστυφχ|
-|939|   ∫∮㎡ω|
+參考：
 
-
-參考： [Blog](http://hkxforce.net/wordpress/543)。
+- [筆順碼筆劃](http://web.archive.org/web/20090106155430/http://www.freefire.com.hk/other/input02.htm)
+- [輸入示範 - 常見的首三碼](http://web.archive.org/web/20080615024154/http://www.freefire.com.hk/other/demo01.htm)
+- [輸入示範 - 常見的尾三碼](http://web.archive.org/web/20080615180037/http://www.freefire.com.hk/other/demo02.htm)
+- [輸入示範 - 示範1](http://web.archive.org/web/20080615180042/http://www.freefire.com.hk/other/demo03.htm)
+- [輸入示範 - 示範2](http://web.archive.org/web/20080615180042/http://www.freefire.com.hk/other/demo04.htm)
 
 ## 為何要做這個輸入法？
 
