@@ -4,6 +4,12 @@
 
 ## 安裝
 
+### 使用 Homebrew
+
+1. ``brew cask install siuying/tap/bsm``
+
+### 手動安裝
+
 1. 下載[程式](https://www.dropbox.com/s/dnbl52tfasq2hfm/BSMInputMethod_0.3.2.zip)
 2. 解壓後，把程式檔 (BSMInputMethod.app) 複制到 ```/Users/<User-Name>/Library/Input Methods``` 資夾下
 3. 在 "系統偏好設定" > "語言與文字" > "輸入來源" 下選取 "BSM 筆順碼"
