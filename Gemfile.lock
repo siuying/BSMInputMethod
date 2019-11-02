@@ -6,7 +6,7 @@ GEM
       multi_json (~> 1.0)
     coderay (1.0.9)
     colored (1.2)
-    ffi (1.8.1)
+    ffi (1.11.1)
     formatador (0.2.4)
     guard (1.8.0)
       formatador (>= 0.2.4)
