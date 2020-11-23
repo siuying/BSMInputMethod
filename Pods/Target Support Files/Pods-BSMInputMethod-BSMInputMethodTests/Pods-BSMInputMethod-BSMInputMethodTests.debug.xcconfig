@@ -1,0 +1,12 @@
+CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
+FRAMEWORK_SEARCH_PATHS = $(inherited) "$(PLATFORM_DIR)/Developer/Library/Frameworks" $(inherited) "$(DEVELOPER_LIBRARY_DIR)/Frameworks"
+GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/CocoaLumberjack" "${PODS_ROOT}/Headers/Public/Expecta" "${PODS_ROOT}/Headers/Public/FMDB" "${PODS_ROOT}/Headers/Public/JAListView" "${PODS_ROOT}/Headers/Public/OCMock" "${PODS_ROOT}/Headers/Public/Specta"
+LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CocoaLumberjack" "${PODS_CONFIGURATION_BUILD_DIR}/Expecta" "${PODS_CONFIGURATION_BUILD_DIR}/FMDB" "${PODS_CONFIGURATION_BUILD_DIR}/JAListView" "${PODS_CONFIGURATION_BUILD_DIR}/OCMock" "${PODS_CONFIGURATION_BUILD_DIR}/Specta"
+OTHER_LDFLAGS = $(inherited) -ObjC -l"CocoaLumberjack" -l"Expecta" -l"FMDB" -l"JAListView" -l"OCMock" -l"Specta" -l"sqlite3" -framework "Foundation" -framework "QuartzCore" -framework "SenTestingKit"
+PODS_BUILD_DIR = ${BUILD_DIR}
+PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
+PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
+PODS_ROOT = ${SRCROOT}/Pods
+PODS_XCFRAMEWORKS_BUILD_DIR = $(PODS_CONFIGURATION_BUILD_DIR)/XCFrameworkIntermediates
+USE_RECURSIVE_SCRIPT_INPUTS_IN_SCRIPT_PHASES = YES

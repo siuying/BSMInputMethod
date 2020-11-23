@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0D61361C09FA4777AF5060FF /* libPods-BSMInputMethodTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 85F9EA81874245F69A3FFBB6 /* libPods-BSMInputMethodTests.a */; };
+		194AD62A518E3A5DC6BFEFEE /* libPods-BSMInputMethod-BSMInputMethodTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9105512D95D56CFE8E8760FC /* libPods-BSMInputMethod-BSMInputMethodTests.a */; };
+		3E68AE2E1B720AC6D4FFC7F0 /* libPods-BSMInputMethod.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BBEDD4001F251E12C7AC7E34 /* libPods-BSMInputMethod.a */; };
 		540F9239173D4924009054B3 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 540F9238173D4924009054B3 /* Cocoa.framework */; };
 		540F9243173D4924009054B3 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 540F9241173D4924009054B3 /* InfoPlist.strings */; };
 		540F9245173D4924009054B3 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 540F9244173D4924009054B3 /* main.m */; };
@@ -38,7 +39,6 @@
 		543FB1A6173F982600F0F155 /* BSMMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FB1A1173F982600F0F155 /* BSMMatch.m */; };
 		543FB1A7173F982600F0F155 /* BSMMatch.m in Sources */ = {isa = PBXBuildFile; fileRef = 543FB1A1173F982600F0F155 /* BSMMatch.m */; };
 		546CE672173EC05D0098C067 /* bsm.tiff in Resources */ = {isa = PBXBuildFile; fileRef = 546CE671173EC05D0098C067 /* bsm.tiff */; };
-		692A6896FBA246CEB3AC7DAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D2A044C9780448A9EAE21BA /* libPods.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +52,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		3D2A044C9780448A9EAE21BA /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		0C9892CF0B07CB613A080639 /* Pods-BSMInputMethod-BSMInputMethodTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSMInputMethod-BSMInputMethodTests.debug.xcconfig"; path = "Target Support Files/Pods-BSMInputMethod-BSMInputMethodTests/Pods-BSMInputMethod-BSMInputMethodTests.debug.xcconfig"; sourceTree = "<group>"; };
 		540F9235173D4924009054B3 /* BSMInputMethod.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BSMInputMethod.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		540F9238173D4924009054B3 /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		540F923B173D4924009054B3 /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -93,9 +93,11 @@
 		543FB1A1173F982600F0F155 /* BSMMatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BSMMatch.m; sourceTree = "<group>"; };
 		546CE671173EC05D0098C067 /* bsm.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = bsm.tiff; sourceTree = "<group>"; };
 		54E08468173EB46300D9E5A6 /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		85F9EA81874245F69A3FFBB6 /* libPods-BSMInputMethodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSMInputMethodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9D0C6273F9B5424CAFD7C98C /* Pods-BSMInputMethodTests.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSMInputMethodTests.xcconfig"; path = "Pods/Pods-BSMInputMethodTests.xcconfig"; sourceTree = SOURCE_ROOT; };
-		EC3CC1A565AE49A5852CFC17 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = SOURCE_ROOT; };
+		9105512D95D56CFE8E8760FC /* libPods-BSMInputMethod-BSMInputMethodTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSMInputMethod-BSMInputMethodTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B51F354DF4F3DBF9126E79DC /* Pods-BSMInputMethod.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSMInputMethod.debug.xcconfig"; path = "Target Support Files/Pods-BSMInputMethod/Pods-BSMInputMethod.debug.xcconfig"; sourceTree = "<group>"; };
+		BBEDD4001F251E12C7AC7E34 /* libPods-BSMInputMethod.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-BSMInputMethod.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		CECF71DF26D7A4B798643CD1 /* Pods-BSMInputMethod-BSMInputMethodTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSMInputMethod-BSMInputMethodTests.release.xcconfig"; path = "Target Support Files/Pods-BSMInputMethod-BSMInputMethodTests/Pods-BSMInputMethod-BSMInputMethodTests.release.xcconfig"; sourceTree = "<group>"; };
+		E1F6D90BA2174DC20FB745D2 /* Pods-BSMInputMethod.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BSMInputMethod.release.xcconfig"; path = "Target Support Files/Pods-BSMInputMethod/Pods-BSMInputMethod.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +108,7 @@
 				540F9279173D5872009054B3 /* Carbon.framework in Frameworks */,
 				540F9273173D4AA9009054B3 /* InputMethodKit.framework in Frameworks */,
 				540F9239173D4924009054B3 /* Cocoa.framework in Frameworks */,
-				692A6896FBA246CEB3AC7DAC /* libPods.a in Frameworks */,
+				3E68AE2E1B720AC6D4FFC7F0 /* libPods-BSMInputMethod.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -116,9 +118,9 @@
 			files = (
 				540F9257173D4925009054B3 /* SenTestingKit.framework in Frameworks */,
 				540F9258173D4925009054B3 /* Cocoa.framework in Frameworks */,
-				0D61361C09FA4777AF5060FF /* libPods-BSMInputMethodTests.a in Frameworks */,
 				543FB199173F501D00F0F155 /* InputMethodKit.framework in Frameworks */,
 				543FB19A173F501F00F0F155 /* Carbon.framework in Frameworks */,
+				194AD62A518E3A5DC6BFEFEE /* libPods-BSMInputMethod-BSMInputMethodTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -132,8 +134,7 @@
 				540F925B173D4925009054B3 /* BSMInputMethodTests */,
 				540F9237173D4924009054B3 /* Frameworks */,
 				540F9236173D4924009054B3 /* Products */,
-				EC3CC1A565AE49A5852CFC17 /* Pods.xcconfig */,
-				9D0C6273F9B5424CAFD7C98C /* Pods-BSMInputMethodTests.xcconfig */,
+				F237ABA339B020F78423D5A0 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,8 +155,8 @@
 				540F9238173D4924009054B3 /* Cocoa.framework */,
 				540F9256173D4925009054B3 /* SenTestingKit.framework */,
 				540F923A173D4924009054B3 /* Other Frameworks */,
-				3D2A044C9780448A9EAE21BA /* libPods.a */,
-				85F9EA81874245F69A3FFBB6 /* libPods-BSMInputMethodTests.a */,
+				BBEDD4001F251E12C7AC7E34 /* libPods-BSMInputMethod.a */,
+				9105512D95D56CFE8E8760FC /* libPods-BSMInputMethod-BSMInputMethodTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,6 +255,17 @@
 			path = Engine;
 			sourceTree = "<group>";
 		};
+		F237ABA339B020F78423D5A0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B51F354DF4F3DBF9126E79DC /* Pods-BSMInputMethod.debug.xcconfig */,
+				E1F6D90BA2174DC20FB745D2 /* Pods-BSMInputMethod.release.xcconfig */,
+				0C9892CF0B07CB613A080639 /* Pods-BSMInputMethod-BSMInputMethodTests.debug.xcconfig */,
+				CECF71DF26D7A4B798643CD1 /* Pods-BSMInputMethod-BSMInputMethodTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -261,11 +273,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 540F9266173D4925009054B3 /* Build configuration list for PBXNativeTarget "BSMInputMethod" */;
 			buildPhases = (
-				E7E80580787348FAAF0168BB /* Check Pods Manifest.lock */,
+				BA47A977FC448E64E67B5EF8 /* [CP] Check Pods Manifest.lock */,
 				540F9231173D4924009054B3 /* Sources */,
 				540F9232173D4924009054B3 /* Frameworks */,
 				540F9233173D4924009054B3 /* Resources */,
-				22297C54E9CC40E59156028F /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -280,12 +291,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 540F9269173D4925009054B3 /* Build configuration list for PBXNativeTarget "BSMInputMethodTests" */;
 			buildPhases = (
-				BB73A65761744C4DA17D7F46 /* Check Pods Manifest.lock */,
+				3C691A5CCA9088D61E14FE17 /* [CP] Check Pods Manifest.lock */,
 				540F9250173D4925009054B3 /* Sources */,
 				540F9251173D4925009054B3 /* Frameworks */,
 				540F9252173D4925009054B3 /* Resources */,
 				540F9253173D4925009054B3 /* ShellScript */,
-				BE02A032C39F4FC18D8F5F3D /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -306,12 +316,19 @@
 				CLASSPREFIX = BSM;
 				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = "Ignition Soft";
+				TargetAttributes = {
+					540F9234173D4924009054B3 = {
+						DevelopmentTeam = 638635GR5X;
+						ProvisioningStyle = Automatic;
+					};
+				};
 			};
 			buildConfigurationList = 540F9230173D4924009054B3 /* Build configuration list for PBXProject "BSMInputMethod" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				"zh-Hant",
 			);
@@ -352,19 +369,27 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		22297C54E9CC40E59156028F /* Copy Pods Resources */ = {
+		3C691A5CCA9088D61E14FE17 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Copy Pods Resources";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BSMInputMethod-BSMInputMethodTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 		540F9253173D4925009054B3 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -379,47 +404,27 @@
 			shellPath = /bin/sh;
 			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
 		};
-		BB73A65761744C4DA17D7F46 /* Check Pods Manifest.lock */ = {
+		BA47A977FC448E64E67B5EF8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
+			inputFileListPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-BSMInputMethod-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-		};
-		BE02A032C39F4FC18D8F5F3D /* Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-BSMInputMethodTests-resources.sh\"\n";
-		};
-		E7E80580787348FAAF0168BB /* Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -504,7 +509,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -527,7 +531,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -537,7 +541,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_OBJC_ARC = YES;
@@ -554,40 +557,50 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.8;
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				SDKROOT = macosx;
 			};
 			name = Release;
 		};
 		540F9267173D4925009054B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC3CC1A565AE49A5852CFC17 /* Pods.xcconfig */;
+			baseConfigurationReference = B51F354DF4F3DBF9126E79DC /* Pods-BSMInputMethod.debug.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 638635GR5X;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BSMInputMethod/BSMInputMethod-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "BSMInputMethod/BSMInputMethod-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
 		};
 		540F9268173D4925009054B3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC3CC1A565AE49A5852CFC17 /* Pods.xcconfig */;
+			baseConfigurationReference = E1F6D90BA2174DC20FB745D2 /* Pods-BSMInputMethod.release.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 638635GR5X;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BSMInputMethod/BSMInputMethod-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(inherited)";
 				INFOPLIST_FILE = "BSMInputMethod/BSMInputMethod-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
 		};
 		540F926A173D4925009054B3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D0C6273F9B5424CAFD7C98C /* Pods-BSMInputMethodTests.xcconfig */;
+			baseConfigurationReference = 0C9892CF0B07CB613A080639 /* Pods-BSMInputMethod-BSMInputMethodTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BSMInputMethod.app/Contents/MacOS/BSMInputMethod";
 				COMBINE_HIDPI_IMAGES = YES;
@@ -606,7 +619,7 @@
 		};
 		540F926B173D4925009054B3 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 9D0C6273F9B5424CAFD7C98C /* Pods-BSMInputMethodTests.xcconfig */;
+			baseConfigurationReference = CECF71DF26D7A4B798643CD1 /* Pods-BSMInputMethod-BSMInputMethodTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BSMInputMethod.app/Contents/MacOS/BSMInputMethod";
 				COMBINE_HIDPI_IMAGES = YES;

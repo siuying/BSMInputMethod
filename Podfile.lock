@@ -2,7 +2,7 @@ PODS:
   - CocoaLumberjack (1.6.2)
   - Expecta (0.2.1)
   - FMDB (2.0):
-    - FMDB/standard
+    - FMDB/standard (= 2.0)
   - FMDB/common (2.0)
   - FMDB/standard (2.0):
     - FMDB/common
@@ -18,12 +18,23 @@ DEPENDENCIES:
   - OCMock
   - Specta
 
-SPEC CHECKSUMS:
-  CocoaLumberjack: d73e1e317ced14ab930797dda6c17156ff17aaa1
-  Expecta: d46fb1bd78c90a83da0158b9b1e108de106e369f
-  FMDB: 30a7cbcdbd354f5ee1ba081a8773fd9130c43b48
-  JAListView: 7fb73768382a93a0cf48e18828709ef3240911fc
-  OCMock: 79212e5e328378af5cfd6edb5feacfd6c49cd8a3
-  Specta: 8a215d36842f2d29e888786937d1bf7f8725f780
+SPEC REPOS:
+  trunk:
+    - CocoaLumberjack
+    - Expecta
+    - FMDB
+    - JAListView
+    - OCMock
+    - Specta
 
-COCOAPODS: 0.19.1
+SPEC CHECKSUMS:
+  CocoaLumberjack: 38fa640b1467deaf665b3f7b3b08f837b55c9660
+  Expecta: 9baf79e5a81955466b5f6c5e879f154fc8c88afa
+  FMDB: 53a38a2a564e755f2e9a075418d5167557403105
+  JAListView: 61903c5c3ea6f6f9a6163d4023f05cae9f5b5770
+  OCMock: add4220c4527115d16e40a21dab18cb6f829d476
+  Specta: 33d3181fc5679973ef9cb0fd5b823e0f7a31b35f
+
+PODFILE CHECKSUM: f482ec05c3d4a645ff98a1f585335fcfab66a05b
+
+COCOAPODS: 1.10.0
