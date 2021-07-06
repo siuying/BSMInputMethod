@@ -53,6 +53,16 @@ namespace "preprocess" do
         end
       end
     end
+
+
+    extension = open("data/extension.txt", 'r').read
+    @converter.db.transaction do
+      extension.each_line do |line|
+        if line =~ /(.{1,6}) (.)/
+          @converter.add($1, $2)
+        end
+      end
+    end
   end
 end
 
