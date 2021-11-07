@@ -6,10 +6,11 @@
 
 ### 使用 Homebrew
 
-1. ``brew cask install siuying/tap/bsm``
+1. ``brew install siuying/tap/bsm``
 2. 在 "系統偏好設定" > "語言與文字" > "輸入來源" 下選取 "BSM 筆順碼"
-3. 如果你使用的是 Mojave 或以上，需要到 "系統偏好設定" > "安全性和私隱" 容許執行 BSM Input Method
-4. 按 ctrl-space 直到轉到 "BSM 筆順碼"
+3. 如果你使用的是 Apple Silicon Mac，請先安裝 Rosetta (```/usr/sbin/softwareupdate --install-rosetta --agree-to-license```)，然後手動執行 ```/Library/Input Methods/BSMInputMethod.app``` 一次。
+4. 如果你使用的是 Mojave 或以上，需要到 "系統偏好設定" > "安全性和私隱" 容許執行 BSM Input Method。
+5. 按 ctrl-space 直到轉到 "BSM 筆順碼"
 
 ### 手動安裝
 
@@ -17,7 +18,8 @@
 2. 解壓後，把程式檔 (BSMInputMethod.app) 複制到 ```/Users/<User-Name>/Library/Input Methods``` 資夾下
 3. 在 "系統偏好設定" > "語言與地區" > "鍵盤編好設定" > "輸入方式" > "+" > 在「繁體中文」下選取「BSM 筆順碼」
 4. 如果你使用的是 Mojave 或以上，需要到 "系統偏好設定" > "安全性和私隱" 容許執行 BSM Input Method
-5. 按 command-space 直到轉到 "BSM 筆順碼"
+5. 如果你使用的是 Apple Silicon Mac，請先安裝 Rosetta (```/usr/sbin/softwareupdate --install-rosetta --agree-to-license```)，然後手動執行 ```/Library/Input Methods/BSMInputMethod.app``` 一次。
+6. 按 command-space 直到轉到 "BSM 筆順碼"
 
 ## 為何要做這個輸入法？
 
