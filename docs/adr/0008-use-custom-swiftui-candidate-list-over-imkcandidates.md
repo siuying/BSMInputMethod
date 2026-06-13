@@ -1,0 +1,3 @@
+# Use a custom SwiftUI candidate list instead of IMKCandidates
+
+The modern input method will render the Candidate List as a custom `NSPanel`/`NSWindow` positioned by the controller, with an `NSHostingView` displaying SwiftUI rows (selection number, candidate word, muted BSM code) and the `+` code-visibility toggle. Apple's `IMKCandidates` was evaluated against Candidate List Parity and rejected: a candidate is a single string with no separate styled code column, code visibility cannot be toggled as a distinct column, and its scrolling/stepping panels do not reproduce the current discrete wrap-around paging. A custom SwiftUI-hosted list is the only option that satisfies Candidate List Parity while still removing the JAListView dependency.
