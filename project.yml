@@ -34,6 +34,8 @@ targets:
     dependencies:
       - package: BSMCore
         product: BSMCore
+      - package: BSMCore
+        product: BSMCandidateUI
     settings:
       base:
         PRODUCT_NAME: BSMInputMethod
@@ -42,3 +44,43 @@ targets:
         GENERATE_INFOPLIST_FILE: "NO"
         SKIP_INSTALL: "NO"
         ENABLE_HARDENED_RUNTIME: "YES"
+
+  BSMExample:
+    type: application
+    platform: macOS
+    sources:
+      - path: Example
+    dependencies:
+      - package: BSMCore
+        product: BSMCore
+      - package: BSMCore
+        product: BSMCandidateUI
+    settings:
+      base:
+        PRODUCT_NAME: BSMExample
+        PRODUCT_BUNDLE_IDENTIFIER: hk.ignition.inputmethod.BSMInputMethod.Example
+        INFOPLIST_FILE: Example/Info.plist
+        GENERATE_INFOPLIST_FILE: "NO"
+
+  BSMExampleUITests:
+    type: bundle.ui-testing
+    platform: macOS
+    sources:
+      - path: ExampleUITests
+    dependencies:
+      - target: BSMExample
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: "YES"
+        PRODUCT_BUNDLE_IDENTIFIER: hk.ignition.inputmethod.BSMInputMethod.ExampleUITests
+        TEST_TARGET_NAME: BSMExample
+
+schemes:
+  BSMExample:
+    build:
+      targets:
+        BSMExample: all
+        BSMExampleUITests: [test]
+    test:
+      targets:
+        - BSMExampleUITests
