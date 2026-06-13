@@ -7,6 +7,7 @@ let package = Package(
     products: [
         .library(name: "BSMCore", targets: ["BSMCore"]),
         .library(name: "BSMCandidateUI", targets: ["BSMCandidateUI"]),
+        .library(name: "BSMDictionarySQLite", targets: ["BSMDictionarySQLite"]),
         .executable(name: "bsm-db-build", targets: ["BSMDatabaseBuilder"]),
     ],
     dependencies: [
@@ -18,6 +19,16 @@ let package = Package(
 
         .target(name: "BSMCandidateUI", dependencies: ["BSMCore"]),
         .testTarget(name: "BSMCandidateUITests", dependencies: ["BSMCandidateUI", "BSMCore"]),
+
+        // SQLite.swift-backed dictionary, kept behind the BSMCore boundary.
+        .target(
+            name: "BSMDictionarySQLite",
+            dependencies: ["BSMCore", .product(name: "SQLite", package: "SQLite.swift")]
+        ),
+        .testTarget(
+            name: "BSMDictionarySQLiteTests",
+            dependencies: ["BSMDictionarySQLite", "BSMCore"]
+        ),
 
         // Database builder: pure logic lives in the library so it is testable;
         // the executable is a thin CLI entry point. (ADR 0005)
