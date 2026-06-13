@@ -1,0 +1,44 @@
+name: BSMInputMethod
+
+options:
+  bundleIdPrefix: hk.ignition.inputmethod
+  deploymentTarget:
+    macOS: "14.0"
+  createIntermediateGroups: true
+  generateEmptyDirectories: true
+
+settings:
+  base:
+    SWIFT_VERSION: "6.0"
+    SWIFT_STRICT_CONCURRENCY: complete
+    MACOSX_DEPLOYMENT_TARGET: "14.0"
+    CODE_SIGN_STYLE: Manual
+    CODE_SIGN_IDENTITY: "-"
+    CODE_SIGNING_REQUIRED: "NO"
+    CODE_SIGNING_ALLOWED: "NO"
+
+packages:
+  BSMCore:
+    path: .
+
+targets:
+  BSMInputMethod:
+    type: application
+    platform: macOS
+    sources:
+      - path: App
+      - path: Resources
+        buildPhase: resources
+      - path: Data/bsm.db
+        buildPhase: resources
+    dependencies:
+      - package: BSMCore
+        product: BSMCore
+    settings:
+      base:
+        PRODUCT_NAME: BSMInputMethod
+        PRODUCT_BUNDLE_IDENTIFIER: hk.ignition.inputmethod.BSMInputMethod
+        INFOPLIST_FILE: App/Info.plist
+        GENERATE_INFOPLIST_FILE: "NO"
+        SKIP_INSTALL: "NO"
+        ENABLE_HARDENED_RUNTIME: "YES"
