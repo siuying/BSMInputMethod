@@ -36,6 +36,8 @@ targets:
         product: BSMCore
       - package: BSMCore
         product: BSMCandidateUI
+      - package: BSMCore
+        product: BSMDictionarySQLite
     settings:
       base:
         PRODUCT_NAME: BSMInputMethod
