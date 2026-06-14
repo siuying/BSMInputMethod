@@ -6,6 +6,7 @@ let package = Package(
     platforms: [.macOS(.v14)],
     products: [
         .library(name: "BSMCore", targets: ["BSMCore"]),
+        .library(name: "BSMCandidateUI", targets: ["BSMCandidateUI"]),
         .executable(name: "bsm-db-build", targets: ["BSMDatabaseBuilder"]),
     ],
     dependencies: [
@@ -14,6 +15,9 @@ let package = Package(
     targets: [
         .target(name: "BSMCore"),
         .testTarget(name: "BSMCoreTests", dependencies: ["BSMCore"]),
+
+        .target(name: "BSMCandidateUI", dependencies: ["BSMCore"]),
+        .testTarget(name: "BSMCandidateUITests", dependencies: ["BSMCandidateUI", "BSMCore"]),
 
         // Database builder: pure logic lives in the library so it is testable;
         // the executable is a thin CLI entry point. (ADR 0005)
