@@ -1,1 +1,13 @@
 .DS_Store
+
+# Swift Package Manager
+/.build/
+Package.resolved
+
+# Xcode build output
+/build/
+DerivedData/
+*.xcuserstate
+
+# XcodeGen generates the modern project from project.yml; do not commit it.
+/BSMInputMethod.xcodeproj/
